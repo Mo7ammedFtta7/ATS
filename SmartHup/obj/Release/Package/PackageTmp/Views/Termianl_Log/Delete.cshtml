@@ -1,0 +1,295 @@
+﻿@model SmartHup.Models.Termianl_Log
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+<h4>Delete Termianl_Log - Termianl_Log Managment</h4>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+     <table class="table table-striped" border="0">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.TL_Name)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.TL_Name)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.creationDate)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.creationDate)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modificationDate)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.modificationDate)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.createdBy)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.createdBy)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.modifiedBy)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.version)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.version)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.PACKNO)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.PACKNO)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.EX_ter_ID)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.EX_ter_ID)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.ter_NAME)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.ter_NAME)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.STOP_TIME)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.STOP_TIME)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.START_TIME)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.START_TIME)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.NOTIFIED)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.NOTIFIED)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.VALID_CASE)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.VALID_CASE)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.NOTIFICATION_PERIOD)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.NOTIFICATION_PERIOD)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.DOWN_TIME)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.DOWN_TIME)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serialNo)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.serialNo)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.messageCode)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.messageCode)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.termianlStatus)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.termianlStatus)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additionalF1)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additionalF1)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additionalF2)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additionalF2)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additionalF3)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additionalF3)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.EntityStatus.EntityStatusName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.REASON.reasonCode)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.REASON.reasonCode)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Terminal.terminalName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.Terminal.terminalName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.TerminalComponent.tcCode)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.TerminalComponent.tcCode)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.TerminalState.terminalStateCode)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.TerminalState.terminalStateCode)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.TerminalStatusDictionary.tsdCode)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.TerminalStatusDictionary.tsdCode)
+           </td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+		@if( menu.ContainsKey(Tuple.Create("Termianl_Log","Delete")) ) {
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+			}
+            @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-primary" })
+        </div>
+    }
+</div>
+

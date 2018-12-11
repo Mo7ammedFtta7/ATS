@@ -1,0 +1,1054 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="CSHModelStoreContainer" CdmEntityContainer="CSHEntities">
+    <EntitySetMapping Name="ACCOUNT">
+      <EntityTypeMapping TypeName="CSHModel.ACCOUNT">
+        <MappingFragment StoreEntitySet="ACCOUNT">
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="entityId" ColumnName="entityId" />
+          <ScalarProperty Name="entityType" ColumnName="entityType" />
+          <ScalarProperty Name="mbr" ColumnName="mbr" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="expDate" ColumnName="expDate" />
+          <ScalarProperty Name="cardCreateDate" ColumnName="cardCreateDate" />
+          <ScalarProperty Name="panCategory" ColumnName="panCategory" />
+          <ScalarProperty Name="bankAccountNumber" ColumnName="bankAccountNumber" />
+          <ScalarProperty Name="bankAccountType" ColumnName="bankAccountType" />
+          <ScalarProperty Name="bankBranchId" ColumnName="bankBranchId" />
+          <ScalarProperty Name="bankId" ColumnName="bankId" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+          <ScalarProperty Name="customerIdNumber" ColumnName="customerIdNumber" />
+          <ScalarProperty Name="accountName" ColumnName="accountName" />
+          <ScalarProperty Name="account1" ColumnName="account" />
+          <ScalarProperty Name="accountId" ColumnName="accountId" />
+          <ScalarProperty Name="paymentMethodId" ColumnName="paymentMethodId" />
+          <ScalarProperty Name="paymentMethodLabel" ColumnName="paymentMethodLabel" />
+          <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Action">
+      <EntityTypeMapping TypeName="CSHModel.Action">
+        <MappingFragment StoreEntitySet="Action">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="Elabel" ColumnName="Elabel" />
+          <ScalarProperty Name="pageType" ColumnName="pageType" />
+          <ScalarProperty Name="moduleId" ColumnName="moduleId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADMINUSER">
+      <EntityTypeMapping TypeName="CSHModel.ADMINUSER">
+        <MappingFragment StoreEntitySet="ADMINUSER">
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditingLog">
+      <EntityTypeMapping TypeName="CSHModel.AuditingLog">
+        <MappingFragment StoreEntitySet="AuditingLog">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="actionId" ColumnName="actionId" />
+          <ScalarProperty Name="moduleId" ColumnName="moduleId" />
+          <ScalarProperty Name="oldData" ColumnName="oldData" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="clientData" ColumnName="clientData" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bank">
+      <EntityTypeMapping TypeName="CSHModel.Bank">
+        <MappingFragment StoreEntitySet="Bank">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="bankFullName" ColumnName="bankFullName" />
+          <ScalarProperty Name="bankShortName" ColumnName="bankShortName" />
+          <ScalarProperty Name="bankCode" ColumnName="bankCode" />
+          <ScalarProperty Name="bankPrefix" ColumnName="bankPrefix" />
+          <ScalarProperty Name="bankContact" ColumnName="bankContact" />
+          <ScalarProperty Name="bankId" ColumnName="bankId" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banks">
+      <EntityTypeMapping TypeName="CSHModel.Banks">
+        <MappingFragment StoreEntitySet="Banks">
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="bankId" ColumnName="bankId" />
+          <ScalarProperty Name="bankName" ColumnName="bankName" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="branches">
+      <EntityTypeMapping TypeName="CSHModel.branches">
+        <MappingFragment StoreEntitySet="branches">
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="branchId" ColumnName="branchId" />
+          <ScalarProperty Name="branchName" ColumnName="branchName" />
+          <ScalarProperty Name="bankId" ColumnName="bankId" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Channel">
+      <EntityTypeMapping TypeName="CSHModel.Channel">
+        <MappingFragment StoreEntitySet="Channel">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="channelId" ColumnName="channelId" />
+          <ScalarProperty Name="channelName" ColumnName="channelName" />
+          <ScalarProperty Name="channelStatus" ColumnName="channelStatus" />
+          <ScalarProperty Name="publicKey" ColumnName="publicKey" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="City">
+      <EntityTypeMapping TypeName="CSHModel.City">
+        <MappingFragment StoreEntitySet="City">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="cityName" ColumnName="cityName" />
+          <ScalarProperty Name="cityArName" ColumnName="cityArName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Currency">
+      <EntityTypeMapping TypeName="CSHModel.Currency">
+        <MappingFragment StoreEntitySet="Currency">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="CurrencyName" ColumnName="CurrencyName" />
+          <ScalarProperty Name="CurrencyArName" ColumnName="CurrencyArName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customer">
+      <EntityTypeMapping TypeName="CSHModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="fullName" ColumnName="fullName" />
+          <ScalarProperty Name="dateOfBirth" ColumnName="dateOfBirth" />
+          <ScalarProperty Name="job" ColumnName="job" />
+          <ScalarProperty Name="customerIdNumber" ColumnName="customerIdNumber" />
+          <ScalarProperty Name="customerIdType" ColumnName="customerIdType" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="IMEI" ColumnName="IMEI" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="otpPassword" ColumnName="otpPassword" />
+          <ScalarProperty Name="otpLastDate" ColumnName="otpLastDate" />
+          <ScalarProperty Name="otpStartDate" ColumnName="otpStartDate" />
+          <ScalarProperty Name="activationCode" ColumnName="activationCode" />
+          <ScalarProperty Name="isActive" ColumnName="isActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntityStatus">
+      <EntityTypeMapping TypeName="CSHModel.EntityStatus">
+        <MappingFragment StoreEntitySet="EntityStatus">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="EntityStatusName" ColumnName="EntityStatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Favourite">
+      <EntityTypeMapping TypeName="CSHModel.Favourite">
+        <MappingFragment StoreEntitySet="Favourite">
+          <ScalarProperty Name="favoriteId" ColumnName="favoriteId" />
+          <ScalarProperty Name="customer" ColumnName="customer" />
+          <ScalarProperty Name="favoriteValue" ColumnName="favoriteValue" />
+          <ScalarProperty Name="favoriteName" ColumnName="favoriteName" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="favoriteStatus" ColumnName="favoriteStatus" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Module">
+      <EntityTypeMapping TypeName="CSHModel.Module">
+        <MappingFragment StoreEntitySet="Module">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="parentId" ColumnName="parentId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentField">
+      <EntityTypeMapping TypeName="CSHModel.PaymentField">
+        <MappingFragment StoreEntitySet="PaymentField">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="paymentFieldId" ColumnName="paymentFieldId" />
+          <ScalarProperty Name="paymentFieldName" ColumnName="paymentFieldName" />
+          <ScalarProperty Name="paymentFieldStatus" ColumnName="paymentFieldStatus" />
+          <ScalarProperty Name="channelFieldEName" ColumnName="channelFieldEName" />
+          <ScalarProperty Name="channelFieldName" ColumnName="channelFieldName" />
+          <ScalarProperty Name="paymentHandlerFieldName" ColumnName="paymentHandlerFieldName" />
+          <ScalarProperty Name="regularExpression" ColumnName="regularExpression" />
+          <ScalarProperty Name="isRequired" ColumnName="isRequired" />
+          <ScalarProperty Name="isResponseField" ColumnName="isResponseField" />
+          <ScalarProperty Name="isRequestField" ColumnName="isRequestField" />
+          <ScalarProperty Name="isSavable" ColumnName="isSavable" />
+          <ScalarProperty Name="additionalFieldName" ColumnName="additionalFieldName" />
+          <ScalarProperty Name="dateFormat" ColumnName="dateFormat" />
+          <ScalarProperty Name="paymentMethodId" ColumnName="paymentMethodId" />
+          <ScalarProperty Name="paymentHandlerId" ColumnName="paymentHandlerId" />
+          <ScalarProperty Name="isPaymentInfo" ColumnName="isPaymentInfo" />
+          <ScalarProperty Name="paymentInfoOrder" ColumnName="paymentInfoOrder" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentHandler">
+      <EntityTypeMapping TypeName="CSHModel.PaymentHandler">
+        <MappingFragment StoreEntitySet="PaymentHandler">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="paymentHandlerId" ColumnName="paymentHandlerId" />
+          <ScalarProperty Name="paymentHandlerName" ColumnName="paymentHandlerName" />
+          <ScalarProperty Name="paymentHandlerStatus" ColumnName="paymentHandlerStatus" />
+          <ScalarProperty Name="paymentMethodId" ColumnName="paymentMethodId" />
+          <ScalarProperty Name="paymentHostUri" ColumnName="paymentHostUri" />
+          <ScalarProperty Name="paymentHostIntegrationType" ColumnName="paymentHostIntegrationType" />
+          <ScalarProperty Name="paymentHostCharSet" ColumnName="paymentHostCharSet" />
+          <ScalarProperty Name="isSslExist" ColumnName="isSslExist" />
+          <ScalarProperty Name="paymentHostPublicKey" ColumnName="paymentHostPublicKey" />
+          <ScalarProperty Name="paymentHostEncryptionMethod" ColumnName="paymentHostEncryptionMethod" />
+          <ScalarProperty Name="paymentHostAcceptEncoding" ColumnName="paymentHostAcceptEncoding" />
+          <ScalarProperty Name="paymentHostContentType" ColumnName="paymentHostContentType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethod">
+      <EntityTypeMapping TypeName="CSHModel.PaymentMethod">
+        <MappingFragment StoreEntitySet="PaymentMethod">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="paymentMethodId" ColumnName="paymentMethodId" />
+          <ScalarProperty Name="paymentMethodName" ColumnName="paymentMethodName" />
+          <ScalarProperty Name="paymentMethodStatus" ColumnName="paymentMethodStatus" />
+          <ScalarProperty Name="paymentMethodUIEName" ColumnName="paymentMethodUIEName" />
+          <ScalarProperty Name="paymentMethodUIName" ColumnName="paymentMethodUIName" />
+          <ScalarProperty Name="paymentProviderId" ColumnName="paymentProviderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentProvider">
+      <EntityTypeMapping TypeName="CSHModel.PaymentProvider">
+        <MappingFragment StoreEntitySet="PaymentProvider">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="paymentProviderId" ColumnName="paymentProviderId" />
+          <ScalarProperty Name="paymentProviderName" ColumnName="paymentProviderName" />
+          <ScalarProperty Name="paymentProviderEName" ColumnName="paymentProviderEName" />
+          <ScalarProperty Name="paymentProviderStatus" ColumnName="paymentProviderStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RangType">
+      <EntityTypeMapping TypeName="CSHModel.RangType">
+        <MappingFragment StoreEntitySet="RangType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="creatioDate" ColumnName="creatioDate" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="maxValue" ColumnName="maxValue" />
+          <ScalarProperty Name="minValue" ColumnName="minValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RemoteSettings">
+      <EntityTypeMapping TypeName="CSHModel.RemoteSettings">
+        <MappingFragment StoreEntitySet="RemoteSettings">
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="consumerURL" ColumnName="consumerURL" />
+          <ScalarProperty Name="balancePath" ColumnName="balancePath" />
+          <ScalarProperty Name="paymentPath" ColumnName="paymentPath" />
+          <ScalarProperty Name="inquiryPath" ColumnName="inquiryPath" />
+          <ScalarProperty Name="keyPath" ColumnName="keyPath" />
+          <ScalarProperty Name="registerPath" ColumnName="registerPath" />
+          <ScalarProperty Name="transferPath" ColumnName="transferPath" />
+          <ScalarProperty Name="reversalPath" ColumnName="reversalPath" />
+          <ScalarProperty Name="changeIPinPath" ColumnName="changeIPinPath" />
+          <ScalarProperty Name="changePasswordPath" ColumnName="changePasswordPath" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="specialPaymentPath" ColumnName="specialPaymentPath" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Role">
+      <EntityTypeMapping TypeName="CSHModel.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="EName" ColumnName="EName" />
+          <ScalarProperty Name="serviceProviderTypeId" ColumnName="serviceProviderTypeId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleActions">
+      <EntityTypeMapping TypeName="CSHModel.RoleActions">
+        <MappingFragment StoreEntitySet="RoleActions">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="actionId" ColumnName="actionId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Service">
+      <EntityTypeMapping TypeName="CSHModel.Service">
+        <MappingFragment StoreEntitySet="Service">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+          <ScalarProperty Name="serviceName" ColumnName="serviceName" />
+          <ScalarProperty Name="serviceEName" ColumnName="serviceEName" />
+          <ScalarProperty Name="ServiceLable" ColumnName="ServiceLable" />
+          <ScalarProperty Name="ServiceELable" ColumnName="ServiceELable" />
+          <ScalarProperty Name="serviceStatus" ColumnName="serviceStatus" />
+          <ScalarProperty Name="serviceDescription" ColumnName="serviceDescription" />
+          <ScalarProperty Name="isParent" ColumnName="isParent" />
+          <ScalarProperty Name="serviceConfigurationId" ColumnName="serviceConfigurationId" />
+          <ScalarProperty Name="serviceProviderId" ColumnName="serviceProviderId" />
+          <ScalarProperty Name="precheckRquired" ColumnName="precheckRquired" />
+          <ScalarProperty Name="serviceScenarioId" ColumnName="serviceScenarioId" />
+          <ScalarProperty Name="precheckServiceId" ColumnName="precheckServiceId" />
+          <ScalarProperty Name="parentId" ColumnName="parentId" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="paymentListName" ColumnName="paymentListName" />
+          <ScalarProperty Name="inquiryListName" ColumnName="inquiryListName" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="credit_Requird" ColumnName="credit Requird" />
+          <ScalarProperty Name="credit_ServiceID" ColumnName="credit ServiceID" />
+          <ScalarProperty Name="include_ServiceFields" ColumnName="include ServiceFields" />
+          <ScalarProperty Name="include_PaymentFields" ColumnName="include PaymentFields" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceField">
+      <EntityTypeMapping TypeName="CSHModel.ServiceField">
+        <MappingFragment StoreEntitySet="ServiceField">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="serviceFieldId" ColumnName="serviceFieldId" />
+          <ScalarProperty Name="serviceFieldName" ColumnName="serviceFieldName" />
+          <ScalarProperty Name="serviceFieldStatus" ColumnName="serviceFieldStatus" />
+          <ScalarProperty Name="channelFieldEName" ColumnName="channelFieldEName" />
+          <ScalarProperty Name="channelFieldName" ColumnName="channelFieldName" />
+          <ScalarProperty Name="serviceHandlerFieldName" ColumnName="serviceHandlerFieldName" />
+          <ScalarProperty Name="regularExpression" ColumnName="regularExpression" />
+          <ScalarProperty Name="isRequired" ColumnName="isRequired" />
+          <ScalarProperty Name="dateFormat" ColumnName="dateFormat" />
+          <ScalarProperty Name="isRequestField" ColumnName="isRequestField" />
+          <ScalarProperty Name="isSavable" ColumnName="isSavable" />
+          <ScalarProperty Name="isResponseField" ColumnName="isResponseField" />
+          <ScalarProperty Name="additionalFieldName" ColumnName="additionalFieldName" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+          <ScalarProperty Name="serviceHanlerId" ColumnName="serviceHanlerId" />
+          <ScalarProperty Name="isPaymentInfo" ColumnName="isPaymentInfo" />
+          <ScalarProperty Name="paymentInfoOrder" ColumnName="paymentInfoOrder" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="payeeId" ColumnName="payeeId" />
+          <ScalarProperty Name="idx" ColumnName="idx" />
+          <ScalarProperty Name="serviceProviderId" ColumnName="serviceProviderId" />
+          <ScalarProperty Name="isParent" ColumnName="isParent" />
+          <ScalarProperty Name="parentId" ColumnName="parentId" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="regTypeId" ColumnName="regTypeId" />
+          <ScalarProperty Name="isFavorable" ColumnName="isFavorable" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceHandler">
+      <EntityTypeMapping TypeName="CSHModel.ServiceHandler">
+        <MappingFragment StoreEntitySet="ServiceHandler">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="serviceHanlerId" ColumnName="serviceHanlerId" />
+          <ScalarProperty Name="serviceHanlerName" ColumnName="serviceHanlerName" />
+          <ScalarProperty Name="serviceHanlerStatus" ColumnName="serviceHanlerStatus" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+          <ScalarProperty Name="serviceHostUri" ColumnName="serviceHostUri" />
+          <ScalarProperty Name="serviceHostIntegrationType" ColumnName="serviceHostIntegrationType" />
+          <ScalarProperty Name="serviceHostCharSet" ColumnName="serviceHostCharSet" />
+          <ScalarProperty Name="isSslExist" ColumnName="isSslExist" />
+          <ScalarProperty Name="serviceHostPublicKey" ColumnName="serviceHostPublicKey" />
+          <ScalarProperty Name="serviceHostEncryptionMethod" ColumnName="serviceHostEncryptionMethod" />
+          <ScalarProperty Name="serviceHostAcceptEncoding" ColumnName="serviceHostAcceptEncoding" />
+          <ScalarProperty Name="serviceHostContentType" ColumnName="serviceHostContentType" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceProvider">
+      <EntityTypeMapping TypeName="CSHModel.ServiceProvider">
+        <MappingFragment StoreEntitySet="ServiceProvider">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="serviceProviderId" ColumnName="serviceProviderId" />
+          <ScalarProperty Name="serviceProviderName" ColumnName="serviceProviderName" />
+          <ScalarProperty Name="serviceProviderEName" ColumnName="serviceProviderEName" />
+          <ScalarProperty Name="serviceProviderLabel" ColumnName="serviceProviderLabel" />
+          <ScalarProperty Name="serviceProviderELabel" ColumnName="serviceProviderELabel" />
+          <ScalarProperty Name="serviceProviderStatus" ColumnName="serviceProviderStatus" />
+          <ScalarProperty Name="serviceProviderTypeId" ColumnName="serviceProviderTypeId" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceProviderType">
+      <EntityTypeMapping TypeName="CSHModel.ServiceProviderType">
+        <MappingFragment StoreEntitySet="ServiceProviderType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceScenario">
+      <EntityTypeMapping TypeName="CSHModel.ServiceScenario">
+        <MappingFragment StoreEntitySet="ServiceScenario">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="serviceScenarioId" ColumnName="serviceScenarioId" />
+          <ScalarProperty Name="serviceScenarioName" ColumnName="serviceScenarioName" />
+          <ScalarProperty Name="serviceScenarioStatus" ColumnName="serviceScenarioStatus" />
+          <ScalarProperty Name="paymentProviderHandler" ColumnName="paymentProviderHandler" />
+          <ScalarProperty Name="serviceProviderHandler" ColumnName="serviceProviderHandler" />
+          <ScalarProperty Name="serviceProviderAcknowledge" ColumnName="serviceProviderAcknowledge" />
+          <ScalarProperty Name="serviceProviderProvision" ColumnName="serviceProviderProvision" />
+          <ScalarProperty Name="serviceProviderInquiry" ColumnName="serviceProviderInquiry" />
+          <ScalarProperty Name="paymentProviderInquiry" ColumnName="paymentProviderInquiry" />
+          <ScalarProperty Name="paymentProviderPayment" ColumnName="paymentProviderPayment" />
+          <ScalarProperty Name="paymentProviderPaymentCredit" ColumnName="paymentProviderPaymentCredit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="State">
+      <EntityTypeMapping TypeName="CSHModel.State">
+        <MappingFragment StoreEntitySet="State">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="stateName" ColumnName="stateName" />
+          <ScalarProperty Name="stateArName" ColumnName="stateArName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="CSHModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SystemResponse">
+      <EntityTypeMapping TypeName="CSHModel.SystemResponse">
+        <MappingFragment StoreEntitySet="SystemResponse">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="systemResponseId" ColumnName="systemResponseId" />
+          <ScalarProperty Name="responseCode" ColumnName="responseCode" />
+          <ScalarProperty Name="responseMessage" ColumnName="responseMessage" />
+          <ScalarProperty Name="responseStatus" ColumnName="responseStatus" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="ExResponseCode" ColumnName="ExResponseCode" />
+          <ScalarProperty Name="ExResponseMessage" ColumnName="ExResponseMessage" />
+          <ScalarProperty Name="ExResponseStatus" ColumnName="ExResponseStatus" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Terminal">
+      <EntityTypeMapping TypeName="CSHModel.Terminal">
+        <MappingFragment StoreEntitySet="Terminal">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="terminalId" ColumnName="terminalId" />
+          <ScalarProperty Name="terminalName" ColumnName="terminalName" />
+          <ScalarProperty Name="terminalStatus" ColumnName="terminalStatus" />
+          <ScalarProperty Name="terminalIP" ColumnName="terminalIP" />
+          <ScalarProperty Name="serialNumber" ColumnName="serialNumber" />
+          <ScalarProperty Name="terminalModel" ColumnName="terminalModel" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="street" ColumnName="street" />
+          <ScalarProperty Name="terminalCode" ColumnName="terminalCode" />
+          <ScalarProperty Name="workingKey" ColumnName="workingKey" />
+          <ScalarProperty Name="attitude" ColumnName="attitude" />
+          <ScalarProperty Name="latitude" ColumnName="latitude" />
+          <ScalarProperty Name="terminalFamilyId" ColumnName="terminalFamilyId" />
+          <ScalarProperty Name="stateId" ColumnName="stateId" />
+          <ScalarProperty Name="cityId" ColumnName="cityId" />
+          <ScalarProperty Name="vendorId" ColumnName="vendorId" />
+          <ScalarProperty Name="bankId" ColumnName="bankId" />
+          <ScalarProperty Name="terminalPassword" ColumnName="terminalPassword" />
+          <ScalarProperty Name="terminalUserName" ColumnName="terminalUserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TerminalFamily">
+      <EntityTypeMapping TypeName="CSHModel.TerminalFamily">
+        <MappingFragment StoreEntitySet="TerminalFamily">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TerminalFamilyName" ColumnName="TerminalFamilyName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transaction">
+      <EntityTypeMapping TypeName="CSHModel.Transaction">
+        <MappingFragment StoreEntitySet="Transaction">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="transactionLogStatus" ColumnName="transactionLogStatus" />
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+          <ScalarProperty Name="requestDateTime" ColumnName="requestDateTime" />
+          <ScalarProperty Name="responseDateTime" ColumnName="responseDateTime" />
+          <ScalarProperty Name="exTranDateTime" ColumnName="exTranDateTime" />
+          <ScalarProperty Name="packNo" ColumnName="packNo" />
+          <ScalarProperty Name="transactionAmount" ColumnName="transactionAmount" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="discriminator" ColumnName="discriminator" />
+          <ScalarProperty Name="responseCode" ColumnName="responseCode" />
+          <ScalarProperty Name="responseMessage" ColumnName="responseMessage" />
+          <ScalarProperty Name="responseStatus" ColumnName="responseStatus" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="MSISDN" ColumnName="MSISDN" />
+          <ScalarProperty Name="bankAccount" ColumnName="bankAccount" />
+          <ScalarProperty Name="expDate" ColumnName="expDate" />
+          <ScalarProperty Name="mbr" ColumnName="mbr" />
+          <ScalarProperty Name="tranCurrency" ColumnName="tranCurrency" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="entityId" ColumnName="entityId" />
+          <ScalarProperty Name="entityType" ColumnName="entityType" />
+          <ScalarProperty Name="toCard" ColumnName="toCard" />
+          <ScalarProperty Name="fromAccountType" ColumnName="fromAccountType" />
+          <ScalarProperty Name="fromAccount" ColumnName="fromAccount" />
+          <ScalarProperty Name="toAccountType" ColumnName="toAccountType" />
+          <ScalarProperty Name="toAccount" ColumnName="toAccount" />
+          <ScalarProperty Name="accountCurrency" ColumnName="accountCurrency" />
+          <ScalarProperty Name="paymentInfo" ColumnName="paymentInfo" />
+          <ScalarProperty Name="originalTranUUID" ColumnName="originalTranUUID" />
+          <ScalarProperty Name="originalTranID" ColumnName="originalTranID" />
+          <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="registrationType" ColumnName="registrationType" />
+          <ScalarProperty Name="authenticationType" ColumnName="authenticationType" />
+          <ScalarProperty Name="customerRefrence" ColumnName="customerRefrence" />
+          <ScalarProperty Name="transactionState" ColumnName="transactionState" />
+          <ScalarProperty Name="transactionFees" ColumnName="transactionFees" />
+          <ScalarProperty Name="customerBalance" ColumnName="customerBalance" />
+          <ScalarProperty Name="reciptNo" ColumnName="reciptNo" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="payeeId" ColumnName="payeeId" />
+          <ScalarProperty Name="systemResponseId" ColumnName="systemResponseId" />
+          <ScalarProperty Name="exSystemResponseId" ColumnName="exSystemResponseId" />
+          <ScalarProperty Name="paymentMethodId" ColumnName="paymentMethodId" />
+          <ScalarProperty Name="channelId" ColumnName="channelId" />
+          <ScalarProperty Name="paymentProviderId" ColumnName="paymentProviderId" />
+          <ScalarProperty Name="currencyId" ColumnName="currencyId" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+          <ScalarProperty Name="customerId" ColumnName="customerId" />
+          <ScalarProperty Name="customerCardId" ColumnName="customerCardId" />
+          <ScalarProperty Name="terminalId" ColumnName="terminalId" />
+          <ScalarProperty Name="additional_8_Field_1" ColumnName="additional_8_Field_1" />
+          <ScalarProperty Name="additional_8_Field_2" ColumnName="additional_8_Field_2" />
+          <ScalarProperty Name="additional_8_Field_3" ColumnName="additional_8_Field_3" />
+          <ScalarProperty Name="additional_16_Field_1" ColumnName="additional_16_Field_1" />
+          <ScalarProperty Name="additional_16_Field_2" ColumnName="additional_16_Field_2" />
+          <ScalarProperty Name="additional_16_Field_3" ColumnName="additional_16_Field_3" />
+          <ScalarProperty Name="additional_32_Field_1" ColumnName="additional_32_Field_1" />
+          <ScalarProperty Name="additional_32_Field_2" ColumnName="additional_32_Field_2" />
+          <ScalarProperty Name="additional_32_Field_3" ColumnName="additional_32_Field_3" />
+          <ScalarProperty Name="additional_128_Field_1" ColumnName="additional_128_Field_1" />
+          <ScalarProperty Name="additional_128_Field_2" ColumnName="additional_128_Field_2" />
+          <ScalarProperty Name="additional_256_Field_1" ColumnName="additional_256_Field_1" />
+          <ScalarProperty Name="additional_256_Field_2" ColumnName="additional_256_Field_2" />
+          <ScalarProperty Name="additional_512_Field_1" ColumnName="additional_512_Field_1" />
+          <ScalarProperty Name="serviceNum" ColumnName="serviceNum" />
+          <ScalarProperty Name="channelNum" ColumnName="channelNum" />
+          <ScalarProperty Name="paymentMethodNum" ColumnName="paymentMethodNum" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TransactionLog">
+      <EntityTypeMapping TypeName="CSHModel.TransactionLog">
+        <MappingFragment StoreEntitySet="TransactionLog">
+          <ScalarProperty Name="SystemId" ColumnName="SystemId" />
+          <ScalarProperty Name="Version" ColumnName="Version" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="tranDateTime" ColumnName="tranDateTime" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="DISCRIMINATOR" ColumnName="DISCRIMINATOR" />
+          <ScalarProperty Name="responseCode" ColumnName="responseCode" />
+          <ScalarProperty Name="responseMessage" ColumnName="responseMessage" />
+          <ScalarProperty Name="responseStatus" ColumnName="responseStatus" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="expDate" ColumnName="expDate" />
+          <ScalarProperty Name="fromAccountType" ColumnName="fromAccountType" />
+          <ScalarProperty Name="accountCurrency" ColumnName="accountCurrency" />
+          <ScalarProperty Name="tranCurrency" ColumnName="tranCurrency" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="entityId" ColumnName="entityId" />
+          <ScalarProperty Name="entityType" ColumnName="entityType" />
+          <ScalarProperty Name="toCard" ColumnName="toCard" />
+          <ScalarProperty Name="tranAmount" ColumnName="tranAmount" />
+          <ScalarProperty Name="payeeId" ColumnName="payeeId" />
+          <ScalarProperty Name="paymentInfo" ColumnName="paymentInfo" />
+          <ScalarProperty Name="originalTranUUID" ColumnName="originalTranUUID" />
+          <ScalarProperty Name="originalTranDateTime" ColumnName="originalTranDateTime" />
+          <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mbr" ColumnName="mbr" />
+          <ScalarProperty Name="registrationType" ColumnName="registrationType" />
+          <ScalarProperty Name="authenticationType" ColumnName="authenticationType" />
+          <ScalarProperty Name="serviceProviderId" ColumnName="serviceProviderId" />
+          <ScalarProperty Name="serviceInfo" ColumnName="serviceInfo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions">
+      <EntityTypeMapping TypeName="CSHModel.Transactions">
+        <MappingFragment StoreEntitySet="Transactions">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="discriminator" ColumnName="discriminator" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="LastUpdated" ColumnName="LastUpdated" />
+          <ScalarProperty Name="tranDateTime" ColumnName="tranDateTime" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="responseCode" ColumnName="responseCode" />
+          <ScalarProperty Name="responseMessage" ColumnName="responseMessage" />
+          <ScalarProperty Name="responseStatus" ColumnName="responseStatus" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="expDate" ColumnName="expDate" />
+          <ScalarProperty Name="fromAccountType" ColumnName="fromAccountType" />
+          <ScalarProperty Name="accountCurrency" ColumnName="accountCurrency" />
+          <ScalarProperty Name="tranCurrency" ColumnName="tranCurrency" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="entityId" ColumnName="entityId" />
+          <ScalarProperty Name="entityType" ColumnName="entityType" />
+          <ScalarProperty Name="toCard" ColumnName="toCard" />
+          <ScalarProperty Name="transactionAmount" ColumnName="transactionAmount" />
+          <ScalarProperty Name="payeeId" ColumnName="payeeId" />
+          <ScalarProperty Name="paymentInfo" ColumnName="paymentInfo" />
+          <ScalarProperty Name="tranAmount" ColumnName="tranAmount" />
+          <ScalarProperty Name="originalTranUUID" ColumnName="originalTranUUID" />
+          <ScalarProperty Name="originalTranDateTime" ColumnName="originalTranDateTime" />
+          <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mbr" ColumnName="mbr" />
+          <ScalarProperty Name="registrationType" ColumnName="registrationType" />
+          <ScalarProperty Name="authenticationType" ColumnName="authenticationType" />
+          <ScalarProperty Name="packNo" ColumnName="packNo" />
+          <ScalarProperty Name="requestDateTime" ColumnName="requestDateTime" />
+          <ScalarProperty Name="responseDateTime" ColumnName="responseDateTime" />
+          <ScalarProperty Name="additional_8_Field_1" ColumnName="additional_8_Field_1" />
+          <ScalarProperty Name="additional_8_Field_2" ColumnName="additional_8_Field_2" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Transactions1">
+      <EntityTypeMapping TypeName="CSHModel.Transactions1">
+        <MappingFragment StoreEntitySet="Transactions1">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="discriminator" ColumnName="discriminator" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="packNo" ColumnName="packNo" />
+          <ScalarProperty Name="requestDateTime" ColumnName="requestDateTime" />
+          <ScalarProperty Name="responseDateTime" ColumnName="responseDateTime" />
+          <ScalarProperty Name="additional_8_Field_1" ColumnName="additional_8_Field_1" />
+          <ScalarProperty Name="applicationId" ColumnName="applicationId" />
+          <ScalarProperty Name="UUID" ColumnName="UUID" />
+          <ScalarProperty Name="responseCode" ColumnName="responseCode" />
+          <ScalarProperty Name="responseMessage" ColumnName="responseMessage" />
+          <ScalarProperty Name="responseStatus" ColumnName="responseStatus" />
+          <ScalarProperty Name="PAN" ColumnName="PAN" />
+          <ScalarProperty Name="expDate" ColumnName="expDate" />
+          <ScalarProperty Name="fromAccountType" ColumnName="fromAccountType" />
+          <ScalarProperty Name="accountCurrency" ColumnName="accountCurrency" />
+          <ScalarProperty Name="tranCurrency" ColumnName="tranCurrency" />
+          <ScalarProperty Name="userName" ColumnName="userName" />
+          <ScalarProperty Name="entityId" ColumnName="entityId" />
+          <ScalarProperty Name="entityType" ColumnName="entityType" />
+          <ScalarProperty Name="toCard" ColumnName="toCard" />
+          <ScalarProperty Name="transactionAmount" ColumnName="transactionAmount" />
+          <ScalarProperty Name="payeeId" ColumnName="payeeId" />
+          <ScalarProperty Name="tranAmount" ColumnName="tranAmount" />
+          <ScalarProperty Name="paymentInfo" ColumnName="paymentInfo" />
+          <ScalarProperty Name="originalTranUUID" ColumnName="originalTranUUID" />
+          <ScalarProperty Name="additional_8_Field_2" ColumnName="additional_8_Field_2" />
+          <ScalarProperty Name="phoneNo" ColumnName="phoneNo" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="mbr" ColumnName="mbr" />
+          <ScalarProperty Name="registrationType" ColumnName="registrationType" />
+          <ScalarProperty Name="authenticationType" ColumnName="authenticationType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User">
+      <EntityTypeMapping TypeName="CSHModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="serviceProviderId" ColumnName="serviceProviderId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserClaims">
+      <EntityTypeMapping TypeName="CSHModel.UserClaims">
+        <MappingFragment StoreEntitySet="UserClaims">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserLogins">
+      <EntityTypeMapping TypeName="CSHModel.UserLogins">
+        <MappingFragment StoreEntitySet="UserLogins">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="CSHModel.UserRoles">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="IDRole_Id" ColumnName="IDRole_Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Vendor">
+      <EntityTypeMapping TypeName="CSHModel.Vendor">
+        <MappingFragment StoreEntitySet="Vendor">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="vendorName" ColumnName="vendorName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BillInfo">
+      <EntityTypeMapping TypeName="CSHModel.BillInfo">
+        <MappingFragment StoreEntitySet="BillInfo">
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="value" ColumnName="value" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentFields">
+      <EntityTypeMapping TypeName="CSHModel.PaymentFields">
+        <MappingFragment StoreEntitySet="PaymentFields">
+          <ScalarProperty Name="transactionId" ColumnName="transactionId" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PaymentMethodType">
+      <EntityTypeMapping TypeName="CSHModel.PaymentMethodType">
+        <MappingFragment StoreEntitySet="PaymentMethodType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="paymentMethodTypeId" ColumnName="paymentMethodTypeId" />
+          <ScalarProperty Name="paymentMethodTypeName" ColumnName="paymentMethodTypeName" />
+          <ScalarProperty Name="paymentMethodTypeEName" ColumnName="paymentMethodTypeEName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Query">
+      <EntityTypeMapping TypeName="CSHModel.Query">
+        <MappingFragment StoreEntitySet="Query">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="serviceFieldId" ColumnName="serviceFieldId" />
+          <ScalarProperty Name="serviceFieldName" ColumnName="serviceFieldName" />
+          <ScalarProperty Name="serviceFieldStatus" ColumnName="serviceFieldStatus" />
+          <ScalarProperty Name="channelFieldEName" ColumnName="channelFieldEName" />
+          <ScalarProperty Name="channelFieldName" ColumnName="channelFieldName" />
+          <ScalarProperty Name="serviceHandlerFieldName" ColumnName="serviceHandlerFieldName" />
+          <ScalarProperty Name="regularExpression" ColumnName="regularExpression" />
+          <ScalarProperty Name="isRequired" ColumnName="isRequired" />
+          <ScalarProperty Name="dateFormat" ColumnName="dateFormat" />
+          <ScalarProperty Name="isRequestField" ColumnName="isRequestField" />
+          <ScalarProperty Name="isSavable" ColumnName="isSavable" />
+          <ScalarProperty Name="isResponseField" ColumnName="isResponseField" />
+          <ScalarProperty Name="additionalFieldName" ColumnName="additionalFieldName" />
+          <ScalarProperty Name="serviceId" ColumnName="serviceId" />
+          <ScalarProperty Name="serviceHanlerId" ColumnName="serviceHanlerId" />
+          <ScalarProperty Name="isParent" ColumnName="isParent" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="isPaymentInfo" ColumnName="isPaymentInfo" />
+          <ScalarProperty Name="paymentInfoOrder" ColumnName="paymentInfoOrder" />
+          <ScalarProperty Name="regTypeId" ColumnName="regTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ServiceType">
+      <EntityTypeMapping TypeName="CSHModel.ServiceType">
+        <MappingFragment StoreEntitySet="ServiceType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="note" ColumnName="note" />
+          <ScalarProperty Name="serviceTypeId" ColumnName="serviceTypeId" />
+          <ScalarProperty Name="serviceTypeName" ColumnName="serviceTypeName" />
+          <ScalarProperty Name="serviceTypeEName" ColumnName="serviceTypeEName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="LT_Channel_Service" TypeName="CSHModel.LT_Channel_Service" StoreEntitySet="LT_Channel_Service">
+      <EndProperty Name="Channel">
+        <ScalarProperty Name="systemId" ColumnName="channelId" />
+      </EndProperty>
+      <EndProperty Name="Service">
+        <ScalarProperty Name="systemId" ColumnName="serviceIdId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LT_PaymentMethod_Channel" TypeName="CSHModel.LT_PaymentMethod_Channel" StoreEntitySet="LT_PaymentMethod_Channel">
+      <EndProperty Name="Channel">
+        <ScalarProperty Name="systemId" ColumnName="channelId" />
+      </EndProperty>
+      <EndProperty Name="PaymentMethod">
+        <ScalarProperty Name="systemId" ColumnName="paymentMethodId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LT_PaymentMethod_Service" TypeName="CSHModel.LT_PaymentMethod_Service" StoreEntitySet="LT_PaymentMethod_Service">
+      <EndProperty Name="PaymentMethod">
+        <ScalarProperty Name="systemId" ColumnName="paymentMethodId" />
+      </EndProperty>
+      <EndProperty Name="Service">
+        <ScalarProperty Name="systemId" ColumnName="serviceId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="C__MigrationHistory">
+      <EntityTypeMapping TypeName="CSHModel.C__MigrationHistory">
+        <MappingFragment StoreEntitySet="__MigrationHistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="ContextKey" ColumnName="ContextKey" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="CSHModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="CSHModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="CSHModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="CSHModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CSHModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="CSHModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="CSHModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="CSHModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="CSHModel.Store.sp_upgraddiagrams" />
+  </EntityContainerMapping>
+</Mapping>

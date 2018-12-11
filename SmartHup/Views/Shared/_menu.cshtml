@@ -1,0 +1,161 @@
+                    @*@if (@menuItems["Users"]){*@
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-users"></i>
+                            <span>Users</span>
+                            <span class="pull-right-container">
+                                <span class="label label-primary pull-right"></span>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*@if (@menuItems["Users"]){*@
+                            <li>@Html.ActionLink("User", "Index", "Users")</li>
+                            @*  } *@
+                        </ul>
+                    </li>
+                    @*  }*@
+                    @*               @if (@menuItems["V_Customer"]*@
+                    @*                 || @menuItems["Customers"]*@
+                    @*               || @menuItems["Favorites"])*@
+                    @*     {*@
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-handshake-o"></i>
+                            <span>Customers</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*@if (@menuItems["Customers"])          {*@
+                            <li>@Html.ActionLink("Customers", "Index", "Customers")</li>
+                            @*}@if (@menuItems["V_Customer"])
+                                {*@
+                            <li>@Html.ActionLink("Customer Cards", "Index", "V_Customer")</li>
+                            @*}@if (@menuItems["Favorites"])
+                                {*@
+                            <li>@Html.ActionLink("Customer Favorites", "Index", "Favorites")</li>
+                            @*  } *@
+                            @*@if (@menuItems["ServiceProvider"]){*@
+                            <li>@Html.ActionLink("Service Provider", "Index", "ServiceProvider")</li>
+                            @*  }*@
+                        </ul>
+                    </li>
+                    @*}@if (@menuItems["View_Transaction_Details"] || @menuItems["View_Transaction_Details_TWO"]){*@
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-exchange"></i>
+                            <span>Transactions</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*@if (@menuItems["View_Transaction_Details"]) {*@
+                            <li>@Html.ActionLink("Transaction Log", "Index", "View_Transaction_Details")</li>
+                            @*}@if (@menuItems["View_Transaction_Details_TWO"]){*@
+                            <li>@Html.ActionLink("Transaction Details", "Index", "View_Transaction_Details_TWO")</li>
+                            @* } *@
+                        </ul>
+                    </li>
+                    }
+                    @*@if (@menuItems["Services"]                                    || @menuItems["PayeeCodes"]                                    || @menuItems["FavoriteTypes"])                            {*@
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-cog"></i> <span>Portal Config</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*//@if (@menuItems["Services"])
+                                //{
+                                //<li>@Html.ActionLink("Services", "Index", "Services")</li>
+                                //}*@
+                            @*@if (@menuItems["PayeeCodes"])           {*@
+                            <li>@Html.ActionLink("Services", "Index", "PayeeCodes")</li>
+                            @*}                                        @if (@menuItems["FavoriteTypes"])                                        {*@
+                            <li>@Html.ActionLink("Favorite Types", "Index", "FavoriteTypes")</li>
+                            @*  }*@
+                        </ul>
+                    </li>
+                    }
+                    @*//
+                                                        //@if (@menuItems["Vendors"] || @menuItems["Atms"])
+                                                        //{
+                                                        <li class="treeview">
+                                                         //   <a href="#">
+                                                           //     <i class="fa fa-edit"></i> <span>Forms</span>
+                                                             //   <span class="pull-right-container">
+                                                              //      <i class="fa fa-angle-left pull-right"></i>
+                        //                                        </span>
+                        //                                    </a>
+                                                            //<ul class="treeview-menu">
+                                                              //  @if (@menuItems["Vendors"])
+                                                                //{
+                                                                //<li>@Html.ActionLink("ATM Vendors", "Index", "vendors")</li>
+                                                                //}
+                                                                //@if (@menuItems["Atms"])
+                                                                //{
+                                                                //<li>@Html.ActionLink("ATMs", "Index", "atms")</li>
+                                                                //}
+                                                            //</ul>
+                                                        //</li>
+                                                        //}
+                                                        //@if (@menuItems["Banks"])
+                        //                                      {
+                        //                                  <li>@Html.ActionLink("Banks", "Index", "banks")</li>
+                          //                                    }*@
+                    @*@if (@menuItems["Auditing_logs"])                            {*@
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-bookmark-o"></i> <span>Activity</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            @*//@if (@menuItems["Atms_status"])
+                                {
+                                <li>@Html.ActionLink("ATM Status", "Index", "atm_status")</li>
+                                }
+                                @if (@menuItems["System_logs"])
+                                {
+                                <li>@Html.ActionLink("System Log", "Index", "system_log", null, null)</li>
+                                //}*@
+                            @*@if (@menuItems["Auditing_logs"])                                        {*@
+                            <li>@Html.ActionLink("Log", "Index", "auditing_log", null, null)</li>
+
+                            @* } *@
+                        </ul>
+                    </li>
+                    @*}                            @if (@menuItems["Report"])                            {*@
+                    <li class="treeview">
+                        <a href="#">
+                            <i class="fa fa-file-text-o"></i> <span>Report</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink("Transactions Detail Report", "userReport", "reportEngine", new { id = "21" }, null)</li>
+                            <li>@Html.ActionLink("Customers Detail Report", "userReport", "reportEngine", new { id = "22" }, null)</li>
+                        </ul>
+                    </li>
+                    @*}                                               @if (@menuItems["Report"])                            {*@
+                    <li class="treeview active">
+                        <a href="#">
+                            <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                            <span class="pull-right-container">
+                                <i class="fa fa-angle-left pull-right"></i>
+                            </span>
+                        </a>
+                        <ul class="treeview-menu">
+                            <li>@Html.ActionLink("Current Status", "Index", "reportEngine", new { id = "6" }, null)</li>
+                            <li>@Html.ActionLink("ATMs Status", "Index", "reportEngine", new { id = "1" }, null)</li>
+                            <li>@Html.ActionLink("Out Of Service", "Index", "reportEngine", new { id = "2" }, null)</li>
+                            <li>@Html.ActionLink("Network Issues", "Index", "reportEngine", new { id = "3" }, null)</li>
+                            <li>@Html.ActionLink("Out of service Percentage", "Index", "reportEngine", new { id = "4" }, null)</li>
+                            <li>@Html.ActionLink("Decline Reasons", "Index", "reportEngine", new { id = "5" }, null)</li>
+                        </ul>
+                    </li>

@@ -1,0 +1,377 @@
+﻿@model SmartHup.Models.customer
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<style>
+    td.details-control {
+       
+        background: url('../../Content/icons/details_open.png') no-repeat center center;
+        cursor: pointer;
+    }
+
+
+     .infotbl{
+   font-size: initial;
+font: auto;
+color: #a94442;
+    }
+
+tr.shown td.details-control {
+    background: url('../../Content/icons/details_close.png') no-repeat center center;
+}
+</style>
+<div>
+
+    <div class="box box-danger">
+        <div class="box-header with-border">
+            <h4>customer Details - customer Management</h4>
+        </div>
+        <div class="box-body">
+            <div class="row">
+                <div class="col-md-4">
+                    <table class="table table-striped " cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">
+
+
+
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.fullName)
+                            </td>
+                            <td >
+                                @Html.DisplayFor(model => model.fullName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.userName)
+                            </td>
+                            <td >
+                                @Html.DisplayFor(model => model.userName)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.phoneNo)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.phoneNo)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.email)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.email)
+                            </td>
+                        </tr>
+
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.dateOfBirth)
+                            </td>
+                            <td >
+                                @Html.DisplayFor(model => model.dateOfBirth)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.job)
+                            </td>
+                            <td >
+                                @Html.DisplayFor(model => model.job)
+                            </td>
+                        </tr>
+
+
+
+
+
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.address)
+                            </td>
+                            <td >
+                                @Html.DisplayFor(model => model.address)
+                            </td>
+                        </tr>
+
+
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table table-striped">
+
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.StartDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.StartDate)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.EndDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.EndDate)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.LastUpdated)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.LastUpdated)
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.dateOfBirth)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.dateOfBirth)
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.otpPassword)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.otpPassword)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.otpLastDate)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.otpLastDate)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.otpStartDate)
+                            </td>
+                            <td class="infotbl">
+                                @Html.DisplayFor(model => model.otpStartDate)
+                            </td>
+                        </tr>
+
+
+
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table table-striped">
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.customerIdType)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.customerIdType)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.idx)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.idx)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.IMEI)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.IMEI)
+                            </td>
+                        </tr>
+
+
+
+                        <tr>
+                            <td class="infotbl">
+                                @Html.DisplayNameFor(model => model.activationCode)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(model => model.activationCode)
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td class="infotbl">
+                                @*@Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)*@
+                            </td>
+                            <td>
+                                @*@Html.DisplayFor(model => model.EntityStatus.EntityStatusName)*@
+                            </td>
+                        </tr>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col-md-6">
+            <div class="box box-danger ">
+                <div class="box-header">
+                    <h4>Customer Accounts </h4>
+               
+
+                </div>
+                <div class="box-body">
+                    <table id="favtbl" class="table table-striped table-bordered table-hover  order-column" role="grid">
+                        <thead>
+                            <tr>
+                             
+                                <th>
+                                    Account Name
+                                </th>
+                                <th>
+                                    Account NO
+                                </th>
+                                <th>
+                                    Expier Date
+                                </th>
+                                <th>
+                                    Status
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.ACCOUNT)
+                    {
+
+                                <tr role="row">
+
+                                 
+                                    <td>
+                                        @item.accountName
+                                    </td>
+                                    <td>
+                                        @item.account1
+                                    </td>
+                                    <td>
+                                        @item.expDate
+                                    </td>
+                                    <td>
+                                        @{ var st = item.isActive == null ? 0 : item.isActive;
+                                            string sstatus = st == 1 ? "success" : "danger";
+                                            string val = st == 1 ? "Active" : "Inactive";
+
+                                        }
+                                        @val
+                                    </td>
+
+                                </tr>
+
+                    }
+
+                        </tbody>
+
+
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="box box-danger">
+                <div class="box-header">
+                    <h4>Customer Favorites </h4>
+              
+
+                </div>
+                <div class="box-body">
+                    <table id="" class="table table-striped table-bordered table-hover  order-column" role="grid">
+                        <thead>
+                            <tr>
+                                <th>
+                                    Name
+                                </th>
+                                <th>
+                                    Value
+                                </th>
+                                <th>
+                                    LastUpdated
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.fav)
+                        {
+
+                                <tr role="row">
+
+                                    <td>
+                                        @item.favoriteName
+                                    </td>
+                                    <td>
+                                        @item.favoriteValue
+                                    </td>
+                                    <td>
+                                        @item.LastUpdated
+                                    </td>
+
+
+                                </tr>
+
+                        }
+
+                        </tbody>
+
+
+
+
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p>
+
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+

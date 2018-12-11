@@ -1,0 +1,2096 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="CSHModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ACCOUNT">
+    <Key>
+      <PropertyRef Name="accountId" />
+    </Key>
+    <Property Name="SystemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="entityId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="entityType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mbr" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="PAN" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="expDate" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="cardCreateDate" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="panCategory" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bankAccountNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bankAccountType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bankBranchId" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="bankId" Type="Int64" Nullable="false" />
+    <Property Name="idx" Type="Int32" />
+    <Property Name="customerIdNumber" Type="Int64" Nullable="false" />
+    <Property Name="accountName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="account1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="accountId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="paymentMethodId" Type="Int32" />
+    <Property Name="paymentMethodLabel" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="isDefault" Type="Int32" />
+    <Property Name="isActive" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bank" Relationship="Self.FK_ACCOUNT_Bank" FromRole="ACCOUNT" ToRole="Bank" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_ACCOUNT_customer" FromRole="ACCOUNT" ToRole="customer" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_ACCOUNT_EntityStatus" FromRole="ACCOUNT" ToRole="EntityStatus" />
+  </EntityType>
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Ename" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="label" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Elabel" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="pageType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="moduleId" Type="Int64" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="deletedBy" Type="Int64" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_dbo_Action_dbo_EntityStatus_entityStatus_systemId" FromRole="Action" ToRole="EntityStatus" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_dbo_Action_dbo_Module_moduleId" FromRole="Action" ToRole="Module" />
+    <NavigationProperty Name="AuditingLog" Relationship="Self.FK_dbo_AuditingLog_dbo_Action_actionId" FromRole="Action" ToRole="AuditingLog" />
+    <NavigationProperty Name="RoleActions" Relationship="Self.FK_dbo_RoleActions_dbo_Action_actionId" FromRole="Action" ToRole="RoleActions" />
+  </EntityType>
+  <EntityType Name="ADMINUSER">
+    <Key>
+      <PropertyRef Name="SystemId" />
+    </Key>
+    <Property Name="SystemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="userName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="fullName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditingLog">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="userId" Type="Int64" />
+    <Property Name="actionId" Type="Int64" Nullable="false" />
+    <Property Name="moduleId" Type="Int64" Nullable="false" />
+    <Property Name="oldData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="dateCreated" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="clientData" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Action" Relationship="Self.FK_dbo_AuditingLog_dbo_Action_actionId" FromRole="AuditingLog" ToRole="Action" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_dbo_AuditingLog_dbo_Module_moduleId" FromRole="AuditingLog" ToRole="Module" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_AuditingLog_dbo_User_userId" FromRole="AuditingLog" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Bank">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="bankFullName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="bankShortName" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bankCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="bankPrefix" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="bankContact" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="bankId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="idx" Type="Int32" />
+    <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_ACCOUNT_Bank" FromRole="Bank" ToRole="ACCOUNT" />
+    <NavigationProperty Name="branches" Relationship="Self.FK_branches_Bank" FromRole="Bank" ToRole="branches" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_dbo_Terminal_dbo_Bank_bankId" FromRole="Bank" ToRole="Terminal" />
+  </EntityType>
+  <EntityType Name="Banks">
+    <Key>
+      <PropertyRef Name="SystemId" />
+    </Key>
+    <Property Name="SystemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="DateTime" Precision="3" />
+    <Property Name="bankId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bankName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="idx" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="branches">
+    <Key>
+      <PropertyRef Name="SystemId" />
+    </Key>
+    <Property Name="SystemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="DateTime" Precision="3" />
+    <Property Name="branchId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="branchName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="bankId" Type="Int64" Nullable="false" />
+    <Property Name="idx" Type="Int32" />
+    <NavigationProperty Name="Bank" Relationship="Self.FK_branches_Bank" FromRole="branches" ToRole="Bank" />
+  </EntityType>
+  <EntityType Name="Channel">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="channelId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="channelName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="channelStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="publicKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="deletedBy" Type="Int64" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <NavigationProperty Name="Service" Relationship="Self.LT_Channel_Service" FromRole="Channel" ToRole="Service" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.LT_PaymentMethod_Channel" FromRole="Channel" ToRole="PaymentMethod" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="cityName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="cityArName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_Terminal_City" FromRole="City" ToRole="Terminal" />
+  </EntityType>
+  <EntityType Name="Currency">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="CurrencyName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CurrencyArName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_dbo_Transaction_dbo_Currency_customerId" FromRole="Currency" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="SystemId" />
+    </Key>
+    <Property Name="SystemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="phoneNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fullName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="dateOfBirth" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="job" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="customerIdNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="customerIdType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="idx" Type="Int32" />
+    <Property Name="userName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="IMEI" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="otpPassword" Type="String" MaxLength="6" FixedLength="true" Unicode="true" />
+    <Property Name="otpLastDate" Type="Int64" />
+    <Property Name="otpStartDate" Type="Int64" />
+    <Property Name="activationCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="isActive" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_ACCOUNT_customer" FromRole="customer" ToRole="ACCOUNT" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_customer_EntityStatus" FromRole="customer" ToRole="EntityStatus" />
+    <NavigationProperty Name="Favourite" Relationship="Self.FK_Favourite_customer" FromRole="customer" ToRole="Favourite" />
+  </EntityType>
+  <EntityType Name="EntityStatus">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EntityStatusName" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ACCOUNT" Relationship="Self.FK_ACCOUNT_EntityStatus" FromRole="EntityStatus" ToRole="ACCOUNT" />
+    <NavigationProperty Name="Action" Relationship="Self.FK_dbo_Action_dbo_EntityStatus_entityStatus_systemId" FromRole="EntityStatus" ToRole="Action" />
+    <NavigationProperty Name="customer" Relationship="Self.FK_customer_EntityStatus" FromRole="EntityStatus" ToRole="customer" />
+    <NavigationProperty Name="Module" Relationship="Self.FK_dbo_Module_dbo_EntityStatus_entityStatus_systemId" FromRole="EntityStatus" ToRole="Module" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_dbo_Role_dbo_EntityStatus_status" FromRole="EntityStatus" ToRole="Role" />
+    <NavigationProperty Name="RoleActions" Relationship="Self.FK_dbo_RoleActions_dbo_EntityStatus_entityStatus_systemId" FromRole="EntityStatus" ToRole="RoleActions" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_User_dbo_EntityStatus_status" FromRole="EntityStatus" ToRole="User" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_Service_EntityStatus" FromRole="EntityStatus" ToRole="Service" />
+    <NavigationProperty Name="ServiceField" Relationship="Self.FK_ServiceField_EntityStatus" FromRole="EntityStatus" ToRole="ServiceField" />
+    <NavigationProperty Name="ServiceHandler" Relationship="Self.FK_ServiceHandler_EntityStatus" FromRole="EntityStatus" ToRole="ServiceHandler" />
+    <NavigationProperty Name="ServiceProvider" Relationship="Self.FK_ServiceProvider_EntityStatus" FromRole="EntityStatus" ToRole="ServiceProvider" />
+  </EntityType>
+  <EntityType Name="Favourite">
+    <Key>
+      <PropertyRef Name="favoriteId" />
+    </Key>
+    <Property Name="favoriteId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer" Type="Int64" Nullable="false" />
+    <Property Name="favoriteValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="favoriteName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Version" Type="Int32" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="favoriteStatus" Type="Int32" />
+    <Property Name="idx" Type="Int32" />
+    <NavigationProperty Name="customer1" Relationship="Self.FK_Favourite_customer" FromRole="Favourite" ToRole="customer" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="Ename" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="parentId" Type="Int64" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="deletedBy" Type="Int64" />
+    <NavigationProperty Name="Action" Relationship="Self.FK_dbo_Action_dbo_Module_moduleId" FromRole="Module" ToRole="Action" />
+    <NavigationProperty Name="AuditingLog" Relationship="Self.FK_dbo_AuditingLog_dbo_Module_moduleId" FromRole="Module" ToRole="AuditingLog" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_dbo_Module_dbo_EntityStatus_entityStatus_systemId" FromRole="Module" ToRole="EntityStatus" />
+    <NavigationProperty Name="Module1" Relationship="Self.FK_dbo_Module_dbo_Module_parentId" FromRole="Module" ToRole="Module1" />
+    <NavigationProperty Name="Module2" Relationship="Self.FK_dbo_Module_dbo_Module_parentId" FromRole="Module1" ToRole="Module" />
+  </EntityType>
+  <EntityType Name="PaymentField">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="paymentFieldId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="paymentFieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="paymentFieldStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="channelFieldEName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="channelFieldName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHandlerFieldName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="regularExpression" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="isRequired" Type="Boolean" />
+    <Property Name="isResponseField" Type="Boolean" />
+    <Property Name="isRequestField" Type="Boolean" />
+    <Property Name="isSavable" Type="Boolean" />
+    <Property Name="additionalFieldName" Type="Int64" />
+    <Property Name="dateFormat" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodId" Type="Int64" />
+    <Property Name="paymentHandlerId" Type="Int64" />
+    <Property Name="isPaymentInfo" Type="Boolean" />
+    <Property Name="paymentInfoOrder" Type="Int32" />
+    <NavigationProperty Name="PaymentHandler" Relationship="Self.FK_dbo_PaymentField_dbo_PaymentHandler_paymentHandlerId" FromRole="PaymentField" ToRole="PaymentHandler" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_dbo_PaymentField_dbo_PaymentMethod_paymentMethodId" FromRole="PaymentField" ToRole="PaymentMethod" />
+  </EntityType>
+  <EntityType Name="PaymentHandler">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="paymentHandlerId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHandlerName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHandlerStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodId" Type="Int64" Nullable="false" />
+    <Property Name="paymentHostUri" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHostIntegrationType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHostCharSet" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="isSslExist" Type="Boolean" />
+    <Property Name="paymentHostPublicKey" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHostEncryptionMethod" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHostAcceptEncoding" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentHostContentType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PaymentField" Relationship="Self.FK_dbo_PaymentField_dbo_PaymentHandler_paymentHandlerId" FromRole="PaymentHandler" ToRole="PaymentField" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_dbo_PaymentHandler_dbo_PaymentMethod_paymentMethodId" FromRole="PaymentHandler" ToRole="PaymentMethod" />
+  </EntityType>
+  <EntityType Name="PaymentMethod">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="paymentMethodId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodUIEName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodUIName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="paymentProviderId" Type="Int64" />
+    <NavigationProperty Name="PaymentField" Relationship="Self.FK_dbo_PaymentField_dbo_PaymentMethod_paymentMethodId" FromRole="PaymentMethod" ToRole="PaymentField" />
+    <NavigationProperty Name="PaymentHandler" Relationship="Self.FK_dbo_PaymentHandler_dbo_PaymentMethod_paymentMethodId" FromRole="PaymentMethod" ToRole="PaymentHandler" />
+    <NavigationProperty Name="PaymentProvider" Relationship="Self.FK_dbo_PaymentMethod_dbo_PaymentProvider_paymentProviderId" FromRole="PaymentMethod" ToRole="PaymentProvider" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_dbo_Transaction_dbo_PaymentMethod_paymentMethodId" FromRole="PaymentMethod" ToRole="Transaction" />
+    <NavigationProperty Name="Channel" Relationship="Self.LT_PaymentMethod_Channel" FromRole="PaymentMethod" ToRole="Channel" />
+    <NavigationProperty Name="Service" Relationship="Self.LT_PaymentMethod_Service" FromRole="PaymentMethod" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="PaymentProvider">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="paymentProviderId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="paymentProviderName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="paymentProviderEName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="paymentProviderStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_dbo_PaymentMethod_dbo_PaymentProvider_paymentProviderId" FromRole="PaymentProvider" ToRole="PaymentMethod" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_dbo_Transaction_dbo_PaymentProvider_paymentProviderId" FromRole="PaymentProvider" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="RangType">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="creatioDate" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="maxValue" Type="Int64" />
+    <Property Name="minValue" Type="Int64" />
+    <NavigationProperty Name="ServiceField" Relationship="Self.FK_ServiceField_ServiceField_regType" FromRole="RangType" ToRole="ServiceField" />
+  </EntityType>
+  <EntityType Name="RemoteSettings">
+    <Key>
+      <PropertyRef Name="SystemId" />
+    </Key>
+    <Property Name="SystemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="DateTime" Precision="3" />
+    <Property Name="consumerURL" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="balancePath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="paymentPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="inquiryPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="keyPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="registerPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="transferPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="reversalPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="changeIPinPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="changePasswordPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="applicationId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="specialPaymentPath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="EName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="serviceProviderTypeId" Type="Int64" Nullable="false" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="deletedBy" Type="Int64" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_dbo_Role_dbo_EntityStatus_status" FromRole="Role" ToRole="EntityStatus" />
+    <NavigationProperty Name="ServiceProviderType" Relationship="Self.FK_dbo_Role_dbo_ServiceProviderType_serviceProviderTypeId" FromRole="Role" ToRole="ServiceProviderType" />
+    <NavigationProperty Name="RoleActions" Relationship="Self.FK_dbo_RoleActions_dbo_Role_RoleId" FromRole="Role" ToRole="RoleActions" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_User_dbo_Role_RoleId" FromRole="Role" ToRole="User" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRoles_dbo_Role_RoleId" FromRole="Role" ToRole="UserRoles" />
+  </EntityType>
+  <EntityType Name="RoleActions">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <Property Name="actionId" Type="Int64" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="deletedBy" Type="Int64" />
+    <NavigationProperty Name="Action" Relationship="Self.FK_dbo_RoleActions_dbo_Action_actionId" FromRole="RoleActions" ToRole="Action" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_dbo_RoleActions_dbo_EntityStatus_entityStatus_systemId" FromRole="RoleActions" ToRole="EntityStatus" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_dbo_RoleActions_dbo_Role_RoleId" FromRole="RoleActions" ToRole="Role" />
+  </EntityType>
+  <EntityType Name="Service">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="serviceId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceEName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ServiceLable" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ServiceELable" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="serviceStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceDescription" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="isParent" Type="Boolean" />
+    <Property Name="serviceConfigurationId" Type="Int64" />
+    <Property Name="serviceProviderId" Type="Int64" Nullable="false" />
+    <Property Name="precheckRquired" Type="Boolean" />
+    <Property Name="serviceScenarioId" Type="Int64" Nullable="false" />
+    <Property Name="precheckServiceId" Type="Int64" />
+    <Property Name="parentId" Type="Int64" />
+    <Property Name="Note" Type="DateTime" Precision="3" />
+    <Property Name="paymentListName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="inquiryListName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedBy" Type="Int64" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <Property Name="credit_Requird" Type="Boolean" />
+    <Property Name="credit_ServiceID" Type="Int64" />
+    <Property Name="include_ServiceFields" Type="Boolean" />
+    <Property Name="include_PaymentFields" Type="Boolean" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_Service_EntityStatus" FromRole="Service" ToRole="EntityStatus" />
+    <NavigationProperty Name="Service1" Relationship="Self.FK_dbo_Service_dbo_Service_parentId" FromRole="Service" ToRole="Service1" />
+    <NavigationProperty Name="Service2" Relationship="Self.FK_dbo_Service_dbo_Service_parentId" FromRole="Service1" ToRole="Service" />
+    <NavigationProperty Name="Service11" Relationship="Self.FK_dbo_Service_dbo_Service_precheckServiceId" FromRole="Service" ToRole="Service1" />
+    <NavigationProperty Name="Service3" Relationship="Self.FK_dbo_Service_dbo_Service_precheckServiceId" FromRole="Service1" ToRole="Service" />
+    <NavigationProperty Name="ServiceProvider" Relationship="Self.FK_dbo_Service_dbo_ServiceProvider_serviceProviderId" FromRole="Service" ToRole="ServiceProvider" />
+    <NavigationProperty Name="ServiceScenario" Relationship="Self.FK_dbo_Service_dbo_ServiceScenario_serviceScenarioId" FromRole="Service" ToRole="ServiceScenario" />
+    <NavigationProperty Name="ServiceField" Relationship="Self.FK_dbo_ServiceField_dbo_Service_serviceId" FromRole="Service" ToRole="ServiceField" />
+    <NavigationProperty Name="ServiceHandler" Relationship="Self.FK_dbo_ServiceHandler_dbo_Service_serviceId" FromRole="Service" ToRole="ServiceHandler" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_dbo_Transaction_dbo_Service_serviceId" FromRole="Service" ToRole="Transaction" />
+    <NavigationProperty Name="Channel" Relationship="Self.LT_Channel_Service" FromRole="Service" ToRole="Channel" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.LT_PaymentMethod_Service" FromRole="Service" ToRole="PaymentMethod" />
+  </EntityType>
+  <EntityType Name="ServiceField">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="serviceFieldId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceFieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceFieldStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="channelFieldEName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="channelFieldName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHandlerFieldName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="regularExpression" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="isRequired" Type="Boolean" />
+    <Property Name="dateFormat" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="isRequestField" Type="Boolean" />
+    <Property Name="isSavable" Type="Boolean" />
+    <Property Name="isResponseField" Type="Boolean" />
+    <Property Name="additionalFieldName" Type="Int64" />
+    <Property Name="serviceId" Type="Int64" />
+    <Property Name="serviceHanlerId" Type="Int64" />
+    <Property Name="isPaymentInfo" Type="Boolean" />
+    <Property Name="paymentInfoOrder" Type="Int32" />
+    <Property Name="Note" Type="DateTime" Precision="3" />
+    <Property Name="payeeId" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="idx" Type="Int32" />
+    <Property Name="serviceProviderId" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="isParent" Type="Boolean" />
+    <Property Name="parentId" Type="Int64" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <Property Name="deletedBy" Type="Int64" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="regTypeId" Type="Int64" />
+    <Property Name="isFavorable" Type="Boolean" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_ServiceField_EntityStatus" FromRole="ServiceField" ToRole="EntityStatus" />
+    <NavigationProperty Name="RangType" Relationship="Self.FK_ServiceField_ServiceField_regType" FromRole="ServiceField" ToRole="RangType" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_dbo_ServiceField_dbo_Service_serviceId" FromRole="ServiceField" ToRole="Service" />
+    <NavigationProperty Name="ServiceHandler" Relationship="Self.FK_dbo_ServiceField_dbo_ServiceHandler_serviceHanlerId" FromRole="ServiceField" ToRole="ServiceHandler" />
+    <NavigationProperty Name="ServiceField1" Relationship="Self.FK_ServiceField_ServiceFieldPARENT" FromRole="ServiceField" ToRole="ServiceField1" />
+    <NavigationProperty Name="ServiceField2" Relationship="Self.FK_ServiceField_ServiceFieldPARENT" FromRole="ServiceField1" ToRole="ServiceField" />
+  </EntityType>
+  <EntityType Name="ServiceHandler">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="serviceHanlerId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHanlerName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHanlerStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="serviceId" Type="Int64" Nullable="false" />
+    <Property Name="serviceHostUri" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHostIntegrationType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHostCharSet" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="isSslExist" Type="Boolean" />
+    <Property Name="serviceHostPublicKey" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHostEncryptionMethod" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHostAcceptEncoding" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHostContentType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedBy" Type="Int64" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_ServiceHandler_EntityStatus" FromRole="ServiceHandler" ToRole="EntityStatus" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_dbo_ServiceHandler_dbo_Service_serviceId" FromRole="ServiceHandler" ToRole="Service" />
+    <NavigationProperty Name="ServiceField" Relationship="Self.FK_dbo_ServiceField_dbo_ServiceHandler_serviceHanlerId" FromRole="ServiceHandler" ToRole="ServiceField" />
+  </EntityType>
+  <EntityType Name="ServiceProvider">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="serviceProviderId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceProviderName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceProviderEName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceProviderLabel" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="serviceProviderELabel" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="serviceProviderStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceProviderTypeId" Type="Int64" />
+    <Property Name="deletedBy" Type="Int64" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="entityStatus_systemId" Type="Int32" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_ServiceProvider_EntityStatus" FromRole="ServiceProvider" ToRole="EntityStatus" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_dbo_Service_dbo_ServiceProvider_serviceProviderId" FromRole="ServiceProvider" ToRole="Service" />
+    <NavigationProperty Name="ServiceProviderType" Relationship="Self.FK_dbo_ServiceProvider_dbo_ServiceProviderType_serviceProviderTypeId" FromRole="ServiceProvider" ToRole="ServiceProviderType" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_User_dbo_ServiceProvider_serviceProviderId" FromRole="ServiceProvider" ToRole="User" />
+  </EntityType>
+  <EntityType Name="ServiceProviderType">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_dbo_Role_dbo_ServiceProviderType_serviceProviderTypeId" FromRole="ServiceProviderType" ToRole="Role" />
+    <NavigationProperty Name="ServiceProvider" Relationship="Self.FK_dbo_ServiceProvider_dbo_ServiceProviderType_serviceProviderTypeId" FromRole="ServiceProviderType" ToRole="ServiceProvider" />
+  </EntityType>
+  <EntityType Name="ServiceScenario">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="serviceScenarioId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceScenarioName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceScenarioStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="paymentProviderHandler" Type="Boolean" Nullable="false" />
+    <Property Name="serviceProviderHandler" Type="Boolean" Nullable="false" />
+    <Property Name="serviceProviderAcknowledge" Type="Boolean" />
+    <Property Name="serviceProviderProvision" Type="Boolean" />
+    <Property Name="serviceProviderInquiry" Type="Boolean" />
+    <Property Name="paymentProviderInquiry" Type="Boolean" />
+    <Property Name="paymentProviderPayment" Type="Boolean" />
+    <Property Name="paymentProviderPaymentCredit" Type="Boolean" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_dbo_Service_dbo_ServiceScenario_serviceScenarioId" FromRole="ServiceScenario" ToRole="Service" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="stateName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="stateArName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_dbo_Terminal_dbo_State_stateId" FromRole="State" ToRole="Terminal" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="SystemResponse">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="systemResponseId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="responseCode" Type="Int64" />
+    <Property Name="responseMessage" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="responseStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="note" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="ExResponseCode" Type="Int64" />
+    <Property Name="ExResponseMessage" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ExResponseStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_dbo_Transaction_dbo_SystemResponse_systemResponseId" FromRole="SystemResponse" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="Terminal">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="terminalId" Type="Int64" />
+    <Property Name="terminalName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="terminalStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="terminalIP" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="serialNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="terminalModel" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="address" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="street" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="terminalCode" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="workingKey" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="attitude" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="latitude" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="terminalFamilyId" Type="Int64" />
+    <Property Name="stateId" Type="Int64" Nullable="false" />
+    <Property Name="cityId" Type="Int64" Nullable="false" />
+    <Property Name="vendorId" Type="Int64" />
+    <Property Name="bankId" Type="Int64" Nullable="false" />
+    <Property Name="terminalPassword" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="terminalUserName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Bank" Relationship="Self.FK_dbo_Terminal_dbo_Bank_bankId" FromRole="Terminal" ToRole="Bank" />
+    <NavigationProperty Name="City" Relationship="Self.FK_Terminal_City" FromRole="Terminal" ToRole="City" />
+    <NavigationProperty Name="State" Relationship="Self.FK_dbo_Terminal_dbo_State_stateId" FromRole="Terminal" ToRole="State" />
+    <NavigationProperty Name="TerminalFamily" Relationship="Self.FK_dbo_Terminal_dbo_TerminalFamily_terminalFamilyId" FromRole="Terminal" ToRole="TerminalFamily" />
+    <NavigationProperty Name="Vendor" Relationship="Self.FK_dbo_Terminal_dbo_Vendor_vendorId" FromRole="Terminal" ToRole="Vendor" />
+    <NavigationProperty Name="Transaction" Relationship="Self.FK_dbo_Transaction_dbo_Terminal_terminalId" FromRole="Terminal" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="TerminalFamily">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TerminalFamilyName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_dbo_Terminal_dbo_TerminalFamily_terminalFamilyId" FromRole="TerminalFamily" ToRole="Terminal" />
+  </EntityType>
+  <EntityType Name="Transaction">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="transactionLogStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="transactionId" Type="Int64" />
+    <Property Name="requestDateTime" Type="DateTime" Precision="3" />
+    <Property Name="responseDateTime" Type="DateTime" Precision="3" />
+    <Property Name="exTranDateTime" Type="Int64" />
+    <Property Name="packNo" Type="Int64" />
+    <Property Name="transactionAmount" Type="Double" />
+    <Property Name="applicationId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="discriminator" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="responseCode" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="responseMessage" Type="String" MaxLength="800" FixedLength="false" Unicode="true" />
+    <Property Name="responseStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="PAN" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="MSISDN" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="bankAccount" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="expDate" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="mbr" Type="String" MaxLength="4" FixedLength="false" Unicode="true" />
+    <Property Name="tranCurrency" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="UUID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="userName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="entityId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="entityType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="toCard" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+    <Property Name="fromAccountType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="fromAccount" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="toAccountType" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="toAccount" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="accountCurrency" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="paymentInfo" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="originalTranUUID" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="originalTranID" Type="Int64" />
+    <Property Name="phoneNo" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="email" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="registrationType" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="authenticationType" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="customerRefrence" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="transactionState" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="transactionFees" Type="Double" />
+    <Property Name="customerBalance" Type="Double" />
+    <Property Name="reciptNo" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="note" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="payeeId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="systemResponseId" Type="Int64" />
+    <Property Name="exSystemResponseId" Type="Int64" />
+    <Property Name="paymentMethodId" Type="Int64" />
+    <Property Name="channelId" Type="Int64" />
+    <Property Name="paymentProviderId" Type="Int64" />
+    <Property Name="currencyId" Type="Int64" />
+    <Property Name="serviceId" Type="Int64" />
+    <Property Name="customerId" Type="Int64" />
+    <Property Name="customerCardId" Type="Int64" />
+    <Property Name="terminalId" Type="Int64" />
+    <Property Name="additional_8_Field_1" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="additional_8_Field_2" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="additional_8_Field_3" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="additional_16_Field_1" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="additional_16_Field_2" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="additional_16_Field_3" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="additional_32_Field_1" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="additional_32_Field_2" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="additional_32_Field_3" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="additional_128_Field_1" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="additional_128_Field_2" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="additional_256_Field_1" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="additional_256_Field_2" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="additional_512_Field_1" Type="String" MaxLength="512" FixedLength="false" Unicode="true" />
+    <Property Name="serviceNum" Type="Int64" />
+    <Property Name="channelNum" Type="Int64" />
+    <Property Name="paymentMethodNum" Type="Int64" />
+    <NavigationProperty Name="Currency" Relationship="Self.FK_dbo_Transaction_dbo_Currency_customerId" FromRole="Transaction" ToRole="Currency" />
+    <NavigationProperty Name="PaymentMethod" Relationship="Self.FK_dbo_Transaction_dbo_PaymentMethod_paymentMethodId" FromRole="Transaction" ToRole="PaymentMethod" />
+    <NavigationProperty Name="PaymentProvider" Relationship="Self.FK_dbo_Transaction_dbo_PaymentProvider_paymentProviderId" FromRole="Transaction" ToRole="PaymentProvider" />
+    <NavigationProperty Name="Service" Relationship="Self.FK_dbo_Transaction_dbo_Service_serviceId" FromRole="Transaction" ToRole="Service" />
+    <NavigationProperty Name="SystemResponse" Relationship="Self.FK_dbo_Transaction_dbo_SystemResponse_systemResponseId" FromRole="Transaction" ToRole="SystemResponse" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_dbo_Transaction_dbo_Terminal_terminalId" FromRole="Transaction" ToRole="Terminal" />
+    <NavigationProperty Name="Transaction1" Relationship="Self.FK_dbo_Transaction_dbo_Transaction_originalTranID" FromRole="Transaction" ToRole="Transaction1" />
+    <NavigationProperty Name="Transaction2" Relationship="Self.FK_dbo_Transaction_dbo_Transaction_originalTranID" FromRole="Transaction1" ToRole="Transaction" />
+  </EntityType>
+  <EntityType Name="TransactionLog">
+    <Key>
+      <PropertyRef Name="SystemId" />
+    </Key>
+    <Property Name="SystemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="Version" Type="Int32" Nullable="false" />
+    <Property Name="Status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="tranDateTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="applicationId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="UUID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="DISCRIMINATOR" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="responseCode" Type="Int32" />
+    <Property Name="responseMessage" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="responseStatus" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="PAN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="expDate" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="fromAccountType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="accountCurrency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tranCurrency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="userName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="entityId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="entityType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="toCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tranAmount" Type="Double" />
+    <Property Name="payeeId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="paymentInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="originalTranUUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="originalTranDateTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mbr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="registrationType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="authenticationType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="serviceProviderId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="serviceInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Transactions">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="discriminator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+    <Property Name="Note" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="LastUpdated" Type="DateTime" Precision="3" />
+    <Property Name="tranDateTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="applicationId" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="UUID" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="responseCode" Type="Int32" />
+    <Property Name="responseMessage" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="responseStatus" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="PAN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="expDate" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+    <Property Name="fromAccountType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="accountCurrency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tranCurrency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="userName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="entityId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="entityType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="toCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="transactionAmount" Type="Double" />
+    <Property Name="payeeId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="paymentInfo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="tranAmount" Type="Double" />
+    <Property Name="originalTranUUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="originalTranDateTime" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mbr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="registrationType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="authenticationType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="packNo" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="requestDateTime" Type="DateTime" Precision="3" />
+    <Property Name="responseDateTime" Type="DateTime" Precision="3" />
+    <Property Name="additional_8_Field_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="additional_8_Field_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Transactions1">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Decimal" Precision="19" Scale="0" Nullable="false" />
+    <Property Name="discriminator" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="note" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="packNo" Type="Decimal" Precision="19" Scale="0" />
+    <Property Name="requestDateTime" Type="DateTime" Precision="3" />
+    <Property Name="responseDateTime" Type="DateTime" Precision="3" />
+    <Property Name="additional_8_Field_1" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="applicationId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="UUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="responseCode" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="responseMessage" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="responseStatus" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="PAN" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="expDate" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="fromAccountType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="accountCurrency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tranCurrency" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="userName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="entityId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="entityType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="toCard" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="transactionAmount" Type="Double" />
+    <Property Name="payeeId" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="tranAmount" Type="Double" />
+    <Property Name="paymentInfo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="originalTranUUID" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="additional_8_Field_2" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="phoneNo" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="email" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="mbr" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="registrationType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+    <Property Name="authenticationType" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="serviceProviderId" Type="Int64" Nullable="false" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="deletedBy" Type="Int64" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="deletedDate" Type="DateTime" Precision="3" />
+    <Property Name="status" Type="Int32" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+    <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+    <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+    <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="AuditingLog" Relationship="Self.FK_dbo_AuditingLog_dbo_User_userId" FromRole="User" ToRole="AuditingLog" />
+    <NavigationProperty Name="EntityStatus" Relationship="Self.FK_dbo_User_dbo_EntityStatus_status" FromRole="User" ToRole="EntityStatus" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_dbo_User_dbo_Role_RoleId" FromRole="User" ToRole="Role" />
+    <NavigationProperty Name="ServiceProvider" Relationship="Self.FK_dbo_User_dbo_ServiceProvider_serviceProviderId" FromRole="User" ToRole="ServiceProvider" />
+    <NavigationProperty Name="UserClaims" Relationship="Self.FK_dbo_UserClaims_dbo_User_UserId" FromRole="User" ToRole="UserClaims" />
+    <NavigationProperty Name="UserLogins" Relationship="Self.FK_dbo_UserLogins_dbo_User_UserId" FromRole="User" ToRole="UserLogins" />
+    <NavigationProperty Name="UserRoles" Relationship="Self.FK_dbo_UserRoles_dbo_User_UserId" FromRole="User" ToRole="UserRoles" />
+  </EntityType>
+  <EntityType Name="UserClaims">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_UserClaims_dbo_User_UserId" FromRole="UserClaims" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserLogins">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LoginProvider" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ProviderKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_UserLogins_dbo_User_UserId" FromRole="UserLogins" ToRole="User" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IDRole_Id" Type="Int64" />
+    <Property Name="UserId" Type="Int64" Nullable="false" />
+    <Property Name="RoleId" Type="Int64" Nullable="false" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_dbo_UserRoles_dbo_Role_RoleId" FromRole="UserRoles" ToRole="Role" />
+    <NavigationProperty Name="User" Relationship="Self.FK_dbo_UserRoles_dbo_User_UserId" FromRole="UserRoles" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Vendor">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="vendorName" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Terminal" Relationship="Self.FK_dbo_Terminal_dbo_Vendor_vendorId" FromRole="Vendor" ToRole="Terminal" />
+  </EntityType>
+  <EntityType Name="BillInfo">
+    <Key>
+      <PropertyRef Name="transactionId" />
+    </Key>
+    <Property Name="transactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="value" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="PaymentFields">
+    <Key>
+      <PropertyRef Name="value" />
+      <PropertyRef Name="name" />
+    </Key>
+    <Property Name="transactionId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PaymentMethodType">
+    <Key>
+      <PropertyRef Name="systemId" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="creationDate" />
+      <PropertyRef Name="createdBy" />
+      <PropertyRef Name="version" />
+      <PropertyRef Name="paymentMethodTypeId" />
+      <PropertyRef Name="paymentMethodTypeEName" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodTypeId" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="paymentMethodTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="paymentMethodTypeEName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Query">
+    <Key>
+      <PropertyRef Name="systemId" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="creationDate" />
+      <PropertyRef Name="createdBy" />
+      <PropertyRef Name="version" />
+      <PropertyRef Name="serviceFieldId" />
+      <PropertyRef Name="serviceFieldName" />
+      <PropertyRef Name="serviceFieldStatus" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="serviceFieldId" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceFieldName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceFieldStatus" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="channelFieldEName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="channelFieldName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="serviceHandlerFieldName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="regularExpression" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="isRequired" Type="Boolean" />
+    <Property Name="dateFormat" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="isRequestField" Type="Boolean" />
+    <Property Name="isSavable" Type="Boolean" />
+    <Property Name="isResponseField" Type="Boolean" />
+    <Property Name="additionalFieldName" Type="Int64" />
+    <Property Name="serviceId" Type="Int64" />
+    <Property Name="serviceHanlerId" Type="Int64" />
+    <Property Name="isParent" Type="Boolean" />
+    <Property Name="ParentId" Type="Int64" />
+    <Property Name="isPaymentInfo" Type="Boolean" />
+    <Property Name="paymentInfoOrder" Type="Int32" />
+    <Property Name="regTypeId" Type="Int64" />
+  </EntityType>
+  <EntityType Name="ServiceType">
+    <Key>
+      <PropertyRef Name="systemId" />
+      <PropertyRef Name="status" />
+      <PropertyRef Name="creationDate" />
+      <PropertyRef Name="createdBy" />
+      <PropertyRef Name="version" />
+      <PropertyRef Name="serviceTypeId" />
+      <PropertyRef Name="serviceTypeEName" />
+    </Key>
+    <Property Name="systemId" Type="Int64" Nullable="false" />
+    <Property Name="status" Type="Int32" Nullable="false" />
+    <Property Name="creationDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="modificationDate" Type="DateTime" Precision="3" />
+    <Property Name="createdBy" Type="Int64" Nullable="false" />
+    <Property Name="modifiedBy" Type="Int64" />
+    <Property Name="version" Type="Int32" Nullable="false" />
+    <Property Name="note" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="serviceTypeId" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="serviceTypeName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+    <Property Name="serviceTypeEName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_ACCOUNT_Bank">
+    <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ACCOUNT">
+        <PropertyRef Name="bankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ACCOUNT_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="SystemId" />
+      </Principal>
+      <Dependent Role="ACCOUNT">
+        <PropertyRef Name="customerIdNumber" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ACCOUNT_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="ACCOUNT" Type="Self.ACCOUNT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ACCOUNT">
+        <PropertyRef Name="isActive" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Action_dbo_EntityStatus_entityStatus_systemId">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Action" Type="Self.Action" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Action">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Action_dbo_Module_moduleId">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="Action" Type="Self.Action" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Action">
+        <PropertyRef Name="moduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AuditingLog_dbo_Action_actionId">
+    <End Role="Action" Type="Self.Action" Multiplicity="1" />
+    <End Role="AuditingLog" Type="Self.AuditingLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Action">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="AuditingLog">
+        <PropertyRef Name="actionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_RoleActions_dbo_Action_actionId">
+    <End Role="Action" Type="Self.Action" Multiplicity="1" />
+    <End Role="RoleActions" Type="Self.RoleActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Action">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoleActions">
+        <PropertyRef Name="actionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AuditingLog_dbo_Module_moduleId">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="AuditingLog" Type="Self.AuditingLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="AuditingLog">
+        <PropertyRef Name="moduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_AuditingLog_dbo_User_userId">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="AuditingLog" Type="Self.AuditingLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="AuditingLog">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_branches_Bank">
+    <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+    <End Role="branches" Type="Self.branches" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="branches">
+        <PropertyRef Name="bankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Terminal_dbo_Bank_bankId">
+    <End Role="Bank" Type="Self.Bank" Multiplicity="1" />
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bank">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Terminal">
+        <PropertyRef Name="bankId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Terminal_City">
+    <End Role="City" Type="Self.City" Multiplicity="1" />
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Terminal">
+        <PropertyRef Name="cityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Transaction_dbo_Currency_customerId">
+    <End Role="Currency" Type="Self.Currency" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Currency">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="customerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_customer_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="customer" Type="Self.customer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="customer">
+        <PropertyRef Name="isActive" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Favourite_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="Favourite" Type="Self.Favourite" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="SystemId" />
+      </Principal>
+      <Dependent Role="Favourite">
+        <PropertyRef Name="customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Module_dbo_EntityStatus_entityStatus_systemId">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Module" Type="Self.Module" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Module">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Role_dbo_EntityStatus_status">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_RoleActions_dbo_EntityStatus_entityStatus_systemId">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="RoleActions" Type="Self.RoleActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoleActions">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_User_dbo_EntityStatus_status">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="status" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Service_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceField_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="ServiceField" Type="Self.ServiceField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceField">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceHandler_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="ServiceHandler" Type="Self.ServiceHandler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceHandler">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceProvider_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Module_dbo_Module_parentId">
+    <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+    <End Role="Module1" Type="Self.Module" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Module1">
+        <PropertyRef Name="parentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentField_dbo_PaymentHandler_paymentHandlerId">
+    <End Role="PaymentHandler" Type="Self.PaymentHandler" Multiplicity="0..1" />
+    <End Role="PaymentField" Type="Self.PaymentField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentHandler">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PaymentField">
+        <PropertyRef Name="paymentHandlerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentField_dbo_PaymentMethod_paymentMethodId">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+    <End Role="PaymentField" Type="Self.PaymentField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PaymentField">
+        <PropertyRef Name="paymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentHandler_dbo_PaymentMethod_paymentMethodId">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="1" />
+    <End Role="PaymentHandler" Type="Self.PaymentHandler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PaymentHandler">
+        <PropertyRef Name="paymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_PaymentMethod_dbo_PaymentProvider_paymentProviderId">
+    <End Role="PaymentProvider" Type="Self.PaymentProvider" Multiplicity="0..1" />
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentProvider">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PaymentMethod">
+        <PropertyRef Name="paymentProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Transaction_dbo_PaymentMethod_paymentMethodId">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentMethod">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="paymentMethodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Transaction_dbo_PaymentProvider_paymentProviderId">
+    <End Role="PaymentProvider" Type="Self.PaymentProvider" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PaymentProvider">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="paymentProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceField_ServiceField_regType">
+    <End Role="RangType" Type="Self.RangType" Multiplicity="0..1" />
+    <End Role="ServiceField" Type="Self.ServiceField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="RangType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceField">
+        <PropertyRef Name="regTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Role_dbo_ServiceProviderType_serviceProviderTypeId">
+    <End Role="ServiceProviderType" Type="Self.ServiceProviderType" Multiplicity="1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProviderType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="serviceProviderTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_RoleActions_dbo_Role_RoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="RoleActions" Type="Self.RoleActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoleActions">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_User_dbo_Role_RoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserRoles_dbo_Role_RoleId">
+    <End Role="Role" Type="Self.Role" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Service_dbo_Service_parentId">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Service1" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Service1">
+        <PropertyRef Name="parentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Service_dbo_Service_precheckServiceId">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Service1" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Service1">
+        <PropertyRef Name="precheckServiceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Service_dbo_ServiceProvider_serviceProviderId">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="serviceProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Service_dbo_ServiceScenario_serviceScenarioId">
+    <End Role="ServiceScenario" Type="Self.ServiceScenario" Multiplicity="1" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceScenario">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Service">
+        <PropertyRef Name="serviceScenarioId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ServiceField_dbo_Service_serviceId">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="ServiceField" Type="Self.ServiceField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceField">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ServiceHandler_dbo_Service_serviceId">
+    <End Role="Service" Type="Self.Service" Multiplicity="1" />
+    <End Role="ServiceHandler" Type="Self.ServiceHandler" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceHandler">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Transaction_dbo_Service_serviceId">
+    <End Role="Service" Type="Self.Service" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Service">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="serviceId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ServiceField_dbo_ServiceHandler_serviceHanlerId">
+    <End Role="ServiceHandler" Type="Self.ServiceHandler" Multiplicity="0..1" />
+    <End Role="ServiceField" Type="Self.ServiceField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceHandler">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceField">
+        <PropertyRef Name="serviceHanlerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ServiceField_ServiceFieldPARENT">
+    <End Role="ServiceField" Type="Self.ServiceField" Multiplicity="0..1" />
+    <End Role="ServiceField1" Type="Self.ServiceField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceField">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceField1">
+        <PropertyRef Name="parentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ServiceProvider_dbo_ServiceProviderType_serviceProviderTypeId">
+    <End Role="ServiceProviderType" Type="Self.ServiceProviderType" Multiplicity="0..1" />
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProviderType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ServiceProvider">
+        <PropertyRef Name="serviceProviderTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_User_dbo_ServiceProvider_serviceProviderId">
+    <End Role="ServiceProvider" Type="Self.ServiceProvider" Multiplicity="1" />
+    <End Role="User" Type="Self.User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ServiceProvider">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="User">
+        <PropertyRef Name="serviceProviderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Terminal_dbo_State_stateId">
+    <End Role="State" Type="Self.State" Multiplicity="1" />
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Terminal">
+        <PropertyRef Name="stateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Transaction_dbo_SystemResponse_systemResponseId">
+    <End Role="SystemResponse" Type="Self.SystemResponse" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SystemResponse">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="systemResponseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Terminal_dbo_TerminalFamily_terminalFamilyId">
+    <End Role="TerminalFamily" Type="Self.TerminalFamily" Multiplicity="0..1" />
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TerminalFamily">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Terminal">
+        <PropertyRef Name="terminalFamilyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Terminal_dbo_Vendor_vendorId">
+    <End Role="Vendor" Type="Self.Vendor" Multiplicity="0..1" />
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Vendor">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Terminal">
+        <PropertyRef Name="vendorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Transaction_dbo_Terminal_terminalId">
+    <End Role="Terminal" Type="Self.Terminal" Multiplicity="0..1" />
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Terminal">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Transaction">
+        <PropertyRef Name="terminalId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Transaction_dbo_Transaction_originalTranID">
+    <End Role="Transaction" Type="Self.Transaction" Multiplicity="0..1" />
+    <End Role="Transaction1" Type="Self.Transaction" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Transaction">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Transaction1">
+        <PropertyRef Name="originalTranID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserClaims_dbo_User_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserClaims" Type="Self.UserClaims" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserClaims">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserLogins_dbo_User_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserLogins" Type="Self.UserLogins" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserLogins">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_UserRoles_dbo_User_UserId">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LT_Channel_Service">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="*" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+  </Association>
+  <Association Name="LT_PaymentMethod_Channel">
+    <End Role="Channel" Type="Self.Channel" Multiplicity="*" />
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="*" />
+  </Association>
+  <Association Name="LT_PaymentMethod_Service">
+    <End Role="PaymentMethod" Type="Self.PaymentMethod" Multiplicity="*" />
+    <End Role="Service" Type="Self.Service" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="CSHEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ACCOUNT" EntityType="Self.ACCOUNT" />
+    <EntitySet Name="Action" EntityType="Self.Action" />
+    <EntitySet Name="ADMINUSER" EntityType="Self.ADMINUSER" />
+    <EntitySet Name="AuditingLog" EntityType="Self.AuditingLog" />
+    <EntitySet Name="Bank" EntityType="Self.Bank" />
+    <EntitySet Name="Banks" EntityType="Self.Banks" />
+    <EntitySet Name="branches" EntityType="Self.branches" />
+    <EntitySet Name="Channel" EntityType="Self.Channel" />
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="Currency" EntityType="Self.Currency" />
+    <EntitySet Name="customer" EntityType="Self.customer" />
+    <EntitySet Name="EntityStatus" EntityType="Self.EntityStatus" />
+    <EntitySet Name="Favourite" EntityType="Self.Favourite" />
+    <EntitySet Name="Module" EntityType="Self.Module" />
+    <EntitySet Name="PaymentField" EntityType="Self.PaymentField" />
+    <EntitySet Name="PaymentHandler" EntityType="Self.PaymentHandler" />
+    <EntitySet Name="PaymentMethod" EntityType="Self.PaymentMethod" />
+    <EntitySet Name="PaymentProvider" EntityType="Self.PaymentProvider" />
+    <EntitySet Name="RangType" EntityType="Self.RangType" />
+    <EntitySet Name="RemoteSettings" EntityType="Self.RemoteSettings" />
+    <EntitySet Name="Role" EntityType="Self.Role" />
+    <EntitySet Name="RoleActions" EntityType="Self.RoleActions" />
+    <EntitySet Name="Service" EntityType="Self.Service" />
+    <EntitySet Name="ServiceField" EntityType="Self.ServiceField" />
+    <EntitySet Name="ServiceHandler" EntityType="Self.ServiceHandler" />
+    <EntitySet Name="ServiceProvider" EntityType="Self.ServiceProvider" />
+    <EntitySet Name="ServiceProviderType" EntityType="Self.ServiceProviderType" />
+    <EntitySet Name="ServiceScenario" EntityType="Self.ServiceScenario" />
+    <EntitySet Name="State" EntityType="Self.State" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="SystemResponse" EntityType="Self.SystemResponse" />
+    <EntitySet Name="Terminal" EntityType="Self.Terminal" />
+    <EntitySet Name="TerminalFamily" EntityType="Self.TerminalFamily" />
+    <EntitySet Name="Transaction" EntityType="Self.Transaction" />
+    <EntitySet Name="TransactionLog" EntityType="Self.TransactionLog" />
+    <EntitySet Name="Transactions" EntityType="Self.Transactions" />
+    <EntitySet Name="Transactions1" EntityType="Self.Transactions1" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <EntitySet Name="UserClaims" EntityType="Self.UserClaims" />
+    <EntitySet Name="UserLogins" EntityType="Self.UserLogins" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" />
+    <EntitySet Name="Vendor" EntityType="Self.Vendor" />
+    <EntitySet Name="BillInfo" EntityType="Self.BillInfo" />
+    <EntitySet Name="PaymentFields" EntityType="Self.PaymentFields" />
+    <EntitySet Name="PaymentMethodType" EntityType="Self.PaymentMethodType" />
+    <EntitySet Name="Query" EntityType="Self.Query" />
+    <EntitySet Name="ServiceType" EntityType="Self.ServiceType" />
+    <AssociationSet Name="FK_ACCOUNT_Bank" Association="Self.FK_ACCOUNT_Bank">
+      <End Role="Bank" EntitySet="Bank" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ACCOUNT_customer" Association="Self.FK_ACCOUNT_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ACCOUNT_EntityStatus" Association="Self.FK_ACCOUNT_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="ACCOUNT" EntitySet="ACCOUNT" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Action_dbo_EntityStatus_entityStatus_systemId" Association="Self.FK_dbo_Action_dbo_EntityStatus_entityStatus_systemId">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Action" EntitySet="Action" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Action_dbo_Module_moduleId" Association="Self.FK_dbo_Action_dbo_Module_moduleId">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="Action" EntitySet="Action" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AuditingLog_dbo_Action_actionId" Association="Self.FK_dbo_AuditingLog_dbo_Action_actionId">
+      <End Role="Action" EntitySet="Action" />
+      <End Role="AuditingLog" EntitySet="AuditingLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_RoleActions_dbo_Action_actionId" Association="Self.FK_dbo_RoleActions_dbo_Action_actionId">
+      <End Role="Action" EntitySet="Action" />
+      <End Role="RoleActions" EntitySet="RoleActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AuditingLog_dbo_Module_moduleId" Association="Self.FK_dbo_AuditingLog_dbo_Module_moduleId">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="AuditingLog" EntitySet="AuditingLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_AuditingLog_dbo_User_userId" Association="Self.FK_dbo_AuditingLog_dbo_User_userId">
+      <End Role="User" EntitySet="User" />
+      <End Role="AuditingLog" EntitySet="AuditingLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_branches_Bank" Association="Self.FK_branches_Bank">
+      <End Role="Bank" EntitySet="Bank" />
+      <End Role="branches" EntitySet="branches" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Terminal_dbo_Bank_bankId" Association="Self.FK_dbo_Terminal_dbo_Bank_bankId">
+      <End Role="Bank" EntitySet="Bank" />
+      <End Role="Terminal" EntitySet="Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Terminal_City" Association="Self.FK_Terminal_City">
+      <End Role="City" EntitySet="City" />
+      <End Role="Terminal" EntitySet="Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Transaction_dbo_Currency_customerId" Association="Self.FK_dbo_Transaction_dbo_Currency_customerId">
+      <End Role="Currency" EntitySet="Currency" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_customer_EntityStatus" Association="Self.FK_customer_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="customer" EntitySet="customer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Favourite_customer" Association="Self.FK_Favourite_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="Favourite" EntitySet="Favourite" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Module_dbo_EntityStatus_entityStatus_systemId" Association="Self.FK_dbo_Module_dbo_EntityStatus_entityStatus_systemId">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Module" EntitySet="Module" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Role_dbo_EntityStatus_status" Association="Self.FK_dbo_Role_dbo_EntityStatus_status">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_RoleActions_dbo_EntityStatus_entityStatus_systemId" Association="Self.FK_dbo_RoleActions_dbo_EntityStatus_entityStatus_systemId">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="RoleActions" EntitySet="RoleActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_User_dbo_EntityStatus_status" Association="Self.FK_dbo_User_dbo_EntityStatus_status">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Service_EntityStatus" Association="Self.FK_Service_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceField_EntityStatus" Association="Self.FK_ServiceField_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="ServiceField" EntitySet="ServiceField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceHandler_EntityStatus" Association="Self.FK_ServiceHandler_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="ServiceHandler" EntitySet="ServiceHandler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceProvider_EntityStatus" Association="Self.FK_ServiceProvider_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Module_dbo_Module_parentId" Association="Self.FK_dbo_Module_dbo_Module_parentId">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="Module1" EntitySet="Module" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentField_dbo_PaymentHandler_paymentHandlerId" Association="Self.FK_dbo_PaymentField_dbo_PaymentHandler_paymentHandlerId">
+      <End Role="PaymentHandler" EntitySet="PaymentHandler" />
+      <End Role="PaymentField" EntitySet="PaymentField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentField_dbo_PaymentMethod_paymentMethodId" Association="Self.FK_dbo_PaymentField_dbo_PaymentMethod_paymentMethodId">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="PaymentField" EntitySet="PaymentField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentHandler_dbo_PaymentMethod_paymentMethodId" Association="Self.FK_dbo_PaymentHandler_dbo_PaymentMethod_paymentMethodId">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="PaymentHandler" EntitySet="PaymentHandler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_PaymentMethod_dbo_PaymentProvider_paymentProviderId" Association="Self.FK_dbo_PaymentMethod_dbo_PaymentProvider_paymentProviderId">
+      <End Role="PaymentProvider" EntitySet="PaymentProvider" />
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Transaction_dbo_PaymentMethod_paymentMethodId" Association="Self.FK_dbo_Transaction_dbo_PaymentMethod_paymentMethodId">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Transaction_dbo_PaymentProvider_paymentProviderId" Association="Self.FK_dbo_Transaction_dbo_PaymentProvider_paymentProviderId">
+      <End Role="PaymentProvider" EntitySet="PaymentProvider" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceField_ServiceField_regType" Association="Self.FK_ServiceField_ServiceField_regType">
+      <End Role="RangType" EntitySet="RangType" />
+      <End Role="ServiceField" EntitySet="ServiceField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Role_dbo_ServiceProviderType_serviceProviderTypeId" Association="Self.FK_dbo_Role_dbo_ServiceProviderType_serviceProviderTypeId">
+      <End Role="ServiceProviderType" EntitySet="ServiceProviderType" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_RoleActions_dbo_Role_RoleId" Association="Self.FK_dbo_RoleActions_dbo_Role_RoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="RoleActions" EntitySet="RoleActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_User_dbo_Role_RoleId" Association="Self.FK_dbo_User_dbo_Role_RoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserRoles_dbo_Role_RoleId" Association="Self.FK_dbo_UserRoles_dbo_Role_RoleId">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Service_dbo_Service_parentId" Association="Self.FK_dbo_Service_dbo_Service_parentId">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Service1" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Service_dbo_Service_precheckServiceId" Association="Self.FK_dbo_Service_dbo_Service_precheckServiceId">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Service1" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Service_dbo_ServiceProvider_serviceProviderId" Association="Self.FK_dbo_Service_dbo_ServiceProvider_serviceProviderId">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Service_dbo_ServiceScenario_serviceScenarioId" Association="Self.FK_dbo_Service_dbo_ServiceScenario_serviceScenarioId">
+      <End Role="ServiceScenario" EntitySet="ServiceScenario" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ServiceField_dbo_Service_serviceId" Association="Self.FK_dbo_ServiceField_dbo_Service_serviceId">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServiceField" EntitySet="ServiceField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ServiceHandler_dbo_Service_serviceId" Association="Self.FK_dbo_ServiceHandler_dbo_Service_serviceId">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="ServiceHandler" EntitySet="ServiceHandler" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Transaction_dbo_Service_serviceId" Association="Self.FK_dbo_Transaction_dbo_Service_serviceId">
+      <End Role="Service" EntitySet="Service" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ServiceField_dbo_ServiceHandler_serviceHanlerId" Association="Self.FK_dbo_ServiceField_dbo_ServiceHandler_serviceHanlerId">
+      <End Role="ServiceHandler" EntitySet="ServiceHandler" />
+      <End Role="ServiceField" EntitySet="ServiceField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ServiceField_ServiceFieldPARENT" Association="Self.FK_ServiceField_ServiceFieldPARENT">
+      <End Role="ServiceField" EntitySet="ServiceField" />
+      <End Role="ServiceField1" EntitySet="ServiceField" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ServiceProvider_dbo_ServiceProviderType_serviceProviderTypeId" Association="Self.FK_dbo_ServiceProvider_dbo_ServiceProviderType_serviceProviderTypeId">
+      <End Role="ServiceProviderType" EntitySet="ServiceProviderType" />
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_User_dbo_ServiceProvider_serviceProviderId" Association="Self.FK_dbo_User_dbo_ServiceProvider_serviceProviderId">
+      <End Role="ServiceProvider" EntitySet="ServiceProvider" />
+      <End Role="User" EntitySet="User" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Terminal_dbo_State_stateId" Association="Self.FK_dbo_Terminal_dbo_State_stateId">
+      <End Role="State" EntitySet="State" />
+      <End Role="Terminal" EntitySet="Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Transaction_dbo_SystemResponse_systemResponseId" Association="Self.FK_dbo_Transaction_dbo_SystemResponse_systemResponseId">
+      <End Role="SystemResponse" EntitySet="SystemResponse" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Terminal_dbo_TerminalFamily_terminalFamilyId" Association="Self.FK_dbo_Terminal_dbo_TerminalFamily_terminalFamilyId">
+      <End Role="TerminalFamily" EntitySet="TerminalFamily" />
+      <End Role="Terminal" EntitySet="Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Terminal_dbo_Vendor_vendorId" Association="Self.FK_dbo_Terminal_dbo_Vendor_vendorId">
+      <End Role="Vendor" EntitySet="Vendor" />
+      <End Role="Terminal" EntitySet="Terminal" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Transaction_dbo_Terminal_terminalId" Association="Self.FK_dbo_Transaction_dbo_Terminal_terminalId">
+      <End Role="Terminal" EntitySet="Terminal" />
+      <End Role="Transaction" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Transaction_dbo_Transaction_originalTranID" Association="Self.FK_dbo_Transaction_dbo_Transaction_originalTranID">
+      <End Role="Transaction" EntitySet="Transaction" />
+      <End Role="Transaction1" EntitySet="Transaction" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserClaims_dbo_User_UserId" Association="Self.FK_dbo_UserClaims_dbo_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserClaims" EntitySet="UserClaims" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserLogins_dbo_User_UserId" Association="Self.FK_dbo_UserLogins_dbo_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserLogins" EntitySet="UserLogins" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_UserRoles_dbo_User_UserId" Association="Self.FK_dbo_UserRoles_dbo_User_UserId">
+      <End Role="User" EntitySet="User" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="LT_Channel_Service" Association="Self.LT_Channel_Service">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <AssociationSet Name="LT_PaymentMethod_Channel" Association="Self.LT_PaymentMethod_Channel">
+      <End Role="Channel" EntitySet="Channel" />
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+    </AssociationSet>
+    <AssociationSet Name="LT_PaymentMethod_Service" Association="Self.LT_PaymentMethod_Service">
+      <End Role="PaymentMethod" EntitySet="PaymentMethod" />
+      <End Role="Service" EntitySet="Service" />
+    </AssociationSet>
+    <EntitySet Name="C__MigrationHistory" EntityType="CSHModel.C__MigrationHistory" />
+    <FunctionImport Name="sp_alterdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_creatediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="version" Mode="In" Type="Int32" />
+      <Parameter Name="definition" Mode="In" Type="Binary" />
+    </FunctionImport>
+    <FunctionImport Name="sp_dropdiagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(CSHModel.sp_helpdiagramdefinition_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(CSHModel.sp_helpdiagrams_Result)">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_renamediagram">
+      <Parameter Name="diagramname" Mode="In" Type="String" />
+      <Parameter Name="owner_id" Mode="In" Type="Int32" />
+      <Parameter Name="new_diagramname" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_upgraddiagrams" />
+  </EntityContainer>
+  <EntityType Name="C__MigrationHistory">
+    <Key>
+      <PropertyRef Name="MigrationId" />
+      <PropertyRef Name="ContextKey" />
+    </Key>
+    <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="ContextKey" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="true" />
+    <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <ComplexType Name="sp_helpdiagramdefinition_Result">
+    <Property Type="Int32" Name="version" Nullable="true" />
+    <Property Type="Binary" Name="definition" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_helpdiagrams_Result">
+    <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+    <Property Type="Int32" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+    <Property Type="Int32" Name="OwnerID" Nullable="false" />
+  </ComplexType>
+</Schema>

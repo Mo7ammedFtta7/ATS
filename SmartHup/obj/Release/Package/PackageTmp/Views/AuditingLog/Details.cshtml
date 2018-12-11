@@ -1,0 +1,176 @@
+﻿@model SmartHup.Models.AuditingLog
+    
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string createdBy = TempData["display_createdBy"] != null ? TempData["display_createdBy"] as string : "";
+    string modifiedBy = TempData["display_modifiedBy"] != null ? TempData["display_modifiedBy"] as string : "";
+    string deletedBy = TempData["display_deletedBy"] != null ? TempData["display_deletedBy"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4 class="page-title">AuditingLog Details - AuditingLog Management</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.actionId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Action.name)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.moduleId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Module.name)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.oldData)
+        </td>
+            <td>
+
+                @Html.TextAreaFor(model => model.oldData, new { @class = "form-control" })
+                <button id="oldDataBtn" class="btn btn-primary">View</button>
+            </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.dateCreated)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.dateCreated)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.clientData)
+        </td>
+            <td>
+                @Html.TextAreaFor(model => model.clientData, new { @class = "form-control" })
+         <button id="clientDataBtn" class="btn btn-primary">View</button>
+            </td>
+		</tr>
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("AuditingLog","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+
+
+<div id="clientDataModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="clientClose">&times;</span>
+       
+        @Html.Partial("showData", Utils.showData(Model.clientData));
+    </div>
+</div>
+<div id="oldDataModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="oldClose">&times;</span>
+        @Html.Partial("showData", Utils.showData(Model.oldData));
+    </div>
+</div>
+
+<script>
+    var clientDataBtn = document.getElementById("clientDataBtn");
+    var clientDataModal = document.getElementById("clientDataModal");
+    var clientSpan = document.getElementById("clientClose");
+    var oldDataBtn = document.getElementById("oldDataBtn");
+    var oldDataModal = document.getElementById("oldDataModal");
+    var oldSpan = document.getElementById("oldClose");
+
+    clientDataBtn.onclick = function () {
+        clientDataModal.style.display = "block";
+    }
+    clientSpan.onclick = function () {
+        clientDataModal.style.display = "none";
+    }
+
+    oldDataBtn.onclick = function () {
+        oldDataModal.style.display = "block";
+    }
+    oldSpan.onclick = function () {
+        oldDataModal.style.display = "none";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == clientDataModal || event.target == oldDataModal ) {
+            modal.style.display = "none";
+        }
+    }
+
+
+    function showData(_id) {
+        var method = 'post';
+        var data = $("#" + _id).val();
+        var link = '/AuditingLog/showData';
+
+        var form = document.createElement("form");
+        form.setAttribute("method", method);
+        form.setAttribute("action", link);
+        var hiddenField = document.createElement('input');
+        hiddenField.setAttribute("type", 'hidden');
+        hiddenField.setAttribute("name", 'txt');
+        hiddenField.setAttribute("value", data);
+        
+        form.appendChild(hiddenField);
+        document.body.appendChild(form);
+        form.submit();
+    }
+
+</script>
+
+<style>
+
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 900;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0, 0.4);
+    }
+
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+</style>

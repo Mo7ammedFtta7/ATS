@@ -1,0 +1,177 @@
+﻿@model IEnumerable<SmartHup.Models.Contracts>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2 class="page-title">Contracts Managment</h2>
+
+ @if (menu.ContainsKey(Tuple.Create("Contracts", "Create")))
+    {
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+</p>
+}
+    
+	<div class="box box-danger">
+    <div class="box-header">
+        </div>
+        <div class="box-body">
+            <table class="table table-striped table-bordered table-hover order-column datatable">
+                <thead>
+                    <tr>
+                        <th>
+                            Service Provider
+                        </th>
+                        <th>
+                            Contract Type
+                        </th>
+                        <th>
+                            Start Date
+                        </th>
+                        <th>
+                            End Date
+                        </th>
+
+
+                        <th>
+                            Creation Date
+                        </th>
+
+
+
+
+                     
+                        <th>
+                            Status
+                        </th>
+                        <th>Actions</th>
+                    </tr>
+                <thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ServiceProvider1.serviceProviderId)
+                            </td>
+                            <td>
+                                @Html.DisplayFor(modelItem => item.ContractTypes.Type)
+                            </td>
+                            <td>
+                                @item.StartDate.ToShortDateString()
+                            </td>
+                            <td>
+                                @item.EndDate.ToShortDateString()
+                            </td>
+
+                            <td>
+                                @item.creationDate.ToShortDateString()
+                            </td>
+                          
+                            <td>
+                                @{ string st = item.EntityStatus.EntityStatusName;
+                                    string status = st == "New" ? "primary" : (st == "Renewed" ? "success" : (st == "Cancelled" ? "danger" : (st == "Expired" ? "danger" : "danger")));
+
+
+                                }
+                                <span class="label label-@status">
+                                    @Html.DisplayFor(modelItem => item.EntityStatus.EntityStatusName)
+                            </span>
+                        </td>
+
+
+                        <td>
+
+                                <div class="btn-group">
+                                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                        <ul class="dropdown-menu" role="menu">
+
+                                            @if (menu.ContainsKey(Tuple.Create("Contracts", "Edit")))
+                                            {
+                                                <li>
+                                                    @Html.ActionLink("Edit", "Edit", new { id = item.systemId }, new { @class = "fa fa-edit" })
+                                                </li>
+                                            }
+
+                                            <li>
+                                                @Html.ActionLink("Details", "Details", new { id = item.systemId }, new { @class = "fa fa-eye" })
+                                            <li>
+                                                @if (menu.ContainsKey(Tuple.Create("Contracts", "Delete")))
+                                                {
+                                         
+                                                    <li>
+                                                    @Html.ActionLink("Delete", "Delete", new { id = item.systemId }, new { @class = "fa fa-remove" })
+                                                </li>
+                                                }
+
+                                                <li class="divider"></li>
+                                                @if (item.EntityStatus.EntityStatusName == "Cancellation request" && menu.ContainsKey(Tuple.Create("Contracts", "Actions")))
+                                                {
+                                                    <li>
+                                                        @Html.ActionLink("Cancel", "Actions", new { id = item.systemId, status = "Cancel" }, new { @class = "fa fa-remove" })
+                                                    </li>
+                                                }
+
+
+                                                @if (item.EntityStatus.EntityStatusName.Contains("Renewal request") && menu.ContainsKey(Tuple.Create("Contracts", "Actions")))
+                                                {
+                                                    <li>
+                                                        @Html.ActionLink("Renew", "Actions", new { id = item.systemId, status = "Renew" }, new { @class = "fa fa-check-square-o" })
+                                                    </li>
+                                                }
+
+                                                @if ((item.EntityStatus.EntityStatusName == "New" || item.EntityStatus.EntityStatusName == "Renewed") && menu.ContainsKey(Tuple.Create("Contracts", "Requests")))
+                                                {
+                                                    <li>
+                                                        @*@Html.ActionLink("Cancel request ", "Requests", new { id = item.systemId, status = "Cancelr" }, new { @class = "fa fa-remove" })*@
+                                                        <a onclick="request(@item.systemId,'Cancelr')" class="fa fa-check-square-o" })>Cancel request</a>
+
+                                                    </li>
+                                                }
+                                                @if ((item.EntityStatus.EntityStatusName == "Expired" || item.ContractStatus == 7) && menu.ContainsKey(Tuple.Create("Contracts", "Requests")))
+                                                {
+                                                    <li>
+                                                        <a onclick="request(@item.systemId,'renewr')" class="fa fa-check-square-o" })>Renew request</a>
+                                                    </li>
+                                                }
+
+
+
+                                            </ul>
+                                   
+                                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                            </td>
+                        </tr>
+                                    }
+                </tbody>
+                <tfoot>
+
+                </tfoot>
+            </table>
+</div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+       })
+</script>

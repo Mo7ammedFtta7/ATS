@@ -1,0 +1,185 @@
+﻿@model IEnumerable<SmartHup.Models.User>
+@using SmartHup.Resources
+
+@{
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+}
+
+<h2 class="page-title">User Management</h2>
+@if (menu.ContainsKey(Tuple.Create("Users", "AddUser")))
+{
+    <p>
+        @Html.ActionLink("Create New", "AddUser", null, new { @class = "btn btn-success" })
+    </p>
+}
+
+
+
+
+<div class="box container-fluid">
+    <div class="box-header">
+    </div>
+    <div class="box-body">
+        <table class="table table-striped table-bordered table-hover order-column datatable">
+            <thead>
+                <tr>
+
+                    @*<th>
+                        @Html.DisplayNameFor(model => model.Email)
+                    </th>*@
+                    <th>
+                        @Html.DisplayNameFor(model => model.UserName)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.LockoutEnabled)
+                    </th>
+
+
+                    <th>
+                   Role
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.serviceProviderId)
+                    </th>
+                    <th>status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        @*<td>
+                            @Html.DisplayFor(modelItem => item.Email)
+                        </td>*@
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.UserName)
+                        </td>
+                        <td>
+
+                            @if (item.LockoutEndDateUtc > DateTime.UtcNow)
+                            {
+                                @Labels.Yes
+                            }
+                            else
+                            {
+                                @Labels.No
+                            }
+
+                        </td>
+
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role.Name)
+
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceProvider.serviceProviderName)
+                        </td>
+                        <td>
+                          
+                                @Html.DisplayFor(modelItem => item.EntityStatus.EntityStatusName)
+
+
+                        </td>
+                        <td>
+
+                            <div class="btn-group">
+                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+
+                                    @if (menu.ContainsKey(Tuple.Create("Users", "UpdateUser")))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("UpdateUser", "Users", new { id = item.systemId })"><i class="fa fa-edit"><span class="DelTex">Update User</span></i></a>
+                                        </li>
+                                    }
+
+                                    @if (menu.ContainsKey(Tuple.Create("Users", "UserProfile")))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("UserProfile", "Users", new { id = item.systemId })"><i class="fa fa-eye"><span class="DelTex">Profile</span></i></a>
+                                            </li>
+                                            }
+
+                                            @if (menu.ContainsKey(Tuple.Create("Users", "DeleteUser")))
+                                            {
+                                                <li>
+
+                                                    <a href="@Url.Action("DeleteUser", "Users", new { id = item.systemId })"><i class="fa fa-remove"><span class="DelTex">Delete User</span></i></a>
+                                               </li>     }
+
+                                                    @if (menu.ContainsKey(Tuple.Create("Users", "ResetPassword")))
+                                                    {
+                                                        <li>
+                                                            <a href="@Url.Action("ResetPassword", "Users", new { id = item.systemId })"><i class="fa fa-refresh"><span class="DelTex">Reset Password</span></i></a>
+</li>
+                                                            }
+
+                                                            @if (item.LockoutEndDateUtc < DateTime.Now || item.LockoutEndDateUtc == null)
+                                                            {
+                                                                if (menu.ContainsKey(Tuple.Create("Users", "LockUser")))
+                                                                {
+                                                                    <li>
+                                                                        <a href="@Url.Action("LockUser", "Users", new { id = item.systemId })"><i class="fa fa-lock"><span class="DelTex">Lock user</span></i></a>
+                                                                     </li>
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                if (menu.ContainsKey(Tuple.Create("Users", "UnLockUser")))
+                                                                {
+                                                                    <li>
+                                                                        <a href="@Url.Action("UnLockUser", "Users", new { id = item.systemId })"><i class="fa fa-unlock"><span class="DelTex">unlock user</span></i></a>
+                                                                      </li>  }
+                                                                        }
+</ul></div>  </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot></tfoot>
+        </table>
+
+    </div>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#example').DataTable(
+            ({
+                'paging': true,
+                'lengthChange': true,
+                'searching': true,
+                'ordering': true,
+                'info': true,
+                'autoWidth': true
+            }));
+    });
+    $(function () {
+        $('#example1').DataTable()
+        $('#example2').DataTable({
+            'paging': true,
+            'lengthChange': false,
+            'searching': false,
+            'ordering': true,
+            'info': true,
+            'autoWidth': false
+        })
+    })
+
+    window.onresize = function () {
+        if (document.documentElement.clientWidth < 900) {
+            //$('.fa').attr("style","font-size:0px");
+            $('.DelTex').hide();
+        } else {
+            $('.DelTex').show();
+        }
+    }
+
+</script>

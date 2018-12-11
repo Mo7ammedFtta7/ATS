@@ -1,0 +1,122 @@
+﻿@model SmartHup.Models.Role
+
+@{
+    ViewBag.Title = "Details";
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string createdBy = TempData["display_createdBy"] != null ? TempData["display_createdBy"] as string : "";
+    string modifiedBy = TempData["display_modifiedBy"] != null ? TempData["display_modifiedBy"] as string : "";
+    string deletedBy = TempData["display_deletedBy"] != null ? TempData["display_deletedBy"] as string : "";
+}
+
+<h2>Role Details - Role Management</h2>
+
+<div>
+    
+    <hr />
+    <table class="table table-striped">
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.Name)
+       </td><td>
+
+            @Html.DisplayFor(model => model.Name)
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.ServiceProviderType)
+       </td><td>
+
+            @Html.DisplayFor(model => model.ServiceProviderType.Name)
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.EName)
+       </td><td>
+
+            @Html.DisplayFor(model => model.EName)
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.createdBy)
+       </td><td>
+
+            @createdBy
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+       </td><td>
+
+            @modifiedBy
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.deletedBy)
+       </td><td>
+
+            @deletedBy
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.creationDate)
+       </td><td>
+
+            @Html.DisplayFor(model => model.creationDate)
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.modificationDate)
+       </td><td>
+
+            @Html.DisplayFor(model => model.modificationDate)
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.deletedDate)
+       </td><td>
+
+            @Html.DisplayFor(model => model.deletedDate)
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.status)
+
+       </td><td>
+            @Html.DisplayFor(model => model.EntityStatus.EntityStatusName)
+       </td></tr>
+      
+
+        <tr><td>
+            @Html.DisplayNameFor(model => model.version)
+       </td><td>
+
+            @Html.DisplayFor(model => model.version)
+       </td></tr>
+      
+
+    </table>
+</div>
+
+@if (menu.ContainsKey(Tuple.Create("Roles", "Edit")))
+{
+        @Html.ActionLink("Edit", "Edit", new { id = Model.systemId }, new { @class= "btn btn-primary"})
+  
+}
+@if (menu.ContainsKey(Tuple.Create("Roles", "Index")))
+{
+    <a href="@Url.Action("Index")" class="btn btn-default">Back to List</a>
+}
+
+
+

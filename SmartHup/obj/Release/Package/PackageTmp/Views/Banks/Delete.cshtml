@@ -1,0 +1,95 @@
+﻿@model SmartHup.Models.Bank
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+<h4>Delete Bank - Bank Managment</h4>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+     <table class="table table-striped" border="0">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankFullName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.bankFullName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankShortName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.bankShortName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankCode)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.bankCode)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankPrefix)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.bankPrefix)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankContact)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.bankContact)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.bankId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.idx)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.idx)
+           </td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+		@if( menu.ContainsKey(Tuple.Create("Bank","Delete")) ) {
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+			}
+            @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-primary" })
+        </div>
+    }
+</div>
+

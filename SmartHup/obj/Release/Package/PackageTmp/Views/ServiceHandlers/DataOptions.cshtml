@@ -1,0 +1,250 @@
+﻿@model IEnumerable<SmartHup.Models.MultiValueList>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    { menu = new Dictionary<Tuple<string, string>, bool>(); }
+}
+
+ @if (menu.ContainsKey(Tuple.Create("MultiValueList", "Create")))
+    {
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+</p>
+}
+
+
+
+<h4>DataOptions Details - ServiceHandler Management</h4>
+<h5>ServiceFieldName : @ViewBag.sfn</h5>
+
+<br/>
+<button type="button" class="btn btn-success" data-toggle="modal" data-target="#addoption">
+    Create DataOption
+</button>
+    <hr />
+
+	<div class="box container-fluid">
+    <div class="box-header">
+        </div>
+        <div class="box-body">
+            <table  class="table table-bordered table-striped" id="example1" >
+			 <thead>
+			<tr>
+        <th>
+          multivalueId
+        </th>
+        <th>
+          multivalueName
+        </th>
+        <th>
+   multivalueEName
+        </th>
+               
+       
+        <th>Actions</th>
+    </tr>
+	 <thead>
+       <tbody>
+@foreach (var item in Model) {
+    <tr>
+       
+        <td>
+            @Html.DisplayFor(modelItem => item.multivalueId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.multivalueName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.multivalueEName)
+        </td>
+       
+       
+       
+        <td>
+
+
+
+            <div class="btn-group">
+                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                    Actions
+                    <i class="fa fa-angle-down"></i>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li>
+                        <a href="javascript:;" onclick="edit(@item.systemId)" data-toggle="modal" data-target="#xxx">
+                            <i class="fa fa-edit"><span class="DelTex">Edit</span></i>
+                        </a>
+                    
+                     </li>
+
+                    <li>
+                        <a href="/ServiceHandlers/deleteoption/@item.systemId" onclick="return confirm('Are you sure?')">
+                        <i class="fa fa-trash"><span class="DelTex">Delete</span></i>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+</td>
+    </tr>
+}
+</tbody>
+            <tfoot>
+			
+  </tfoot>
+</table>
+</div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+
+                <a href="/ServiceHandlers/ServiceFields/@ViewBag.sfid" class = "btn btn-default">Back to List</a>
+            </div>
+        </div>
+</div>
+
+
+
+<div class="modal fade" id="addoption" tabindex="-1" role="dialog" aria-labelledby="addoption" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form action="/ServiceHandlers/addoption/" method="post">
+            @Html.AntiForgeryToken()
+
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">create MultiValueList - MultiValueList Managment</h5>
+              
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+                        <div class="form-group">
+                            <label >
+                                multivalueId
+                            </label>
+                            <div class="">
+                                <input id="multivalueId" name="multivalueId" class="form-control" required />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label >
+
+                                multivalueName
+                                </label>
+                                <div class="">
+                                    <input id="multivalueName" name="multivalueName" class="form-control" required/>
+                                </div>
+</div>
+
+                        <div class="form-group">
+                            <label >
+
+                                multivalueEName
+                                </label>
+                                <div >
+                                    <input id="multivalueEName" name="multivalueEName" class="form-control" required/>
+                                </div>
+</div>
+
+                        <div class="form-group hide">
+                            <label >
+
+                                paymentFieldId
+                                </label>
+                                <div class="">
+                                    <input id="paymentFieldId" name="paymentFieldId" class="form-control" />
+                                    @*@Html.DropDownList("paymentFieldId", null, "-- select --", htmlAttributes: new { @class = "form-control" })*@
+
+
+                                </div>
+</div>
+
+                        @*<div class="form-group">
+                            @Html.LabelFor(model => model.serviceFieldId, "serviceFieldId", htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-sm-10">
+                                @Html.DropDownList("serviceFieldId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.serviceFieldId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>*@
+                        <input id="serviceFieldId" name="serviceFieldId" type="hidden" value="@ViewBag.systemId" />
+
+
+                    </div>
+
+
+
+                </div>
+                <div class="modal-footer">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>                </div>
+
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="xxx" tabindex="-1" role="dialog" aria-labelledby="xxx" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Edite</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="bbody">
+
+                </div>
+            </div>
+        
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editoptionmodal" tabindex="-1" role="dialog" aria-labelledby="editoptionmodal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            
+
+                <div class="mbody">
+           
+
+                </div>
+            
+            </div>
+    </div>
+</div>
+<script>
+    function edit(id) {
+        $.ajax({
+            type: "Get",
+            url: "/ServiceHandlers/editoption/" + id,
+
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                $('#xxx .bbody').html(response);
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    //$(function () {
+    //    $('#example1').DataTable()
+    //   })
+</script>

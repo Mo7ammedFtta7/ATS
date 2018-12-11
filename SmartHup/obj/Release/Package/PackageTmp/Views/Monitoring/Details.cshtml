@@ -1,0 +1,151 @@
+﻿@model SmartHup.Models.MONITORINGJOB
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>MONITORINGJOB Details - MONITORINGJOB Management</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Version)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Version)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.STATUS)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.STATUS)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Notes)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Notes)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.JOBID)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.JOBID)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.JOBNAME)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.JOBNAME)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.MONITOREDENTITYID)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.MONITOREDENTITYID)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.CHECKTYPE)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.CHECKTYPE)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.CHECKTYPEPARAMETER)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.CHECKTYPEPARAMETER)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.MONITORINGSTRING)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.MONITORINGSTRING)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.cronExpression)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.cronExpression)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.jobStatus)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.jobStatus)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+           module 
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Module.name )
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.EntityStatus.EntityStatusName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.NotificationGroup.notificationGroupName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.NotificationGroup.notificationGroupName)
+        </td>
+		</tr>
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("MONITORINGJOB","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+

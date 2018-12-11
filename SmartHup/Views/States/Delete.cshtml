@@ -1,0 +1,45 @@
+﻿@model SmartHup.Models.State
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+<h4>Delete State - State Managment</h4>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+     <table class="table table-striped" border="0">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.stateName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.stateName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.stateArName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.stateArName)
+           </td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+		@if( menu.ContainsKey(Tuple.Create("State","Delete")) ) {
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+			}
+            @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-primary" })
+        </div>
+    }
+</div>
+

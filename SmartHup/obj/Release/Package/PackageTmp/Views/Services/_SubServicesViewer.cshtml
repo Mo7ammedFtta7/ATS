@@ -1,0 +1,104 @@
+﻿@model IEnumerable<SmartHup.Models.Service>
+        @{ SmartHup.Models.SMARTEntities db = new SmartHup.Models.SMARTEntities();}
+<style>
+    .td1 {
+        width: 100px;
+        text-align: left;
+        font-weight: bold;
+        /*color: #367fa9;*/
+        background-color: #f9f9f9;
+    }
+</style>
+
+    <div class="box-body">
+                @for (var i = 0; i < Model.ToArray().Length; i++)
+                {
+                    var Subservice = Model.ToArray();
+                    var stat = Subservice[i].status;
+                    string status = db.EntityStatus.FirstOrDefault(u => u.systemId ==stat ).EntityStatusName;
+
+            <table class="table table-bordered">
+                <tr>
+                    <th>
+                        <center>
+
+                            <h4>Subservice</h4>
+                        </center>
+
+                    </th>
+                </tr>
+                    <tr>
+                        <td class="td1">
+                            @Html.DisplayNameFor(model => model.ServiceProvider)
+                        </td>
+
+                        <td class="td1">
+                            @Html.DisplayFor(model => Subservice[i].ServiceProvider.serviceProviderId)
+                        </td>
+
+                        <td >
+                            @Html.DisplayNameFor(model => model.serviceId)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => Subservice[i].serviceId)
+                        </td>
+
+                        <td class="td1">
+                            @Html.DisplayNameFor(model => model.serviceName)
+                        </td>
+
+                        <td class="td1">
+                            @Html.DisplayFor(model => Subservice[i].serviceName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayNameFor(model => model.serviceEName)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(model => Subservice[i].serviceEName)
+                        </td>
+                    </tr>
+                            <tr>
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ServiceLable)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => Subservice[i].ServiceLable)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayNameFor(model => model.ServiceELable)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => Subservice[i].ServiceELable)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayNameFor(model => model.serviceStatus)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayFor(model => Subservice[i].serviceStatus)
+                                </td>
+
+                                <td>
+                                    @Html.DisplayNameFor(model => model.status)
+                                </td>
+
+                                <td>
+                                    @*@Html.DisplayFor(model => Subservice[i].status)*@
+                                   @status
+                                </td>
+                            </tr>
+                            
+            </table>
+        
+                }
+
+            </div>
+
+                        

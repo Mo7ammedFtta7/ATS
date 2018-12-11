@@ -1,0 +1,96 @@
+﻿@model IEnumerable<SmartHup.Models.Service>
+    @{
+    ViewBag.Title = "Assign Services To Channel";
+
+    List<long> authorizedService = ViewBag.authServices;
+
+        int counter = 0;
+        }
+
+            <h2>Assign Service</h2>
+
+
+
+        @using (Html.BeginForm("AssignServices", "Channels", FormMethod.Post))
+        {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("ChannelId", (Decimal)ViewBag.channelId)
+            <div class="row">
+
+                    @foreach (var serhand in (List<SmartHup.Models.ServiceProvider>)ViewBag.serProv)
+                    {
+                        <div class="col-md-12">
+                            <div class="portlet light bordered">
+
+                                <div class="portlet-title">
+                                 
+
+                                    <div class="caption font-dark">
+                                        <i class="icon-settings font-dark"></i>
+                                        <span class="caption-subject bold uppercase"> @serhand.serviceProviderName</span>
+                                    </div>
+
+
+                              
+
+                            <div class="portlet-body">
+
+
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <td>
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>
+                                                        <center>
+                                                            @*@Model[module].channelName*@
+                                                            Services
+                                                        </center>
+
+                                                    </th>
+                                                </tr>
+                                                @for (var module = 0; module < Model.ToArray().Length; module++)
+                                                {
+
+
+                                                    var service = Model.ToArray();
+
+
+                                                    if (@service[module].serviceProviderId == serhand.systemId)
+                                                    {
+                                                        <tr>
+
+                                                            @Html.Hidden("list[" + counter + "].id", service[module].systemId)
+                                                            @Html.Hidden("list[" + counter + "].name", service[module].serviceName)
+
+                                                            <td><center>@service[module].serviceName</center></td>
+                                                            <td><center>@Html.CheckBox("list[" + counter + "].isChecked", authorizedService.Contains(service[module].systemId) ? true : false)</center></td>
+                                                        </tr>
+                                                    }
+
+
+
+                                                    counter++;
+                                                }
+
+                                            </table>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+                             
+
+                            </div>
+                          </div>
+
+                   
+
+
+
+            </div>
+                    }
+            </div>
+            <button type="submit" class="btn btn-primary">Assign</button>
+                <a href="@Url.Action("Index")" class="btn btn-default">Back To List</a>
+        }

@@ -1,0 +1,570 @@
+﻿@model SmartHup.Models.ServiceHandler
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>ServiceHandler Details - ServiceHandler Management</h4>
+    <hr />
+    <div class="box box-danger">
+        <div class="box-header">
+        </div>
+        <div class="box-body">
+            <table class="table table-striped">
+  
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHanlerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHanlerName)
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td>
+                 Service
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Service.serviceEName)
+                    </td>
+                </tr>
+
+        
+
+            </table>
+        </div>
+    </div>
+</div>
+<div class="box container-fluid">
+    <div class="box-header">
+        @*@Html.ActionLink("Create Service Fiels", "AddField", new {id=Model.systemId }, new { @class = "btn btn-success" })*@
+        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">
+            Create Service Field        </button>
+     <br />
+          @*@Html.ActionLink("addnew ", "EditField", "ServiceHandlers",
+new { id = Model.systemId }, new { @class = "modal-link btn btn-success" })*@
+       
+    </div>
+    <div class="box-body">
+        <table class="table table-striped table-bordered table-hover order-column  no-footer">
+            <thead>
+                <tr>
+
+                    <th>
+                        serviceFieldId
+                    </th>
+                    <th>
+                        serviceFieldName
+                    </th>
+                    <th>
+                        Service
+                    </th>
+                    <th>
+                        channelFieldName
+                    </th>
+                   
+
+                    <th>
+                        serviceHandlerFieldName
+                    </th>
+                    
+
+
+                    <th>Actions</th>
+                </tr>
+            <thead>
+            <tbody>
+                @foreach (var item in Model.ServiceField)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.serviceFieldId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.serviceFieldName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.serviceEName )
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.channelFieldName)
+                        </td>
+
+                        
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.serviceHandlerFieldName )
+                        </td>
+
+
+
+                        <td>
+
+                            <div class="btn-group">
+                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+
+
+                                    <li>
+                                        <a href="javascript:;"   data-toggle="modal" onclick="edit(@item.systemId);" data-target="#eedit">
+                                            <i class="fa fa-edit"><span class="DelTex">Edit</span></i>
+                                        </a>                                    </li>
+                                  
+                                    <li>
+                                        <a href="/ServiceHandlers/DeleteField/@item.systemId" onclick="return confirm('Are you sure?')" >
+                                        <i class="fa fa-trash"><span class="DelTex">Delete</span></i></a>
+                                    </li>
+
+                                    <li>
+                                        <a href="/ServiceHandlers/DataOptions/@item.systemId" >
+                                        <i class="fa fa-bars"><span class="DelTex">Data option</span></i>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                          
+                            @*<button type="button" onclick="edit(@item.systemId)">sssss</button>*@
+                            @*@Html.ActionLink("Edit", "EditField", new { id = item.systemId }, new { @class = "fa fa-edit" })*@
+                        </td>
+
+                            @*@Html.ActionLink("Details", "Details", new { id = item.systemId }, new { @class = "fa fa-eye" })
+
+                            @Html.ActionLink("Delete", "Delete", new { id = item.systemId }, new { @class = "fa fa-remove" })*@
+
+                        
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<p>
+    @if (menu.ContainsKey(Tuple.Create("ServiceHandler", "Edit")))
+            {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.systemId }, new { @class = "btn btn-primary" })
+    }
+    <a href="/ServiceHandlers" class = "btn btn-default">Back to List</a>
+
+</p>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <form action="/ServiceHandlers/AddField/@Model.systemId" method="post">
+                <input id="serviceHanlerId" name="serviceHanlerId" value="@Model.systemId" type="hidden" />
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Create ServiceField</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    @Html.AntiForgeryToken()
+                    <div class="box box-danger">
+
+                        <div class="box-body">
+                            <input type="hidden" id="serviceId" name="serviceId" value="@Model.Service.systemId" />
+                            <div class="row">
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>service Field Id</label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="serviceFieldId" name="serviceFieldId"  pattern="[^' ']+"   value="" type="text">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="serviceFieldId" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>serviceField Name </label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="serviceFieldName" name="serviceFieldName" value="" type="text" pattern="[^' ']+" >
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="serviceFieldName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>serviceField Status </label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="serviceFieldStatus" name="serviceFieldStatus" value="" type="text">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="serviceFieldStatus" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>serviceHandler FieldName </label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="serviceHandlerFieldName" name="serviceHandlerFieldName" value="" type="text" pattern="[^' ']+" >
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="serviceHandlerFieldName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label>regType  </label>
+                                        <div class="">
+                                            <select class="form-control" id="regTypeId" name="regTypeId">
+                                                <option value="">- Select regType - </option>
+                                                <option value="1">1</option>
+                                            </select>
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="regTypeId" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>regular Expression </label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="regularExpression" name="regularExpression" value="" type="text">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="regularExpression" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label>dateFormat </label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="dateFormat" name="dateFormat" value="" type="text">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="dateFormat" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group hide">
+                                        <label>additional Field Name </label>
+                                        <div class="">
+                                            <input class="form-control text-box single-line" data-val="true" data-val-number="The field additionalFieldName must be a number." id="additionalFieldName" name="additionalFieldName" value="" type="number">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="additionalFieldName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        <label>db Column Name </label>
+                                        <div class="">
+                                            <select disabled="" id="dbColumnName" name="dbColumnName" class="form-control">
+                                                <option value="">-- select --</option>
+
+                                                  @foreach (var item in ViewBag.names)
+                                                {
+                                                    <option value="@item">@item</option>
+                                                }
+                                            </select>
+                                            @*<input disabled="" class="form-control text-box single-line" id="dbColumnName" name="dbColumnName" value="" type="text">*@
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="dbColumnName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+
+                                    <div class="form-group">
+                                        <label>payment Info Order </label>
+                                        <div class="">
+                                            <input disabled="" class="form-control text-box single-line" data-val="true" data-val-number="The field paymentInfoOrder must be a number." id="paymentInfoOrder" name="paymentInfoOrder" value="" type="number">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="paymentInfoOrder" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hide">
+                                        <label>Note </label>
+                                        <div class="">
+                                            <input class="form-control text-box single-line" data-val="true" data-val-date="The field Note must be a date." id="Note" name="Note" value="" type="datetime">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="Note" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hide">
+                                        <label>payee </label>
+                                        <div class="">
+                                            <input class="form-control text-box single-line" data-val="true" data-val-number="The field payeeId must be a number." id="payeeId" name="payeeId" value="" type="text">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="payeeId" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group hide">
+                                        <label>idx </label>
+                                        <div class="">
+                                            <input class="form-control text-box single-line" data-val="true" data-val-number="The field idx must be a number." id="idx" name="idx" value="" type="number">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="idx" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>parent</label>
+                                        <div class="">
+                                            @Html.DropDownList("parentId", null, "no parent", htmlAttributes: new { @class = "form-control" })
+
+
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="parentId" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>channel FieldEName </label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="channelFieldEName" name="channelFieldEName" value="" type="text">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="channelFieldEName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>channel FieldName </label>
+                                        <div class="">
+                                            <input required="" class="form-control text-box single-line" id="channelFieldName" name="channelFieldName" value="" type="text">
+                                            <span class="field-validation-valid text-danger" data-valmsg-for="channelFieldName" data-valmsg-replace="true"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isRequired </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+                                                <input id="isRequired" name="isRequired" value="true" type="checkbox"><input name="isRequired" value="false" type="hidden">
+                                                <span required="" class="field-validation-valid text-danger" data-valmsg-for="isRequired" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isRequestField </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+                                                <input id="isRequestField" name="isRequestField" value="true" type="checkbox"><input name="isRequestField" value="false" type="hidden">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isSavable </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+
+                                                <input id="isSavablee" name="isSavable" value="false" onchange="isSavablefunc(this);" type="checkbox">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isResponseField </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+                                                <input id="isResponseField" name="isResponseField" value="true" type="checkbox"><input name="isResponseField" value="false" type="hidden">
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="isResponseField" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isPaymentInfo </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+                                                <input id="isPaymentInfoo" name="isPaymentInfo" onchange="isPaymentInfofunc(this);" type="checkbox">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isParent </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+
+                                                <input id="isParent" name="isParent" onchange="isParentfunc(this);" type="checkbox">
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isFavorable </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+                                                <input id="isFavorable" name="isFavorable" value="true" type="checkbox"><input name="isFavorable" value="false" type="hidden">
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="isFavorable" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>isCheckable </label>
+                                        <div class="col-sm-10">
+                                            <div class="checkbox">
+                                                <input id="isCheckable" name="isCheckable" value="true" type="checkbox"><input name="isCheckable" value="false" type="hidden">
+                                                <span class="field-validation-valid text-danger" data-valmsg-for="isCheckable" data-valmsg-replace="true"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                           
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="form-group">
+                        <div class="box-footer">
+                            <input value="Create" class="btn btn-default" type="submit">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade" id="eedit" tabindex="-1" role="dialog" aria-labelledby="eedit" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+<div class="mbody">
+    sxdcfgvhbjnkml,;.
+</div>
+        </div>
+    </div>
+</div>
+<script>
+
+    function isSavablefunc(checkboxElem) {
+        if (checkboxElem.checked)
+        {
+            $("#isSavablee").val(true);
+            $("#dbColumnName").prop("disabled", false);
+        }
+        else if (checkboxElem.checked == false) {
+            $("#isSavablee").val(false);
+
+            $("#dbColumnName").prop("disabled", true);
+        }
+
+    }
+    function isPaymentInfofunc(checkboxElem) {
+        if (checkboxElem.checked) {
+            $("#isPaymentInfoo").val(true);
+
+            $("#paymentInfoOrder").prop("disabled", false);
+        }
+        else if (checkboxElem.checked == false) {
+            $("#isPaymentInfoo").val(false);
+            $("#paymentInfoOrder").prop("disabled", true);
+        }
+
+    }
+
+    function precheck(checElem) {
+        if (checElem.checked)
+        {
+
+            $("#precheckServiceId").prop("disabled", false);
+        }
+        else if (checElem.checked == false) {
+            $("#precheckServiceId").prop("disabled", true);
+        }
+    }
+    function isParentfunc(checElem) {
+        if (checElem.checked) {
+            $("#parentId").prop("disabled", true);
+        }
+        else if (checElem.checked == false) {
+            $("#parentId").prop("disabled", false);
+        }
+    }
+    //$(".isParent").click(function () {
+    //    alert("asasa")
+    //    //if ($("#isParent").is(":checked")) {
+    //    //    $("#parentId").prop("disabled", true);
+    //    //}
+    //    //else if ($("#isParent").is(":not(:checked)")) {
+    //    //    $("#parentId").prop("disabled", false);
+    //    //}
+    //});
+
+    //$("#precheckRquired").click(function () {
+    //    if ($("#precheckRquired").is(":checked")) {
+    //        $("#precheckServiceId").prop("disabled", false);
+    //    }
+    //    else if ($("#precheckRquired_Value").is(":not(:checked)")) {
+    //        $("#precheckServiceId").prop("disabled", true);
+    //    }
+    //});
+
+    function edit(id) {
+        $.ajax({
+            type: "Get",
+            url: "/ServiceHandlers/EditField/"+id,
+       
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                $('#eedit .mbody').html(response);
+                //$('#dialog').dialog('open');
+            },
+            failure: function (response) {
+                alert(response.responseText);
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    function editform(id) {
+        $.ajax({
+            type: "Get",
+            url: "/MultiValueLists/Edit/" + id,
+
+            contentType: "application/json; charset=utf-8",
+            dataType: "html",
+            success: function (response) {
+                //$('#editmodal .mbody').html(response);
+                //$('#dialog').dialog('open');
+                alert(response.responseText);
+
+            },
+            failure: function (response) {
+            },
+            error: function (response) {
+                alert(response.responseText);
+            }
+        });
+    }
+    $('#isParent').change(function () {
+        if (this.checked) {
+            $("#parentId").prop("disabled", true);
+
+        } else {
+            $("#parentId").prop("disabled", false);
+
+        }
+    });
+ 
+</script>

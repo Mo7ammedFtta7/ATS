@@ -1,0 +1,252 @@
+﻿@model SmartHup.Models.Service
+
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string createdBy = TempData["display_createdBy"] != null ? TempData["display_createdBy"] as string : "";
+    string modifiedBy = TempData["display_modifiedBy"] != null ? TempData["display_modifiedBy"] as string : "";
+    string deletedBy = TempData["display_deletedBy"] != null ? TempData["display_deletedBy"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+    string Sstatus = TempData["display_Sstatus"] != null ? TempData["display_Sstatus"] as string : "";
+}
+
+<div>
+    <h4>Service Details - Service Management</h4>
+    <hr />
+    <table class="table table-striped">
+
+
+        <tr>
+            @*<td>
+                @Html.DisplayNameFor(model => model.mainServiceForPreServices)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.mainServiceForPreServices.serviceId)
+            </td>*@
+        </tr>
+
+        @*<tr>
+            <td>
+                @Html.DisplayNameFor(model => model.parentServices)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.parentServices.serviceId)
+            </td>
+        </tr>*@
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ServiceProvider)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.ServiceProvider.serviceProviderId)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.serviceId)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.serviceId)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.serviceName)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.serviceName)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.serviceEName)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.serviceEName)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ServiceLable)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.ServiceLable)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.ServiceELable)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.ServiceELable)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.serviceStatus)
+            </td><td>
+
+            @Sstatus
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.serviceDescription)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.serviceDescription)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.isParent)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.isParent)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.serviceConfigurationId)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.serviceConfigurationId)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.precheckRquired)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.precheckRquired)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.createdBy)
+            </td><td>
+
+
+            @createdBy
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.modifiedBy)
+            </td><td>
+
+
+            @modifiedBy
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.deletedBy)
+            </td><td>
+
+
+            @deletedBy
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.creationDate)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.creationDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.modificationDate)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.modificationDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.deletedDate)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.deletedDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.status)
+            </td><td>
+
+
+            @status
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.version)
+            </td><td>
+
+
+            @Html.DisplayFor(model => model.version)
+            </td>
+        </tr>
+        </table>
+
+
+
+    @if (Model.Service1.Count > 0)
+{
+    <div id="ServiceField">
+
+        @Html.Partial("_SubServicesViewer", Model.Service1)
+    </div>
+}
+</div>
+<p>
+    @if (menu.ContainsKey(Tuple.Create("Services", "Edit")))
+    {
+        @Html.ActionLink("Edit", "Edit", new { id = Model.systemId }, new { @class = "btn btn-primary" }) @:|
+}
+    @if (menu.ContainsKey(Tuple.Create("Services", "Index")))
+    {
+        <a href="@Url.Action("Index")" class="btn btn-default">Back To List</a>
+    }
+</p>

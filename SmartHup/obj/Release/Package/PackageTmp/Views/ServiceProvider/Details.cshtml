@@ -1,0 +1,146 @@
+﻿@model SmartHup.Models.ServiceProvider
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string createdBy = TempData["display_createdBy"] != null ? TempData["display_createdBy"] as string : "";
+    string modifiedBy = TempData["display_modifiedBy"] != null ? TempData["display_modifiedBy"] as string : "";
+    string deletedBy = TempData["display_deletedBy"] != null ? TempData["display_deletedBy"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+    string Sstatus = TempData["display_Sstatus"] != null ? TempData["display_Sstatus"] as string : "";
+
+}
+
+
+<h2>ServiceProvider Details - ServiceProvider Management</h2>
+
+        <hr />
+       <table class="table table-striped">
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.ServiceProviderType.Name)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.ServiceProviderType.Name)
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.serviceProviderId)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.serviceProviderId)
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.serviceProviderName)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.serviceProviderName)
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.serviceProviderEName)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.serviceProviderEName)
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.serviceProviderLabel)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.serviceProviderLabel)
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.serviceProviderELabel)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.serviceProviderELabel)
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.serviceProviderStatus)
+    </td><td>
+
+    
+        @Sstatus
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.createdBy)
+    </td><td>
+
+    
+        @createdBy
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.modifiedBy)
+    </td><td>
+
+    
+        @modifiedBy
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.deletedBy)
+    </td><td>
+
+    
+        @deletedBy
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.creationDate)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.modificationDate)
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.modificationDate)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.modificationDate)
+    </td></tr>
+
+    
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.status)
+    </td><td>
+
+    
+        @status
+    </td></tr>
+
+    <tr><td>
+        @Html.DisplayNameFor(model => model.version)
+    </td><td>
+
+    
+        @Html.DisplayFor(model => model.version)
+    </td></tr>
+
+    </table>
+
+    <p>
+        @if (menu.ContainsKey(Tuple.Create("ServiceProvider", "Edit")))
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.systemId }, new { @class = "btn btn-primary" })
+        }
+        @if (menu.ContainsKey(Tuple.Create("ServiceProvider", "Index")))
+        {
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        }
+    </p>
+

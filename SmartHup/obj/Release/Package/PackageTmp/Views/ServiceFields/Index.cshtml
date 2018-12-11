@@ -1,0 +1,276 @@
+﻿@model IEnumerable<SmartHup.Models.ServiceField>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+
+@{
+	ViewBag.Title = "Index";
+}
+
+<h2 class="page-title">ServiceField Managment</h2>
+
+ @if (menu.ContainsKey(Tuple.Create("ServiceField", "Create")))
+    {
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+</p>
+}
+<link href="~/Content/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    
+	<div class="box container-fluid">
+    <div class="box-header">
+        </div>
+        <div class="box-body">
+            <table  class="table table-bordered table-striped" id="example1" >
+			 <thead>
+			<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modificationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.version)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceFieldId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceFieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceFieldStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.channelFieldEName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.channelFieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceHandlerFieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.regularExpression)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dateFormat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isRequestField)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isSavable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isResponseField)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.additionalFieldName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isPaymentInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.paymentInfoOrder)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Note)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.payeeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idx)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serviceProviderId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isParent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deletedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.deletedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isFavorable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.dbColumnName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.isCheckable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntityStatus1.EntityStatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RangType.systemId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Service.serviceId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceHandler.serviceHanlerId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceField2.serviceFieldId)
+        </th>
+        <th></th>
+    </tr>
+	 <thead>
+       <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.creationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modificationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.version)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceFieldId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceFieldName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceFieldStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.channelFieldEName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.channelFieldName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceHandlerFieldName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.regularExpression)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateFormat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isRequestField)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isSavable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isResponseField)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.additionalFieldName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isPaymentInfo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.paymentInfoOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Note)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.payeeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idx)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serviceProviderId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isParent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deletedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.deletedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isFavorable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dbColumnName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isCheckable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntityStatus.EntityStatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntityStatus1.EntityStatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RangType.systemId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Service.serviceId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceHandler.serviceHanlerId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceField2.serviceFieldId)
+        </td>
+        <td>
+			@if( menu.ContainsKey(Tuple.Create("ServiceField","Edit")) ) {
+				@Html.ActionLink("Edit", "Edit", new { id=item.systemId },new{ @class = "fa fa-edit" }) 
+			}
+			@if( menu.ContainsKey(Tuple.Create("ServiceField","Details")) ){
+				@Html.ActionLink("Details", "Details", new { id=item.systemId }, new { @class = "fa fa-eye" }) 
+			}
+			@if( menu.ContainsKey(Tuple.Create("ServiceField","Delete")) ){
+				@Html.ActionLink("Delete", "Delete", new { id=item.systemId },new {@class="fa fa-remove"})
+			}
+        </td>
+    </tr>
+}
+</tbody>
+            <tfoot>
+			
+  </tfoot>
+</table>
+</div>
+</div>
+<button class="btn-bootstrap-dialog"> Bootstrap Dialog Click Me </button>
+<div class="modal fade" id="bootstrapDialog" tabindex="-1" role="dialog" aria-labelledby="myModal-label" aria-hidden="true" data-url='@Url.Action("BootstrapDialog", "Home")'></div>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+       })
+</script>

@@ -1,0 +1,226 @@
+﻿@model SmartHup.Models.Service
+
+@{
+    ViewBag.title = "Create";
+}
+
+@using (Html.BeginForm(new { @class = "form-horizontal" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="box-body">
+        <h4>Add Service - Service Management</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="form-group @ViewBag.isadmin">
+                    @Html.LabelFor(model => model.serviceId, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.EditorFor(model => model.serviceId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.serviceId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.serviceName, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.EditorFor(model => model.serviceName, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                        @Html.ValidationMessageFor(model => model.serviceName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.serviceEName, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.EditorFor(model => model.serviceEName, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                        @Html.ValidationMessageFor(model => model.serviceEName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ServiceLable, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.EditorFor(model => model.ServiceLable, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                        @Html.ValidationMessageFor(model => model.ServiceLable, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ServiceELable, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.EditorFor(model => model.ServiceELable, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                        @Html.ValidationMessageFor(model => model.ServiceELable, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <input type="hidden" name="serviceStatus" id="serviceStatus" value="5" />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.serviceDescription, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @*@Html.TextAreaFor(model => model.serviceDescription, new { htmlAttributes = new { @class = "form-control", @Required = "" } })*@
+                       
+                        @Html.TextAreaFor(model => model.serviceDescription, new { @class = "form-control", @Required = "" })
+
+                        
+                         @Html.ValidationMessageFor(model => model.serviceDescription, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.serviceDescriptionAr, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @*@Html.TextAreaFor(model => model.serviceDescription, new { htmlAttributes = new { @class = "form-control", @Required = "" } })*@
+
+                        @Html.TextAreaFor(model => model.serviceDescriptionAr, new { @class = "form-control", @Required = "" })
+
+
+                        @Html.ValidationMessageFor(model => model.serviceDescriptionAr, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group @ViewBag.isadmin">
+                    @Html.LabelFor(model => model.serviceConfigurationId, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.EditorFor(model => model.serviceConfigurationId, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.serviceConfigurationId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <input type="hidden" name="serviceProviderId" id="serviceProviderId" value="@ViewBag.spid" />
+
+
+                <div class="form-group  @ViewBag.isadmin">
+                    @Html.LabelFor(model => model.serviceScenarioId, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.DropDownList("serviceScenarioId", null, htmlAttributes: new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.serviceScenarioId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group @ViewBag.isadmin">
+                    @Html.LabelFor(model => model.precheckRquired, htmlAttributes: new { @class = " " })
+                    <div class=" form-group">
+                        <div class="checkbox">
+                            @*@Html.CheckBoxFor(model => model.precheckRquired.Value)*@
+                            <input id="precheckRquired" type="checkbox" name="precheckRquired" onchange="precheck(this);" />
+
+                            @Html.ValidationMessageFor(model => model.precheckRquired, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group @ViewBag.isadmin">
+                    @Html.LabelFor(model => model.precheckServiceId, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.DropDownList("precheckServiceId", null, "-- Select --", htmlAttributes: new { @class = "form-control", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.precheckServiceId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.isParent, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        <div class="form-group">
+                            <div class="checkbox">
+
+                                <input id="isParent" type="checkbox" checked="checked" name="isParent" class="text-danger isParent" value="true" />
+                                @*@Html.CheckBoxFor(model => model.isParent.Value,new { @checked="true",@class= "isParent" })*@
+                                @Html.ValidationMessageFor(model => model.isParent, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.parentId, htmlAttributes: new { @class = " " })
+                    <div class=" ">
+                        @Html.DropDownList("parentId", null, "-- Select --", htmlAttributes: new { @class = "form-control parentId", disabled = "disabled" })
+                        @Html.ValidationMessageFor(model => model.parentId, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+       
+
+
+
+
+
+        <div class="form-group">
+            <div class="box-footer">
+                <input type="submit" value="Create" class="btn btn-primary" />
+                <a href="@Url.Action("Index")" class="btn btn-default">Back To List</a>
+            </div>
+        </div>
+    </div>
+}
+@section scripts {
+<script>
+    $('.isParent').change(function () {
+        if (this.checked) {
+            $(".parentId").prop("disabled", true);
+        } else {
+            $(".parentId").prop("disabled", false);
+        }
+    });
+
+    $('#precheckRquired').change(function () {
+        if (this.checked) {
+            $("#precheckServiceId").prop("disabled", false);
+        } else {
+            $("#precheckServiceId").prop("disabled", true);
+        }
+    });
+
+    //function dosome(checkboxElem) {
+    //    if (checkboxElem.checked)
+    //    {
+    //        $("#parentId").prop("disabled", true);
+    //    }
+    //    else if (checkboxElem.checked==false) {
+    //        $("#parentId").prop("disabled", false);
+    //    }
+
+    //}
+
+    //function precheck(checElem) {
+    //    if (checElem.checked)
+    //    {
+    //        $("#precheckServiceId").prop("disabled", false);
+    //    }
+    //    else if (checElem.checked == false) {
+    //        $("#precheckServiceId").prop("disabled", true);
+    //    }
+    //}
+    //$(".isParent").change(function () {
+    //    alert("asasa")
+    //    //if ($("#isParent").is(":checked")) {
+    //    //    $("#parentId").prop("disabled", true);
+    //    //}
+    //    //else if ($("#isParent").is(":not(:checked)")) {
+    //    //    $("#parentId").prop("disabled", false);
+    //    //}
+    //});
+
+    //$("#precheckRquired").click(function () {
+    //    if ($("#precheckRquired").is(":checked")) {
+    //        $("#precheckServiceId").prop("disabled", false);
+    //    }
+    //    else if ($("#precheckRquired_Value").is(":not(:checked)")) {
+    //        $("#precheckServiceId").prop("disabled", true);
+    //    }
+    //});
+
+
+
+</script>
+
+
+    }

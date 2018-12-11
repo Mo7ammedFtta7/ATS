@@ -1,0 +1,69 @@
+﻿@model IEnumerable<SmartHup.Models.State>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+
+@{
+    
+}
+
+
+     @if (menu.ContainsKey(Tuple.Create("State", "Create")))
+        {
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+    </p>
+    }
+    <link href="~/Content/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+        
+    	<div class="box container-fluid">
+        <div class="box-header">
+            </div>
+            <div class="box-body">
+                <table  class="table table-bordered table-striped" id="example1" >
+    			 <thead>
+    			<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.stateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.stateArName)
+            </th>
+            <th></th>
+        </tr>
+    	 <thead>
+           <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.stateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.stateArName)
+            </td>
+            <td>
+    			@if( menu.ContainsKey(Tuple.Create("State","Edit")) ) {
+    				@Html.ActionLink("Edit", "Edit", new { id=item.systemId },new{ @class = "fa fa-edit" }) 
+    			}
+    			@if( menu.ContainsKey(Tuple.Create("State","Details")) ){
+    				@Html.ActionLink("Details", "Details", new { id=item.systemId }, new { @class = "fa fa-eye" }) 
+    			}
+    			@if( menu.ContainsKey(Tuple.Create("State","Delete")) ){
+    				@Html.ActionLink("Delete", "Delete", new { id=item.systemId },new {@class="fa fa-remove"})
+    			}
+            </td>
+        </tr>
+    }
+    </tbody>
+                <tfoot>
+    			
+      </tfoot>
+    </table>
+    </div>
+    </div>
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+           })
+    </script>

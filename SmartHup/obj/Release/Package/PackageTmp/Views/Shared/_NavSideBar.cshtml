@@ -1,0 +1,70 @@
+    @{ Dictionary<string, List<Tuple<string, string,string>>> links = ViewBag.authLinks;
+        if (links == null) { links = new Dictionary<string, List<Tuple<string, string,string>>>(); }
+    }
+
+<li class="heading">
+    <h3 class="uppercase">Menu</h3>
+</li>
+
+
+	@*@foreach ( var page in links) {
+        if(page.Value.Count != 0) { 
+
+
+
+
+
+
+
+	<li class="treeview">
+		<a href="javascript:void(0)">
+			<i class="fa fa-dashboard"></i> <span>@page.Key</span>
+			<span class="pull-right-container">
+				<i class="fa fa-angle-left pull-right"></i>
+			</span>
+		</a>
+            
+
+		<ul class="treeview-menu">
+			@foreach(var link in page.Value){
+			<li><a href="@Url.Action(link.Item2,link.Item1)">@link.Item3</a></li>
+			}
+		</ul>
+	
+    
+   *</li>
+        }
+    }*@
+
+@foreach (var page in links)
+{
+    if (page.Value.Count != 0)
+    {
+
+
+
+<li class="nav-item">
+    <a href="javascript:;" class="nav-link nav-toggle">
+        <i class="icon-diamond"></i>
+        <span class="title">@page.Key</span>
+        <span class="arrow"></span>
+    </a>
+
+
+    <ul class="sub-menu" style="display: none;">
+      @foreach (var link in page.Value)
+      {
+        <li class="nav-item  ">
+           
+            <a href="@Url.Action(link.Item2, link.Item1)"><span class="title">@link.Item3</span></a>
+        </li>
+
+
+
+      }
+    </ul>
+
+
+</li>
+    }
+}

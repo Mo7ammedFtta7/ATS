@@ -1,0 +1,135 @@
+﻿@model SmartHup.Models.Channel
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string createdBy = TempData["display_createdBy"] != null ? TempData["display_createdBy"] as string : "";
+    string modifiedBy = TempData["display_modifiedBy"] != null ? TempData["display_modifiedBy"] as string : "";
+    string deletedBy = TempData["display_deletedBy"] != null ? TempData["display_deletedBy"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+    string Sstatus = TempData["display_Sstatus"] != null ? TempData["display_Sstatus"] as string : "";
+}
+<div>
+    <h4>Channel Details - Channel Management</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.status)
+        </td>
+		<td>
+            @status
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.creationDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modificationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.modificationDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.deletedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.deletedDate)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.createdBy)
+        </td>
+		<td>
+            @createdBy
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+        </td>
+		<td>
+            @modifiedBy
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+                @Html.DisplayNameFor(model => model.deletedBy)
+            </td>
+            <td>
+                @deletedBy
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.version)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.version)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.channelId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.channelName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelStatus)
+        </td>
+		<td>
+            @Sstatus
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.publicKey)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.publicKey)
+        </td>
+		</tr>
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("Channels","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+

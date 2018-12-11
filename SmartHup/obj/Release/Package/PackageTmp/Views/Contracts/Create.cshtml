@@ -1,0 +1,166 @@
+﻿@model SmartHup.Models.Contracts
+@{
+    ViewBag.Title = "Contracts";
+}
+
+
+    <div class="box box-danger">
+        <div class="box-header">
+            <h4>Add Contracts - Contracts Managment</h4>
+        </div>
+            <div class="box-body ">
+               
+                <form id="conform" action="/Contracts/Create" method="post" >
+                    @Html.AntiForgeryToken()
+                    <div class="row">
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <Label> Contract Type</Label>
+
+                                @Html.DropDownList("ContractType", null, htmlAttributes: new { @class = "form-control select2" })
+                                @Html.ValidationMessageFor(model => model.ContractType, "", new { @class = "text-danger" })
+
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <Label>
+                                    Start Date
+                                </Label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    @Html.EditorFor(model => model.StartDate, new { htmlAttributes = new { @class = "form-control form-control-inline  date-picker ignore", @required="" } })
+                                    @Html.ValidationMessageFor(model => model.StartDate, "", new { @class = "text-danger" })
+
+                                </div>
+                            </div>
+
+
+
+
+                            <Label>
+                                Fees
+                            </Label>
+                            <div class="input-group">
+                                <span class="input-group-addon">$</span>
+                                <input class="form-control" name="Fees" type="number" required>
+                                <span class="input-group-addon">.00</span>
+                            </div>
+
+                            <div class="form-group hide">
+                                @Html.LabelFor(model => model.SlaEnabled, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-sm-8">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.SlaEnabled)
+                                        @Html.ValidationMessageFor(model => model.SlaEnabled, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            @Html.DropDownList("ContractStatus", null, htmlAttributes: new { @class = "form-control hide" })
+
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <Label>
+                                    Service Provider
+                                </Label>
+                                @Html.DropDownList("ServiceProvider", null, htmlAttributes: new { @class = "form-control  select2" })
+                                @Html.ValidationMessageFor(model => model.ServiceProvider, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <Label>
+                                    End Date
+                                </Label>
+                                <div class="input-group date">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-calendar"></i>
+                                    </div>
+                                    @{ Html.EnableClientValidation(false); }
+                                    @Html.EditorFor(model => model.EndDate, new { htmlAttributes = new { @class = "form-control form-control-inline  date-picker ignore" } })
+                                    @{ Html.EnableClientValidation(true); }
+                                    @Html.ValidationMessageFor(model => model.EndDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <Label>
+                                    Account
+                                </Label>
+                                @Html.DropDownList("Account", null, htmlAttributes: new { @class = "form-control  select2" })
+                                @Html.ValidationMessageFor(model => model.Account, "", new { @class = "text-danger" })
+                            </div>
+                            @Html.HiddenFor(model => model.creationDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.HiddenFor(model => model.modificationDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.HiddenFor(model => model.deletedDate, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.HiddenFor(model => model.version, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.HiddenFor(model => model.createdBy, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.HiddenFor(model => model.modifiedBy, new { htmlAttributes = new { @class = "form-control" } })
+
+                            @Html.HiddenFor(model => model.deletedBy, new { htmlAttributes = new { @class = "form-control" } })
+
+
+
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <Label>
+                                    Terms
+                                </Label>
+
+                                <textarea id="Terms" name="Terms" rows="8" cols="20" class="form-control" required></textarea>
+
+
+                                @Html.ValidationMessageFor(model => model.Terms, "", new { @class = "text-danger" })
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+
+                    <div class="form-group">
+                        <div class="box-footer">
+                            <input type="submit" value="Create" class="btn btn-default" />
+                            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                        </div>
+                    </div>
+
+                </form>
+        </div>
+        </div>
+          
+<script>
+    $("#conform").validate({
+        ignore: ".ignore"
+    })
+    //$.validator.addMethod("dateFormat",
+    //function(value, element) {
+    //    return value.match(/^dd?-dd?-dd$/);
+    //},
+    //"Please enter a date in the format dd-mm-yyyy.");
+    //$('#conform')
+    //        .validate({44444
+    //            rules : {
+    //                myDate : {
+    //                    dateFormat: true
+    //                }
+    //            }
+    //        });
+</script>

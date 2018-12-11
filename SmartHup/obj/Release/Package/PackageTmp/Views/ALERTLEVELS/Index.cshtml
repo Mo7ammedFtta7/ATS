@@ -1,0 +1,120 @@
+﻿@model IEnumerable<SmartHup.Models.ALERTLEVEL>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    { menu = new Dictionary<Tuple<string, string>, bool>(); }
+}
+
+@{
+
+}
+
+
+@if (menu.ContainsKey(Tuple.Create("Alertlevels", "Create")))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    </p>
+}
+
+<div class="box  box-danger">
+    <div class="box-header">
+
+    </div>
+    <div class="box-body">
+        <table class="table table-striped table-bordered table-hover order-column datatable">
+            <thead>
+                <tr>
+
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.Notes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MINTHRESHOLD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.regex)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MAXTHRESHOLD)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.ALERTLEVEL1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MONITORINGJOB.STATUS)
+                    </th>
+                    <th style="widows:20%;">
+                        actions
+                    </th>
+                </tr>
+            <thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Notes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MINTHRESHOLD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.regex)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MAXTHRESHOLD)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ALERTLEVEL1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EntityStatus.EntityStatusName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MONITORINGJOB.STATUS)
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+
+                                    @if (menu.ContainsKey(Tuple.Create("Alertlevels", "Edit")))
+                                    {
+                                        <li>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.systemId }, new { @class = "fa fa-edit" })
+                                        </li> }
+                                                                        @if (menu.ContainsKey(Tuple.Create("Alertlevels", "Details")))
+                                                                        {
+                                                                            <li>
+                                                                                @Html.ActionLink("Details", "Details", new { id = item.systemId }, new { @class = "fa fa-eye" })
+                                                                            </li>      }
+                                                                                @if (menu.ContainsKey(Tuple.Create("Alertlevels", "Delete")))
+                                                                                {
+                                                                                    <li>
+                                                                                        @Html.ActionLink("Delete", "Delete", new { id = item.systemId }, new { @class = "fa fa-remove" })
+                                                                                    </li>    }
+</ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+    })
+</script>

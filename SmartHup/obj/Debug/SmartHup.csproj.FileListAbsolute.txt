@@ -1,0 +1,159 @@
+E:\Smart Portal\publish\SmartHup\SmartHup\obj\Debug\SmartHup.Resources.Labels.resources
+E:\Smart Portal\publish\SmartHup\SmartHup\obj\Debug\SmartHup.Resources.Labels.ar-SA.resources
+E:\Smart Portal\publish\SmartHup\SmartHup\obj\Debug\SmartHup.csproj.GenerateResource.Cache
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\csc.exe
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\System.Collections.Immutable.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\System.Reflection.Metadata.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\vbc.exe
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\VBCSCompiler.exe
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\roslyn\VBCSCompiler.exe.config
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\SmartHup.dll.config
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\SmartHup.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\SmartHup.pdb
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\ar-SA\SmartHup.resources.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\Antlr3.Runtime.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\EntityFramework.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\EntityFramework.SqlServer.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\Microsoft.Web.Infrastructure.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\Newtonsoft.Json.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Helpers.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Mvc.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Optimization.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Razor.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.WebPages.Deployment.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.WebPages.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.WebPages.Razor.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\WebGrease.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\EntityFramework.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\EntityFramework.SqlServer.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Helpers.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Mvc.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Optimization.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.Razor.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.WebPages.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.WebPages.Deployment.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\System.Web.WebPages.Razor.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\Antlr3.Runtime.pdb
+E:\Smart Portal\publish\SmartHup\SmartHup\bin\Newtonsoft.Json.xml
+E:\Smart Portal\publish\SmartHup\SmartHup\obj\Debug\ar-SA\SmartHup.resources.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\obj\Debug\SmartHup.dll
+E:\Smart Portal\publish\SmartHup\SmartHup\obj\Debug\SmartHup.pdb
+E:\Smart Portal\publish\SmartHup\SmartHup\obj\Debug\SmartHup.csprojResolveAssemblyReference.cache
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\csc.exe
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\vbc.exe
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\VBCSCompiler.exe
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\SmartHup.dll.config
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\SmartHup.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\SmartHup.pdb
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\ar-SA\SmartHup.resources.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\Antlr3.Runtime.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\EntityFramework.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\EntityFramework.SqlServer.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\Newtonsoft.Json.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Net.Http.Formatting.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Helpers.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Http.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Http.WebHost.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Mvc.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Optimization.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Razor.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.WebPages.Deployment.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.WebPages.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.WebPages.Razor.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\WebGrease.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\EntityFramework.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\EntityFramework.SqlServer.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Net.Http.Formatting.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Http.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Http.WebHost.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Helpers.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Mvc.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Optimization.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.Razor.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.WebPages.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.WebPages.Deployment.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\System.Web.WebPages.Razor.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\Antlr3.Runtime.pdb
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\bin\Newtonsoft.Json.xml
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\obj\Debug\SmartHup.Resources.Labels.resources
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\obj\Debug\SmartHup.Resources.Labels.ar-SA.resources
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\obj\Debug\SmartHup.csproj.GenerateResource.Cache
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\obj\Debug\ar-SA\SmartHup.resources.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\obj\Debug\SmartHup.dll
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\obj\Debug\SmartHup.pdb
+C:\Users\mac5\documents\visual studio 2015\Projects\SmartHup\SmartHup\obj\Debug\SmartHup.csprojResolveAssemblyReference.cache
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\csc.exe
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\vbc.exe
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\VBCSCompiler.exe
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\ats.dll.config
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\ats.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\ats.pdb
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\ar-SA\ats.resources.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\Antlr3.Runtime.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\EntityFramework.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\EntityFramework.SqlServer.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\Newtonsoft.Json.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Net.Http.Formatting.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Helpers.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Http.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Http.WebHost.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Mvc.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Optimization.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Razor.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.WebPages.Deployment.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.WebPages.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.WebPages.Razor.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\WebGrease.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\EntityFramework.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\EntityFramework.SqlServer.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Net.Http.Formatting.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Http.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Http.WebHost.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Helpers.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Mvc.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Optimization.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.Razor.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.WebPages.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.WebPages.Deployment.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\System.Web.WebPages.Razor.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\Antlr3.Runtime.pdb
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\bin\Newtonsoft.Json.xml
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\obj\Debug\SmartHup.Resources.Labels.resources
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\obj\Debug\SmartHup.Resources.Labels.ar-SA.resources
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\obj\Debug\SmartHup.csproj.GenerateResource.Cache
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\obj\Debug\ar-SA\ats.resources.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\obj\Debug\ats.dll
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\obj\Debug\ats.pdb
+C:\Users\mac5\Documents\Visual Studio 2015\Projects\ATS\SmartHup\obj\Debug\SmartHup.csprojResolveAssemblyReference.cache

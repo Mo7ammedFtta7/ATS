@@ -1,0 +1,214 @@
+﻿@model IEnumerable<SmartHup.Models.Termianl_Log>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+
+ @if (menu.ContainsKey(Tuple.Create("Termianl_Log", "Create")))
+    {
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+</p>
+}
+<link href="~/Content/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    
+	<div class="box container-fluid">
+    <div class="box-header">
+        </div>
+        <div class="box-body">
+            <table  class="table table-bordered table-striped" id="example1" >
+			 <thead>
+			<tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TL_Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modificationDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.createdBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.version)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PACKNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EX_ter_ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ter_NAME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.STOP_TIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.START_TIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTIFIED)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VALID_CASE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOTIFICATION_PERIOD)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DOWN_TIME)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.serialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.messageCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.termianlStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.additionalF1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.additionalF2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.additionalF3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.REASON.reasonCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Terminal.terminalName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TerminalComponent.tcCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TerminalState.terminalStateCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TerminalStatusDictionary.tsdCode)
+        </th>
+        <th></th>
+    </tr>
+	 <thead>
+       <tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TL_Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.creationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modificationDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.createdBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.modifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.version)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PACKNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EX_ter_ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ter_NAME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.STOP_TIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.START_TIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTIFIED)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VALID_CASE)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NOTIFICATION_PERIOD)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DOWN_TIME)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.serialNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.messageCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.termianlStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.additionalF1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.additionalF2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.additionalF3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntityStatus.EntityStatusName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.REASON.reasonCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Terminal.terminalName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TerminalComponent.tcCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TerminalState.terminalStateCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TerminalStatusDictionary.tsdCode)
+        </td>
+        <td>
+			@if( menu.ContainsKey(Tuple.Create("Termianl_Log","Edit")) ) {
+				@Html.ActionLink("Edit", "Edit", new { id=item.systemId },new{ @class = "fa fa-edit" }) 
+			}
+			@if( menu.ContainsKey(Tuple.Create("Termianl_Log","Details")) ){
+				@Html.ActionLink("Details", "Details", new { id=item.systemId }, new { @class = "fa fa-eye" }) 
+			}
+			@if( menu.ContainsKey(Tuple.Create("Termianl_Log","Delete")) ){
+				@Html.ActionLink("Delete", "Delete", new { id=item.systemId },new {@class="fa fa-remove"})
+			}
+        </td>
+    </tr>
+}
+</tbody>
+            <tfoot>
+			
+  </tfoot>
+</table>
+</div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+       })
+</script>

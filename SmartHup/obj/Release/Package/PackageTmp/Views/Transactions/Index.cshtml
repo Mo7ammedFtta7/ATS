@@ -1,0 +1,100 @@
+﻿@model IEnumerable<SmartHup.Models.Transaction>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    { menu = new Dictionary<Tuple<string, string>, bool>(); }
+}
+
+@{
+
+}
+
+
+@if (menu.ContainsKey(Tuple.Create("Transaction", "Create")))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    </p>
+}
+<div class="box ">
+    <div class="box-header">
+    </div>
+    <div class="box-body">
+        <table class="table table-striped table-bordered table-hover order-column datatable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.transactionId)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.discriminator)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.responseMessage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.responseCode)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.exTranDateTime)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Service.serviceId)
+                    </th>  
+                    <th>
+                        @Html.DisplayNameFor(model => model.requestDateTime )
+                    </th>                
+                    <th>
+
+                    </th>
+                </tr>
+            <thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @item.transactionId
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.discriminator)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.responseMessage)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.responseCode)
+                        </td>
+              
+                        <td>
+                            @Html.DisplayFor(modelItem => item.exTranDateTime)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.serviceId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.requestDateTime )
+                        </td>                   
+                        <td>
+                            @if (menu.ContainsKey(Tuple.Create("Transaction", "Edit")))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.systemId }, new { @class = "fa fa-edit" })
+                            }
+                            @if (menu.ContainsKey(Tuple.Create("Transactions", "Details")))
+                            {
+                                @Html.ActionLink("Details", "Details", new { id = item.systemId }, new { @class = "fa fa-eye" })
+                            }
+                            @if (menu.ContainsKey(Tuple.Create("Transaction", "Delete")))
+                            {
+                                @Html.ActionLink("Delete", "Delete", new { id = item.systemId }, new { @class = "fa fa-remove" })
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+

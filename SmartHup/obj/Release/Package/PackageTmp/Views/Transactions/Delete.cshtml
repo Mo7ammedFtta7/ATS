@@ -1,0 +1,745 @@
+﻿@model SmartHup.Models.Transaction
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+<h4>Delete Transaction - Transaction Managment</h4>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+     <table class="table table-striped" border="0">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.status)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.status)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionLogStatus)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.transactionLogStatus)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.transactionId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.requestDateTime)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.requestDateTime)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseDateTime)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.responseDateTime)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.exTranDateTime)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.exTranDateTime)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.packNo)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.packNo)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionAmount)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.transactionAmount)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.applicationId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.applicationId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.discriminator)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.discriminator)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseCode)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.responseCode)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseMessage)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.responseMessage)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseStatus)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.responseStatus)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.PAN)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.PAN)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.MSISDN)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.MSISDN)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankAccount)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.bankAccount)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.expDate)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.expDate)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.mbr)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.mbr)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.tranCurrency)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.tranCurrency)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.UUID)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.UUID)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.userName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.userName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.entityId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.entityId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.entityType)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.entityType)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.toCard)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.toCard)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.fromAccountType)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.fromAccountType)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.fromAccount)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.fromAccount)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.toAccountType)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.toAccountType)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.toAccount)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.toAccount)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.accountCurrency)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.accountCurrency)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.paymentInfo)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.paymentInfo)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.originalTranUUID)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.originalTranUUID)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.phoneNo)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.phoneNo)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.email)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.email)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.registrationType)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.registrationType)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.authenticationType)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.authenticationType)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.customerRefrence)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.customerRefrence)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionState)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.transactionState)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionFees)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.transactionFees)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.customerBalance)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.customerBalance)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.reciptNo)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.reciptNo)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.note)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.note)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.payeeId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.payeeId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.exSystemResponseId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.exSystemResponseId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.channelId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.currencyId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.currencyId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceProviderId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.serviceProviderId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.customerCardId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.customerCardId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_8_Field_1)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_8_Field_1)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_8_Field_2)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_8_Field_2)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_8_Field_3)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_8_Field_3)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_16_Field_1)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_16_Field_1)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_16_Field_2)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_16_Field_2)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_16_Field_3)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_16_Field_3)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_32_Field_1)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_32_Field_1)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_32_Field_2)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_32_Field_2)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_32_Field_3)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_32_Field_3)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_128_Field_1)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_128_Field_1)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_128_Field_2)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_128_Field_2)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_256_Field_1)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_256_Field_1)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_256_Field_2)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_256_Field_2)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_512_Field_1)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.additional_512_Field_1)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceNum)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.serviceNum)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelNum)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.channelNum)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.paymentMethodNum)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.paymentMethodNum)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.workingKey)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.workingKey)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Currency.CurrencyName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.Currency.CurrencyName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.PaymentMethod.paymentMethodId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.PaymentMethod.paymentMethodId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.PaymentProvider.paymentProviderId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.PaymentProvider.paymentProviderId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Service.serviceId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.Service.serviceId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.SystemResponse.systemResponseId)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.SystemResponse.systemResponseId)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Terminal.terminalName)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.Terminal.terminalName)
+           </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Transaction2.transactionLogStatus)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.Transaction2.transactionLogStatus)
+           </td>
+        </tr>
+
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+		@if( menu.ContainsKey(Tuple.Create("Transaction","Delete")) ) {
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+			}
+            @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-primary" })
+        </div>
+    }
+</div>
+

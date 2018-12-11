@@ -1,0 +1,38 @@
+﻿@model SmartHup.Models.ALERTLEVEL
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+<h4>Delete ALERTLEVEL - ALERTLEVEL Managment</h4>
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    
+    <hr />
+     <table class="table table-striped" border="0">
+      
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.MINTHRESHOLD)
+            </td>
+			
+            <td>
+            @Html.DisplayFor(model => model.MINTHRESHOLD)
+           </td>
+        </tr>
+
+
+    </table>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+		@if( menu.ContainsKey(Tuple.Create("Alertlevels", "Delete")) ) {
+            <input type="submit" value="Delete" class="btn btn-danger" /> 
+			}
+            @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-primary" })
+        </div>
+    }
+</div>
+

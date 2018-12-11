@@ -1,0 +1,116 @@
+﻿@model SmartHup.Models.Termianl_Log
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>Termianl state Details - Termianl state Management</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>
+                Terminal Id
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Terminal.terminalId)
+            </td>
+        </tr>
+
+        <tr>
+
+            <td>
+                SerialNumber
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Terminal.serialNumber)
+            </td>
+        </tr>
+
+
+        <tr>
+            <td>
+                Component
+            </td>
+		<td>
+            @Html.DisplayFor(model => model.TerminalComponent.tcName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+                Terminal State
+                    </td>
+		<td>
+            @{
+                var color = Model.TerminalState.terminalStateName == "Normal" ? "success" : Model.TerminalState.terminalStateName == "Warning" ? "warning" : Model.TerminalState.terminalStateName == "Error" ? "danger" : "warning";
+            }
+            <span class="label label-@color">
+                @Html.DisplayFor(modelItem => Model.TerminalState.terminalStateName)
+            </span>        </td>
+		</tr>
+
+        <tr>
+            <td>
+                terminal Status
+                 </td>
+		<td>
+            @{
+                var colors = Model.TerminalStatusDictionary.tsdName == "Online" ? "success" : Model.TerminalStatusDictionary.tsdName == "Out of service" ? "warning" : Model.TerminalStatusDictionary.tsdName == "Disconnected" ? "danger" : "warning";
+            }
+            <span class="label label-@colors">
+                @Html.DisplayFor(modelItem => Model.TerminalStatusDictionary.tsdName)
+            </span>        </td>
+		</tr>
+
+        <tr>
+            <td>
+                Message Code       </td>
+		<td>
+            @Html.DisplayFor(model => model.messageCode )
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+                Reason Code
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.REASON_CODE )
+        </td>
+		</tr>
+        <tr>
+
+            <td>
+                @Html.DisplayNameFor(model => model.NOTIFIED)
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.NOTIFIED)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.NOTIFICATION_PERIOD)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.NOTIFICATION_PERIOD)
+        </td>
+		</tr>
+
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("Termianl_Log","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+

@@ -1,0 +1,131 @@
+﻿@model IEnumerable<SmartHup.Models.ALERT>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    { menu = new Dictionary<Tuple<string, string>, bool>(); }
+}
+
+@if (menu.ContainsKey(Tuple.Create("Alerts", "Create")))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    </p>
+}
+
+<div class="box  box-danger">
+    <div class="box-header">
+
+    </div>
+    <div class="box-body">
+        <table class="table table-striped table-bordered table-hover datatable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Role.Name)
+                    </th>
+                    <th>
+                     Service Provider
+                    </th>
+                    <th>
+              Alert message
+                    </th>
+                    <th>
+                       Alert medium 
+                    </th>
+                   
+                    <th>
+                    Alert level
+                    </th>
+                    <th>
+                    Entity Status
+                    </th>
+                 
+       
+                    <th style="width:20%" ></th>
+                </tr>
+            <thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Role.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ServiceProvider.serviceProviderId)
+                        </td>
+     
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ALERTMESSAGE)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ALERTMEDIUM)
+                        </td>
+                     
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ALERTLEVEL1.ALERTLEVEL1 )
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EntityStatus.EntityStatusName)
+                        </td>
+                  
+                        @*<td>
+                            @if (menu.ContainsKey(Tuple.Create("Alerts", "Edit")))
+                            {
+                                @Html.ActionLink("Edit", "Edit", new { id = item.systemId }, new { @class = "fa fa-edit" })
+                            }
+                            @if (menu.ContainsKey(Tuple.Create("Alerts", "Details")))
+                            {
+                                @Html.ActionLink("Details", "Details", new { id = item.systemId }, new { @class = "fa fa-eye" })
+                            }
+                            @if (menu.ContainsKey(Tuple.Create("Alerts", "Delete")))
+                            {
+                                @Html.ActionLink("Delete", "Delete", new { id = item.systemId }, new { @class = "fa fa-remove" })
+                            }
+                        </td>*@
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    @if (menu.ContainsKey(Tuple.Create("Alerts", "Create")))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Create", "Alerts")"><i class="fa fa-plus"><span class="DelTex">Create</span></i></a>
+                                        </li>
+                                    }
+
+                                    @if (menu.ContainsKey(Tuple.Create("Alerts", "Edit")))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Edit", "Alerts", new { id = item.systemId })"><i class="fa fa-edit"><span class="DelTex">Edit</span></i></a>
+                                        </li>
+                                    }
+
+                                    @if (menu.ContainsKey(Tuple.Create("Alerts", "Details")))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Details", "Alerts", new { id = item.systemId })"><i class="fa fa-eye"><span class="DelTex">Details</span></i></a>
+                                        </li>     }
+
+                                 
+                                  
+                                </ul>
+                            </div>
+                        </td>
+
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+    })
+</script>

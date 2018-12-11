@@ -1,0 +1,501 @@
+﻿
+    
+
+@model SmartHup.Models.ServiceField
+@{
+    ViewBag.Title = "ServiceField";
+}
+<div class="modal-body">
+    @using (Html.BeginForm(new { @class = "form-horizontal" }))
+    {
+
+        @Html.HiddenFor(model => model.systemId, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.status, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.serviceHanlerId, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.serviceProviderId, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.entityStatus_systemId, new { htmlAttributes = new { @class = "form-control" } })
+
+         @Html.HiddenFor(model => model.createdBy, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.ServiceHandler, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.serviceId, new { htmlAttributes = new { @class = "form-control" } })
+
+
+        @Html.HiddenFor(model => model.modifiedBy, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.deletedBy, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.creationDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.modificationDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.deletedDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.HiddenFor(model => model.version, new { htmlAttributes = new { @class = "form-control" } })
+
+        @Html.AntiForgeryToken()
+        <div class="box box-danger">
+            <div class="box-header ">
+                <h4>edit ServiceField For: </h4>
+              
+            </div>
+            <div class="box-body">
+
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="row">
+
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>service Field</label>
+                            <div class="">
+                                @Html.EditorFor(model => model.serviceFieldId, new { htmlAttributes = new { @class = "form-control", @Required = "", @pattern = "[^' ']+" } })
+                                @Html.ValidationMessageFor(model => model.serviceFieldId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>serviceField Name </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.serviceFieldName, new { htmlAttributes = new { @class = "form-control", @Required = "", @pattern = "[^' ']+" } })
+                                @Html.ValidationMessageFor(model => model.serviceFieldName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>serviceField Status </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.serviceFieldStatus, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.serviceFieldStatus, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            <label>serviceHandler FieldName </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.serviceHandlerFieldName, new { htmlAttributes = new { @class = "form-control", @Required = "", @pattern = "[^' ']+" } })
+                                @Html.ValidationMessageFor(model => model.serviceHandlerFieldName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label>regType  </label>
+                            <div class="">
+                                @Html.DropDownList("regTypeId", null, "- Select regType - ", htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.regTypeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>regular Expression </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.regularExpression, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.regularExpression, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-group">
+                            <label>dateFormat </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.dateFormat, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.dateFormat, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group hide">
+                            <label>additional Field Name </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.additionalFieldName, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.additionalFieldName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+
+                        <div class="form-group">
+                            <label>db Column Name </label>
+                            <div class="">
+                                <select disabled="" id="dbColumnName" name="dbColumnName" class="dbColumnName form-control">
+                                   
+                                    <option value="">-- select --</option>
+
+                                     @foreach (var item in ViewBag.names)
+                                     {
+                                        string selected = item == Model.dbColumnName ? "selected" : "";  
+                                        <option @selected value="@item">@item</option>
+                                    }
+                                </select>
+
+                                @*@Html.EditorFor(model => model.dbColumnName, new { htmlAttributes = new { @class = "dbColumnName form-control", @Disabled = "" } })*@
+                                @Html.ValidationMessageFor(model => model.dbColumnName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+
+
+
+                        <div class="form-group">
+                            <label>payment Info Order </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.paymentInfoOrder, new { htmlAttributes = new { @class = "paymentInfoOrder form-control", @Disabled = "" } })
+                                @Html.ValidationMessageFor(model => model.paymentInfoOrder, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group hide">
+                            <label>Note </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.Note, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Note, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group hide">
+                            <label>payee </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.payeeId, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.payeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group hide">
+                            <label>idx </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.idx, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.idx, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+
+
+
+                        <div class="form-group">
+                            <label>parent</label>
+                            <div class="">
+                                @Html.DropDownList("parentId", null, "no parent", htmlAttributes: new { @class = " parentId form-control", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(model => model.parentId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>channel FieldEName </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.channelFieldEName, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.channelFieldEName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>channel FieldName </label>
+                            <div class="">
+                                @Html.EditorFor(model => model.channelFieldName, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                                @Html.ValidationMessageFor(model => model.channelFieldName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="row">
+
+
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isRequired </label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isRequired")
+                                    @Html.ValidationMessageFor(model => model.isRequired, "", new { @class = "text-danger", @Required = "" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isRequestField </label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isRequestField")
+                                    @Html.ValidationMessageFor(model => model.isRequestField, "", new { @class = "text-danger", @Required = "" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isSavable </label>
+                            <div class="col-sm-2">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isSavable", new { @class = "isSavable text-danger" })
+                                    @*<input id="isSavablee" name="isSavable" type="checkbox"  onchange="isSavablefunc(this);" />*@
+                                    @Html.ValidationMessageFor(model => model.isSavable, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isResponseField </label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isResponseField")
+                                    @Html.ValidationMessageFor(model => model.isResponseField, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                  
+
+
+
+
+
+
+
+                </div>
+                <br />
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isPaymentInfo </label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isPaymentInfo", new { @class = "isPaymentInfo" })
+                                    @*<input id="isPaymentInfoo" name="isPaymentInfo" type="checkbox" onchange="isPaymentInfofunc(this);" />*@
+
+                                    @Html.ValidationMessageFor(model => model.isPaymentInfo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isParent </label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isParent",new { @class = "isParent" })
+                                    @*<input id="isParent" name="isParent" type="checkbox" checked onchange="isParentfunc(this);" />*@
+
+                                    @Html.ValidationMessageFor(model => model.isParent, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isFavorable </label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isFavorable")
+                                    @Html.ValidationMessageFor(model => model.isFavorable, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label>isCheckable </label>
+                            <div class="col-sm-10">
+                                <div class="checkbox">
+                                    @Html.CheckBox("isCheckable")
+                                    @Html.ValidationMessageFor(model => model.isCheckable, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+                <br />
+
+
+
+
+
+
+
+
+
+                <div class="form-group">
+                    <div class="box-footer">
+                        <input type="submit" value="Edit" class="btn btn-default" />
+                        @*@Html.ActionLink("Back to List", "ServiceFields", "ServiceHandlers", new { id = Model.serviceHanlerId }, new { @class = "btn btn-primary" })*@
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+
+                       </div>
+                </div>
+            </div>
+        </div>
+    }
+    </div>
+<script>
+    if ($(".isSavable").is(':checked')) {
+        //$("#isSavablee").val(true);
+        $(".dbColumnName").prop("disabled", false);
+    };
+
+    $('.isSavable').change(function () {
+        if (this.checked) {
+            $(".dbColumnName").prop("disabled", false);
+
+        } else {
+            $(".dbColumnName").prop("disabled", true);
+        }
+    });
+
+    if ($(".isPaymentInfo").is(':checked')) {
+        //$("#isSavablee").val(true);
+        $(".paymentInfoOrder").prop("disabled", false);
+    } else {
+        $(".paymentInfoOrder").prop("disabled", true);
+    }
+
+    $('.isPaymentInfo').change(function () {
+        if (this.checked) {
+            $(".paymentInfoOrder").prop("disabled", false);
+
+        } else {
+            $(".paymentInfoOrder").prop("disabled", true);
+        }
+    });
+
+    if ($(".isParent").is(':checked')) {
+        //$("#isSavablee").val(true);
+        $(".parentId").prop("disabled", true);
+    } else {
+        $(".parentId").prop("disabled", false);
+
+    }
+    $('.isParent').change(function () {
+        if (this.checked) {
+            $(".parentId").prop("disabled", true);
+
+        } else {
+            $(".parentId").prop("disabled", false);
+
+        }
+      
+    });
+
+   // window.onload = function () {
+        //if ($("#isSavable").is(':checked')) {
+        //    //$("#isSavablee").val(true);
+        //    $("#dbColumnName").prop("disabled", false);
+        //};
+
+        //if ($("#isPaymentInfo").is(':checked')) {
+        //    //$("#isSavablee").val(true);
+        //    $("#paymentInfoOrder").prop("disabled", false);
+        //} else {
+        //    $("#paymentInfoOrder").prop("disabled", true);
+
+        //}
+        //if ($("#isParent").is(':checked')) {
+        //    //$("#isSavablee").val(true);
+        //    $("#parentId").prop("disabled", true);
+        //} else {
+        //    $("#parentId").prop("disabled", false);
+
+        //}
+
+        //$('#isSavable').change(function () {
+        //    if (this.checked) {
+        //        $("#dbColumnName").prop("disabled", false);
+
+        //    } else {
+        //        $("#dbColumnName").prop("disabled", true);
+
+        //    }
+        //});
+
+        //$('#isPaymentInfo').change(function () {
+        //    if (this.checked) {
+        //        $("#paymentInfoOrder").prop("disabled", false);
+
+        //    } else {
+        //        $("#paymentInfoOrder").prop("disabled", true);
+
+        //    }
+        //});
+        //$('#isParent').change(function () {
+        //    if (this.checked) {
+        //        $("#parentId").prop("disabled", true);
+
+        //    } else {
+        //        $("#parentId").prop("disabled", false);
+
+        //    }
+        //});
+  //  }
+
+    //function isSavablefunc(checkboxElem) {
+    //    if (checkboxElem.checked) {
+    //        $("#isSavablee").val(true);
+    //        $("#dbColumnName").prop("disabled", false);
+    //    }
+    //    else if (checkboxElem.checked == false) {
+    //        $("#isSavablee").val(false);
+
+    //        $("#dbColumnName").prop("disabled", true);
+    //    }
+
+    //}
+    //function isPaymentInfofunc(checkboxElem) {
+    //    if (checkboxElem.checked) {
+    //        $("#isPaymentInfoo").val(true);
+
+    //        $("#paymentInfoOrder").prop("disabled", false);
+    //    }
+    //    else if (checkboxElem.checked == false) {
+    //        $("#isPaymentInfoo").val(false);
+    //        $("#paymentInfoOrder").prop("disabled", true);
+    //    }
+
+    //}
+
+    //function precheck(checElem) {
+    //    if (checElem.checked) {
+
+    //        $("#precheckServiceId").prop("disabled", false);
+    //    }
+    //    else if (checElem.checked == false) {
+    //        $("#precheckServiceId").prop("disabled", true);
+    //    }
+    //}
+    //function isParentfunc(checElem) {
+    //    if (checElem.checked) {
+    //        $("#parentId").prop("disabled", true);
+    //    }
+    //    else if (checElem.checked == false) {
+    //        $("#parentId").prop("disabled", false);
+    //    }
+    //}
+    //$(".isParent").click(function () {
+    //    alert("asasa")
+    //    //if ($("#isParent").is(":checked")) {
+    //    //    $("#parentId").prop("disabled", true);
+    //    //}
+    //    //else if ($("#isParent").is(":not(:checked)")) {
+    //    //    $("#parentId").prop("disabled", false);
+    //    //}
+    //});
+
+    //$("#precheckRquired").click(function () {
+    //    if ($("#precheckRquired").is(":checked")) {
+    //        $("#precheckServiceId").prop("disabled", false);
+    //    }
+    //    else if ($("#precheckRquired_Value").is(":not(:checked)")) {
+    //        $("#precheckServiceId").prop("disabled", true);
+    //    }
+    //});
+
+</script>

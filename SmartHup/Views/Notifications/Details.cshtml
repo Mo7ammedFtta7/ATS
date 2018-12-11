@@ -1,0 +1,164 @@
+﻿@model SmartHup.Models.MONITORINGLOG
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>MONITORINGLOG Details - MONITORINGLOG Management</h4>
+    <hr />
+    <table class="table table-striped">
+      
+        <tr>
+            <td>
+                <b> JOB Name:</b> 
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.MONITORINGJOB.JOBNAME )
+        </td>
+		</tr>
+        <tr>
+            <td>
+            </td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>
+                <b> Dedicated to:   </b>     </td>
+		<td>
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+                Service Provider
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ServiceProvider.serviceProviderName)
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+            Role 
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Role.Name )
+        </td>
+		</tr>
+
+
+        <tr>
+            <td>
+           User
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.User.UserName )
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+        </td>
+		<td>
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+                <b> Alter message:   </b>
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ALERT.ALERTMESSAGE )
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b> Notfied alert message:   </b>
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.MONITORINGRESULT )
+            </td>
+        </tr>
+
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td><b> Alter level details:   </b></td>
+            <td></td>
+        </tr>
+
+        <tr>
+            <td>
+                Notified result
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.result )
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                MINIMUM THRESHOLD    </td>
+		<td>
+            @Html.DisplayFor(model => model.ALERT.ALERTLEVEL1.MINTHRESHOLD )
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+                MAXTHRESHOLD        </td>
+		<td>
+            @Html.DisplayFor(model => model.ALERT.ALERTLEVEL1.MAXTHRESHOLD )
+        </td>
+		</tr>
+        <tr>
+            <td>
+                Regex
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.ALERT.ALERTLEVEL1.regex )
+            </td>
+        </tr>
+
+
+        <tr>
+            <td></td>
+            <td></td>
+        </tr>
+
+
+        <tr>
+            <td>
+    <b>Module</b>
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Module.name)
+        </td>
+		</tr>
+        <tr>
+            <td>
+<b>Entity URL:</b>        </td>
+		<td>
+            <a href="/@Model.Module.name/details/@Model.objectId" target="_blank">/@Model.Module.name/details/@Model.objectId</a>
+        </td>
+		</tr>
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("MONITORINGLOG","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+

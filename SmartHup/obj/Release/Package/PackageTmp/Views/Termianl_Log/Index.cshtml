@@ -1,0 +1,84 @@
+﻿@model IEnumerable<SmartHup.Models.Termianl_Log>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+
+@{
+   
+}
+
+
+     @if (menu.ContainsKey(Tuple.Create("Termianl_Log", "Create")))
+        {
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+    </p>
+    }
+
+    	<div class="box container-fluid">
+        <div class="box-header">
+            </div>
+            <div class="box-body">
+                <table  class="table table-bordered table-striped DataTable" id="example1" >
+    			 <thead>
+    	<tr>
+             <th>
+                Terminal Id
+             </th>
+            <th>
+                SerialNumber
+            </th>
+            <th>
+                Component
+            </th>
+            <th>
+                Terminal State
+             </th>
+            <th>
+                Terminal Status
+            </th>
+            <th></th>
+        </tr>
+    	 </thead>
+           <tbody>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terminal.terminalId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Terminal.serialNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TerminalComponent.tcName)
+            </td>
+            <td>
+                @{ 
+                    var color = item.TerminalState.terminalStateName == "Normal" ? "success" : item.TerminalState.terminalStateName == "Warning" ? "warning" : item.TerminalState.terminalStateName == "Error" ? "danger" : "warning";
+                }
+                <span class="label label-@color">
+                    @Html.DisplayFor(modelItem => item.TerminalState.terminalStateName)                                    
+                </span>
+            </td>
+            <td>
+                @{
+                    var colors = item.TerminalStatusDictionary.tsdName  == "Online" ? "success" : item.TerminalState.terminalStateName == "Out of service" ? "warning" : item.TerminalState.terminalStateName == "Disconnected" ? "danger" : "warning";
+                }
+                <span class="label label-@colors">
+                    @Html.DisplayFor(modelItem => item.TerminalStatusDictionary.tsdName)
+                </span>
+            </td>
+            
+            <td>			
+    				@Html.ActionLink("Details", "Details", new { id=item.systemId }, new { @class = "fa fa-eye" }) 
+            </td>
+        </tr>
+    }
+    </tbody>
+         
+    </table>
+    </div>
+    </div>
+    

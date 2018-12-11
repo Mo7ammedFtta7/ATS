@@ -1,0 +1,53 @@
+﻿@model List<SmartHup.Models.Channel>
+    @{
+    ViewBag.Title = "Assign Channels To Service";
+
+    List<long> authorizedChannel = ViewBag.authChannels;
+
+        int counter = 0;
+        }
+
+            <h2>Assign Channels</h2>
+
+        @using (Html.BeginForm("AssignChannels", "Services", FormMethod.Post))
+        {
+        @Html.AntiForgeryToken()
+
+        @Html.Hidden("ServiceId", (Decimal)ViewBag.serviceId)
+        <div class="box-body">
+            <table class="table table-bordered">
+                <tr>
+                    <td>
+                        <table class="table table-bordered">
+                            <tr>
+                                <th>
+                                    <center>
+                                        @*@Model[module].channelName*@
+                                        Channels
+                                    </center>
+
+                                </th>
+                            </tr>
+                            @for (var module = 0; module < Model.ToArray().Length; module++)
+                            {
+                           
+                            
+                            var channel = Model.ToArray();
+                            <tr>
+
+                                @Html.Hidden("list[" + counter + "].id", channel[module].systemId)
+                                @Html.Hidden("list[" + counter + "].name", channel[module].channelName)
+                                <td><center>@channel[module].channelName</center></td>
+                                <td><center>@Html.CheckBox("list[" + counter + "].isChecked" ,authorizedChannel.Contains(channel[module].systemId) ? true : false)</center></td>
+                            </tr>
+                            counter++;
+                            }
+                            
+                        </table>
+                    </td>
+                </tr>
+            </table>
+            <button type="submit" class="btn btn-primary">Assign</button>
+            <a href='@Url.Action("Index")' class="btn btn-default">Back To List</a>
+        </div>
+        }

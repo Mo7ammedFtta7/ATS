@@ -1,0 +1,37 @@
+﻿@model Dictionary<string, string>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div>
+    <h4>View Data</h4>
+    <hr />
+    <table class="table table-striped">
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td>
+                    @data.Key
+                </td>
+                <td>
+                    @data.Value
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+@*@Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })*@
+
+
+<script>
+    $(function () {
+        $('#example1').DataTable()
+    })
+</script>
+
+
+

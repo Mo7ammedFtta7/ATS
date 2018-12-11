@@ -1,0 +1,77 @@
+﻿@model List<SmartHup.Models.PaymentProvider>
+@{
+    ViewBag.Title = "AssignPaymentMethod";
+    List<long> PayMethods = ViewBag.authPayMethod;
+    int counter = 0;
+}
+
+<h2>Assign Payment Method</h2>
+
+@using (Html.BeginForm("AssignPaymentMethod", "Services", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Hidden("serviceId", (Decimal)ViewBag.serviceId)
+    <div class="box-body">
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <table class="table table-bordered">
+
+                        @for (var module = 0; module < Model.ToArray().Length / 2; module++)
+                {
+                            <tr>
+                                <th>
+                                    <center>
+
+                                        @Model[module].paymentProviderName
+                                    </center>
+
+                                </th>
+                            </tr>
+                            for (var i = 0; i < Model[module].PaymentMethod.Count; i++)
+                            {
+                                var PayMeth = Model[module].PaymentMethod.ToArray();
+                                <tr>
+
+                                    @Html.Hidden("list[" + counter + "].id", PayMeth[i].systemId)
+                                    @Html.Hidden("list[" + counter + "].name", PayMeth[i].paymentMethodName)
+                                    <td><center>@PayMeth[i].paymentMethodName</center></td>
+                                    <td><center>@Html.CheckBox("list[" + counter + "].isChecked", PayMethods.Contains(PayMeth[i].systemId) ? true : false)</center></td>
+                                </tr>
+                                counter++;
+                            }
+                        }
+                    </table>
+                    </td><td>
+                    <table class="table table-bordered">
+                        @for (var module = Model.ToArray().Length / 2; module < Model.ToArray().Length; module++)
+                {
+                            <tr>
+                                <th>
+                                    <center>
+
+                                        @Model[module].paymentProviderName
+                                    </center>
+
+                                </th>
+                            </tr>
+                            for (var i = 0; i < Model[module].PaymentMethod.Count; i++)
+                            {
+                                var PayMeth = Model[module].PaymentMethod.ToArray();
+                                <tr>
+                                    @Html.Hidden("list[" + counter + "].id", PayMeth[i].systemId)
+                                    @Html.Hidden("list[" + counter + "].name", PayMeth[i].paymentMethodName)
+                                    <td><center>@PayMeth[i].paymentMethodName</center></td>
+                                    <td><center>@Html.CheckBox("list[" + counter + "].isChecked", PayMethods.Contains(PayMeth[i].systemId) ? true : false)</center></td>
+                                </tr>
+                            }
+                        }
+
+                    </table>
+                </td></tr></table>
+                    <button type="submit" class="btn btn-primary">Assign</button>
+        <a href="@Url.Action("Index")" class="btn btn-default">Back To List</a>
+</div>
+}
+  

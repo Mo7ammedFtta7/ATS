@@ -1,0 +1,86 @@
+﻿@model SmartHup.Models.Bank
+@{
+    ViewBag.Title = "Bank";
+}
+
+@using (Html.BeginForm(new { @class = "form-horizontal" })) 
+{
+    @Html.AntiForgeryToken()
+    
+     <div class="box-body">
+       <h4>Add Bank - Bank Managment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.systemId, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.systemId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.systemId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bankFullName, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.bankFullName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bankFullName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bankShortName, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.bankShortName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bankShortName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bankCode, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.bankCode, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bankCode, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bankPrefix, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.bankPrefix, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bankPrefix, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bankContact, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.bankContact, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bankContact, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.bankId, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.bankId, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.bankId, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idx, htmlAttributes: new { @class = "control-label col-md-2" })
+           <div class="col-sm-10">
+                @Html.EditorFor(model => model.idx, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.idx, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="box-footer">
+                <input type="submit" value="Create" class="btn btn-default" />
+				@Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-primary" })
+            </div>
+        </div>
+    </div>
+}
+

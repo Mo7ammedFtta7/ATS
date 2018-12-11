@@ -1,0 +1,127 @@
+﻿@model List<SmartHup.Models.Module>
+@{
+    ViewBag.Title = "AssignPagesToRole";
+    List<long> authorizedAction = ViewBag.authAction;
+    int counter = 0;
+}
+
+<h2>Assign Pages - Role Management</h2>
+
+@using (Html.BeginForm("Assign", "Roles", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.Hidden("roleId", (Decimal)ViewBag.roleId)
+    <button type="button" onclick="checkAllBoxes();" class="btn btn-primary">Check All</button>
+    <button type="button" onclick="unCheckAllBoxes();" class="btn btn-danger">Uncheck All</button>
+    <div class="box-body">
+
+        <table class="table table-bordered">
+            <tr>
+                <td>
+                    <table class="table table-bordered">
+
+                        @for (var module = 0; module < Model.ToArray().Length / 2; module++)
+                    {
+                        <tr>
+                            <th>
+                                <center>
+
+                                    @Model[module].name
+                                </center>
+
+                            </th>
+                        </tr>
+                    for (var i = 0; i < Model[module].Action.Count; i++)
+                    {
+                        var actions = Model[module].Action.ToArray();
+                        <tr>
+
+                            @Html.Hidden("list[" + counter + "].id", actions[i].systemId)
+                            @Html.Hidden("list[" + counter + "].name", actions[i].name)
+                            <td><center>@actions[i].name</center></td>
+                            <td><center>@Html.CheckBox("list[" + counter + "].isChecked", authorizedAction.Contains(actions[i].systemId) ? true : false)</center></td>
+                        </tr>
+                    counter++;
+                }
+            }
+                    </table>
+                </td>
+                <td>
+                    <table class="table table-bordered">
+                        @for (var module = Model.ToArray().Length / 2; module < Model.ToArray().Length; module++)
+                    {
+                        <tr>
+                            <th>
+                                <center>
+
+                                    @Model[module].name
+                                </center>
+
+                            </th>
+                        </tr>
+                    for (var i = 0; i < Model[module].Action.Count; i++)
+                    {
+                        var actions = Model[module].Action.ToArray();
+                        <tr>
+
+                            @Html.Hidden("list[" + counter + "].id", actions[i].systemId)
+                            @Html.Hidden("list[" + counter + "].name", actions[i].name)
+                            <td><center>@actions[i].name</center></td>
+                            <td><center>@Html.CheckBox("list[" + counter + "].isChecked", authorizedAction.Contains(actions[i].systemId) ? true : false)</center></td>
+                        </tr>
+                    counter++;
+                }
+            }
+
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <button type="submit" class="btn btn-primary pull-left">Assign</button>
+    
+        <a href="@Url.Action("Index")" class="btn btn-default">Back to List</a>
+
+
+
+    </div>
+}
+
+
+
+
+
+@*<dl class="dl-horizontal">
+        <dt>Role</dt>
+        <dd>@Html.DropDownList("roleId", ViewBag.roleId as SelectList, new { @class = "form-control" })</dd>
+        <dt>Pages</dt>
+        <dd>
+            <select multiple="multiple" name="pages">
+                @foreach (var module in Model)
+                {
+                    @:
+                    <optgroup label="@module.name"></optgroup>
+                    foreach (var action in module.Action)
+                    {
+                        @:
+                        <option value="@action.systemId">@action.name</option>
+                    }
+                }
+            </select>
+        </dd>
+    </dl>*@
+
+<script>
+    function checkAllBoxes() {
+        var checkBoxes = $("input[ type = 'checkbox']");
+        for (var i = 0; i < checkBoxes.length; i++) {
+            checkBoxes[i].checked = true;
+        }
+    }
+    function unCheckAllBoxes() {
+        var checkBoxes = $("input[ type = 'checkbox']");
+        for (var i = 0; i < checkBoxes.length; i++) {
+            checkBoxes[i].checked = false;
+        }
+    }
+</script>

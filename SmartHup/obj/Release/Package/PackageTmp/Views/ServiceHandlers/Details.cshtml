@@ -1,0 +1,284 @@
+﻿@model SmartHup.Models.ServiceHandler
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>ServiceHandler Details - ServiceHandler Management</h4>
+    <hr />
+    <div class="box box-danger">
+        <div class="box-header">
+            Service Handler
+        </div>
+        <div class="box-body">
+            <table class="table table-striped">
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.creationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.creationDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.modificationDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.modificationDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.createdBy)
+                    </td>
+                    <td>
+                        @user_info.getusername(Model.createdBy)
+
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.modifiedBy)
+
+
+                    </td>
+                    <td>
+                        @user_info.getusername(Model.modifiedBy.Value)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.version)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.version)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHanlerId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHanlerId)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHanlerName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHanlerName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHanlerStatus)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHanlerStatus)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHostUri)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHostUri)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHostIntegrationType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHostIntegrationType)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHostCharSet)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHostCharSet)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.isSslExist)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.isSslExist)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHostPublicKey)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHostPublicKey)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHostEncryptionMethod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHostEncryptionMethod)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHostAcceptEncoding)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHostAcceptEncoding)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.serviceHostContentType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.serviceHostContentType)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.deletedDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.deletedDate)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.deletedBy)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.deletedBy)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.entityStatus_systemId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.entityStatus_systemId)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.EntityStatus.EntityStatusName)
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        @Html.DisplayNameFor(model => model.Service.serviceId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(model => model.Service.serviceId)
+                    </td>
+                </tr>
+
+            </table>
+            </div>
+        </div>
+        </div>
+        <div class="box container-fluid">
+    <div class="box-header">
+        @Html.ActionLink("Create Service Fiels", "AddField", new { id = Model.systemId }, new { @class = "btn btn-success" })
+
+    </div>
+    <div class="box-body">
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+
+                    <th>
+                        serviceFieldId
+                    </th>
+                    <th>
+                        serviceFieldName
+                    </th>
+                    <th>
+                        Service
+                    </th>
+                    <th>
+                        channelFieldName
+                    </th>
+           \
+                   
+
+
+
+                </tr>
+            <thead>
+            <tbody>
+                @foreach (var item in Model.ServiceField)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.serviceFieldId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.serviceFieldName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Service.serviceId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.channelFieldName)
+                        </td>
+
+                       
+
+
+
+                    </tr>
+                }
+            </tbody>
+          s
+        </table>
+    </div>
+</div>
+        <p>
+            @if (menu.ContainsKey(Tuple.Create("ServiceHandler", "Edit")))
+            {
+                @Html.ActionLink("Edit", "Edit", new { id = Model.systemId }, new { @class = "btn btn-primary" })
+            }
+            @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-default" })
+        </p>
+

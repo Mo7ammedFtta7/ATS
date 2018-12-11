@@ -1,0 +1,76 @@
+﻿    @model IEnumerable<SmartHup.Models.AuditingLog>
+
+    @{
+        Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+        if (menu == null)
+        {
+            menu = new Dictionary<Tuple<string, string>, bool>();
+        }
+        ViewBag.Title = "Index";
+    }
+
+    <h2 class="page-title" class="page-title">Auditing Log</h2>
+
+
+
+    <div class="box ">
+        <div class="box-header">
+        </div>
+        <div class="box-body">
+            <table class="table table-striped table-bordered table-hover order-column datatable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.actionId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.moduleId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.userId)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.dateCreated)
+                        </th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>
+                                @item.Action.name
+                            </td>
+                            <td>
+                                @item.Module.name
+                            </td>
+                            <td>
+                                @item.User.UserName
+                            </td>
+
+                            <td>
+                                @item.dateCreated.ToString()
+                            </td>
+
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                        Actions
+                                        <i class="fa fa-angle-down"></i>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        @if (menu.ContainsKey(Tuple.Create("AuditingLog", "Details")))
+                                        {
+                                        <li>
+                                            @Html.ActionLink("Details", "Details", new { id = item.systemId }, new { @class = "fa fa-eye" })
+                                        </li>  }
+                                        </ul></div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+                <tfoot></tfoot>
+            </table>
+        </div>
+    </div>

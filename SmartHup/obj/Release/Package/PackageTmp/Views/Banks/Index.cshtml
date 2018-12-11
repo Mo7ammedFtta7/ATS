@@ -1,0 +1,99 @@
+﻿@model IEnumerable<SmartHup.Models.Bank>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+
+@{
+    
+}
+
+
+     @if (menu.ContainsKey(Tuple.Create("Bank", "Create")))
+        {
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+    </p>
+    }
+    <link href="~/Content/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+        
+    	<div class="box container-fluid">
+        <div class="box-header">
+            </div>
+            <div class="box-body">
+                <table  class="table table-bordered table-striped" id="example1" >
+    			 <thead>
+    			<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.bankFullName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bankShortName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bankCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bankPrefix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bankContact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.bankId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idx)
+            </th>
+            <th></th>
+        </tr>
+    	 <thead>
+           <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.bankFullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bankShortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bankCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bankPrefix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bankContact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.bankId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.idx)
+            </td>
+            <td>
+    			@if( menu.ContainsKey(Tuple.Create("Bank","Edit")) ) {
+    				@Html.ActionLink("Edit", "Edit", new { id=item.systemId },new{ @class = "fa fa-edit" }) 
+    			}
+    			@if( menu.ContainsKey(Tuple.Create("Bank","Details")) ){
+    				@Html.ActionLink("Details", "Details", new { id=item.systemId }, new { @class = "fa fa-eye" }) 
+    			}
+    			@if( menu.ContainsKey(Tuple.Create("Bank","Delete")) ){
+    				@Html.ActionLink("Delete", "Delete", new { id=item.systemId },new {@class="fa fa-remove"})
+    			}
+            </td>
+        </tr>
+    }
+    </tbody>
+                <tfoot>
+    			
+      </tfoot>
+    </table>
+    </div>
+    </div>
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+           })
+    </script>

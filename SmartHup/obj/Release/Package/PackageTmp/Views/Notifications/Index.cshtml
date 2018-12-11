@@ -1,0 +1,70 @@
+﻿@model IEnumerable<SmartHup.Models.MONITORINGLOG>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    { menu = new Dictionary<Tuple<string, string>, bool>(); }
+}
+
+<div class="box ">
+    <div class="box-header">
+    </div>
+    <div class="box-body">
+        <table class="table table-striped table-bordered table-hover order-column datatable">
+            <thead>
+                <tr>
+
+          
+                    <th>
+                        @Html.DisplayNameFor(model => model.MONITORINGTIME)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.isRead)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MONITORINGRESULT)
+                    </th>
+
+                    <th>
+                        @Html.DisplayNameFor(model => model.result)
+                    </th>
+
+                    <th></th>
+                </tr>
+            <thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MONITORINGTIME)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.isRead)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MONITORINGRESULT)
+                        </td>
+
+                        <td>
+                            @Html.DisplayFor(modelItem => item.result)
+                        </td>
+
+                        <td>
+
+                            @if (menu.ContainsKey(Tuple.Create("MONITORINGLOG", "Details")))
+                            {
+                                @Html.ActionLink("Details", "Details", new { id = item.systemId }, new { @class = "fa fa-eye" })
+                            }
+
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,123 @@
+﻿@model IEnumerable<SmartHup.Models.MultiValueList>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    {menu=new Dictionary<Tuple<string, string>, bool>(); }
+ }
+
+@{
+    
+}
+
+
+     @if (menu.ContainsKey(Tuple.Create("MultiValueList", "Create")))
+        {
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class= "btn btn-success"})
+    </p>
+    }
+    <link href="~/Content/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+        
+    	<div class="box container-fluid">
+        <div class="box-header">
+            </div>
+            <div class="box-body">
+                <table  class="table table-bordered table-striped" id="example1" >
+    			 <thead>
+    			<tr>
+            <th>
+                @Html.DisplayNameFor(model => model.status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.creationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modificationDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.modifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.version)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.multivalueId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.multivalueName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.multivalueEName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PaymentField.paymentFieldId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceField.serviceFieldId)
+            </th>
+            <th></th>
+        </tr>
+    	 <thead>
+           <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.creationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modificationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.modifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.createdBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.version)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.multivalueId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.multivalueName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.multivalueEName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PaymentField.paymentFieldId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceField.serviceFieldId)
+            </td>
+            <td>
+    			@if( menu.ContainsKey(Tuple.Create("MultiValueList","Edit")) ) {
+    				@Html.ActionLink("Edit", "Edit", new { id=item.systemId },new{ @class = "fa fa-edit" }) 
+    			}
+    			@if( menu.ContainsKey(Tuple.Create("MultiValueList","Details")) ){
+    				@Html.ActionLink("Details", "Details", new { id=item.systemId }, new { @class = "fa fa-eye" }) 
+    			}
+    			@if( menu.ContainsKey(Tuple.Create("MultiValueList","Delete")) ){
+    				@Html.ActionLink("Delete", "Delete", new { id=item.systemId },new {@class="fa fa-remove"})
+    			}
+            </td>
+        </tr>
+    }
+    </tbody>
+                <tfoot>
+    			
+      </tfoot>
+    </table>
+    </div>
+    </div>
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+           })
+    </script>

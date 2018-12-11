@@ -1,0 +1,753 @@
+﻿@model SmartHup.Models.Transaction
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>Transaction Details - Transaction Management</h4>
+    <hr />
+    <table class="table table-striped">
+
+        @if(Model.status!=null )
+        { 
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.status)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.status)
+        </td>
+		</tr>
+        }
+@if (Model.transactionLogStatus != null)
+{
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionLogStatus)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.transactionLogStatus)
+        </td>
+		</tr>
+}
+@if (Model.transactionId != null)
+{
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.transactionId)
+        </td>
+		</tr>}
+        @if (Model.requestDateTime != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.requestDateTime)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.requestDateTime)
+        </td>
+		</tr>}
+        @if (Model.responseDateTime != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseDateTime)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.responseDateTime)
+        </td>
+		</tr>}
+        @if (Model.exTranDateTime != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.exTranDateTime)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.exTranDateTime)
+        </td>
+		</tr>}
+        @if (Model.packNo != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.packNo)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.packNo)
+        </td>
+		</tr>}
+        @if (Model.transactionAmount != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionAmount)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.transactionAmount)
+        </td>
+		</tr>}
+        @if (Model.applicationId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.applicationId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.applicationId)
+        </td>
+		</tr>}
+        @if (Model.discriminator != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.discriminator)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.discriminator)
+        </td>
+		</tr>}
+        @if (Model.responseCode != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseCode)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.responseCode)
+        </td>
+		</tr>}
+        @if (Model.responseMessage != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseMessage)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.responseMessage)
+        </td>
+		</tr>}
+        @if (Model.responseStatus != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.responseStatus)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.responseStatus)
+        </td>
+		</tr>}
+        @if (Model.PAN != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.PAN)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.PAN)
+        </td>
+		</tr>}
+        @if (Model.MSISDN != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.MSISDN)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.MSISDN)
+        </td>
+		</tr>}
+        @if (Model.bankAccount != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.bankAccount)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.bankAccount)
+        </td>
+		</tr>}
+        @if (Model.expDate != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.expDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.expDate)
+        </td>
+		</tr>}
+        @if (Model.mbr != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.mbr)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.mbr)
+        </td>
+		</tr>}
+        @if (Model.tranCurrency != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.tranCurrency)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.tranCurrency)
+        </td>
+		</tr>}
+        @if (Model.UUID != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.UUID)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.UUID)
+        </td>
+		</tr>}
+        @if (Model.userName != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.userName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.userName)
+        </td>
+		</tr>}
+        @if (Model.entityId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.entityId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.entityId)
+        </td>
+		</tr>}
+        @if (Model.entityType != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.entityType)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.entityType)
+        </td>
+		</tr>}
+        @if (Model.toCard != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.toCard)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.toCard)
+        </td>
+		</tr>}
+        @if (Model.fromAccountType != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.fromAccountType)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.fromAccountType)
+        </td>
+		</tr>}
+        @if (Model.fromAccount != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.fromAccount)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.fromAccount)
+        </td>
+		</tr>}
+        @if (Model.toAccountType != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.toAccountType)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.toAccountType)
+        </td>
+		</tr>}
+        @if (Model.toAccount != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.toAccount)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.toAccount)
+        </td>
+		</tr>}
+        @if (Model.accountCurrency != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.accountCurrency)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.accountCurrency)
+        </td>
+		</tr>}
+        @if (Model.paymentInfo != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.paymentInfo)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.paymentInfo)
+        </td>
+		</tr>}
+        @if (Model.originalTranUUID != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.originalTranUUID)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.originalTranUUID)
+        </td>
+		</tr>}
+        @if (Model.phoneNo != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.phoneNo)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.phoneNo)
+        </td>
+		</tr>}
+        @if (Model.email != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.email)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.email)
+        </td>
+		</tr>}
+        @if (Model.registrationType != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.registrationType)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.registrationType)
+        </td>
+		</tr>}
+        @if (Model.authenticationType != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.authenticationType)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.authenticationType)
+        </td>
+		</tr>}
+        @if (Model.customerRefrence != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.customerRefrence)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.customerRefrence)
+        </td>
+		</tr>}
+        @if (Model.transactionState != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionState)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.transactionState)
+        </td>
+		</tr>}
+        @if (Model.transactionFees != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.transactionFees)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.transactionFees)
+        </td>
+		</tr>}
+        @if (Model.customerBalance != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.customerBalance)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.customerBalance)
+        </td>
+		</tr>}
+        @if (Model.reciptNo != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.reciptNo)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.reciptNo)
+        </td>
+		</tr>}
+        @if (Model.note != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.note)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.note)
+        </td>
+		</tr>}
+        @if (Model.payeeId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.payeeId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.payeeId)
+        </td>
+		</tr>}
+        @if (Model.exSystemResponseId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.exSystemResponseId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.exSystemResponseId)
+        </td>
+		</tr>}
+        @if (Model.channelId != null)
+        {
+        <tr>
+            <td>
+           channel
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.channelId )
+        </td>
+		</tr>}
+        @if (Model.currencyId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.currencyId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.currencyId)
+        </td>
+		</tr>}
+        @if (Model.serviceProviderId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceProviderId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serviceProviderId)
+        </td>
+		</tr>}
+        @if (Model.customerCardId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.customerCardId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.customerCardId)
+        </td>
+		</tr>}
+        @if (Model.additional_8_Field_1 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_8_Field_1)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_8_Field_1)
+        </td>
+		</tr>}
+        @if (Model.additional_8_Field_2 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_8_Field_2)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_8_Field_2)
+        </td>
+		</tr>}
+        @if (Model.additional_8_Field_3 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_8_Field_3)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_8_Field_3)
+        </td>
+		</tr>}
+        @if (Model.additional_16_Field_1 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_16_Field_1)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_16_Field_1)
+        </td>
+		</tr>}
+        @if (Model.additional_16_Field_2 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_16_Field_2)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_16_Field_2)
+        </td>
+		</tr>}
+        @if (Model.additional_16_Field_3 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_16_Field_3)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_16_Field_3)
+        </td>
+		</tr>}
+        @if (Model.additional_32_Field_1 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_32_Field_1)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_32_Field_1)
+        </td>
+		</tr>}
+        @if (Model.additional_32_Field_2 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_32_Field_2)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_32_Field_2)
+        </td>
+		</tr>}
+        @if (Model.additional_32_Field_3 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_32_Field_3)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_32_Field_3)
+        </td>
+		</tr>}
+        @if (Model.additional_128_Field_1 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_128_Field_1)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_128_Field_1)
+        </td>
+		</tr>}
+        @if (Model.additional_128_Field_2 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_128_Field_2)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_128_Field_2)
+        </td>
+		</tr>}
+        @if (Model.additional_256_Field_1 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_256_Field_1)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_256_Field_1)
+        </td>
+		</tr>}
+        @if (Model.additional_256_Field_2 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_256_Field_2)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_256_Field_2)
+        </td>
+		</tr>}
+        @if (Model.additional_512_Field_1 != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additional_512_Field_1)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additional_512_Field_1)
+        </td>
+		</tr>}
+        @if (Model.serviceNum != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceNum)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serviceNum)
+        </td>
+		</tr>}
+        @if (Model.transactionLogStatus != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelNum)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.channelNum)
+        </td>
+		</tr>}
+        @if (Model.paymentMethodNum != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.paymentMethodNum)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.paymentMethodNum)
+        </td>
+		</tr>}
+        @if (Model.workingKey != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.workingKey)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.workingKey)
+        </td>
+		</tr>}
+        @if (Model.currencyId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Currency.CurrencyName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Currency.CurrencyName)
+        </td>
+		</tr>}
+        @if (Model.paymentMethodId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.PaymentMethod.paymentMethodId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.PaymentMethod.paymentMethodId)
+        </td>
+		</tr>}
+        @if (Model.paymentProviderId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.PaymentProvider.paymentProviderId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.PaymentProvider.paymentProviderId)
+        </td>
+		</tr>
+        }
+            @if (Model.Service.serviceId != null)
+            {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Service.serviceId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Service.serviceId)
+        </td>
+		</tr>
+        }
+        @if (Model.systemResponseId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.SystemResponse.systemResponseId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.SystemResponse.systemResponseId)
+        </td>
+		</tr>
+        }
+        @if (Model.terminalId != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Terminal.terminalName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Terminal.terminalName)
+        </td>
+		</tr>
+        }
+        @if (Model.transactionLogStatus != null)
+        {
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Transaction2.transactionLogStatus)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Transaction2.transactionLogStatus)
+        </td>
+		</tr>
+        }
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("Transaction","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+

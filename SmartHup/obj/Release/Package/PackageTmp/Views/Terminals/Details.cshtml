@@ -1,0 +1,250 @@
+﻿@model SmartHup.Models.Terminal
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>Terminal Details - Terminal Management</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.status)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.status)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.creationDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modificationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.modificationDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.createdBy)
+        </td>
+		<td>
+          @user_info.getusername(Model.createdBy)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+        </td>
+		<td>
+            @user_info.getusername(Model.modifiedBy.Value )
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.version)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.version)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalStatus)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalStatus)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalIP)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalIP)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serialNumber)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serialNumber)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalModel)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalModel)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.address)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.address)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.street)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.street)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalCode)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalCode)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.workingKey)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.workingKey)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.attitude)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.attitude)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.latitude)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.latitude)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalPassword)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalPassword)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.terminalUserName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.terminalUserName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Bank.bankFullName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Bank.bankFullName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.City.cityName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.City.cityName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.State.stateName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.State.stateName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.TerminalFamily.TerminalFamilyName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.TerminalFamily.TerminalFamilyName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Vendor.vendorName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Vendor.vendorName)
+        </td>
+		</tr>
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("Terminal","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+

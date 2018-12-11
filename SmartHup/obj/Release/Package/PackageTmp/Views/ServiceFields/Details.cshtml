@@ -1,0 +1,349 @@
+﻿@model SmartHup.Models.ServiceField
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>ServiceField Details - ServiceField Management</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.creationDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modificationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.modificationDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.createdBy)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.createdBy)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.modifiedBy)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.version)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.version)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceFieldId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serviceFieldId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceFieldName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serviceFieldName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceFieldStatus)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serviceFieldStatus)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelFieldEName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.channelFieldEName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.channelFieldName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.channelFieldName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceHandlerFieldName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serviceHandlerFieldName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.regularExpression)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.regularExpression)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isRequired)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isRequired)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.dateFormat)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.dateFormat)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isRequestField)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isRequestField)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isSavable)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isSavable)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isResponseField)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isResponseField)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.additionalFieldName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.additionalFieldName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isPaymentInfo)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isPaymentInfo)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.paymentInfoOrder)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.paymentInfoOrder)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Note)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Note)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.payeeId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.payeeId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.idx)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.idx)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.serviceProviderId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.serviceProviderId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isParent)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isParent)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.deletedBy)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.deletedBy)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.deletedDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.deletedDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isFavorable)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isFavorable)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.dbColumnName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.dbColumnName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.isCheckable)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.isCheckable)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.EntityStatus.EntityStatusName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.EntityStatus.EntityStatusName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.EntityStatus1.EntityStatusName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.EntityStatus1.EntityStatusName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.RangType.systemId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.RangType.systemId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Service.serviceId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Service.serviceId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.ServiceHandler.serviceHanlerId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.ServiceHandler.serviceHanlerId)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.ServiceField2.serviceFieldId)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.ServiceField2.serviceFieldId)
+        </td>
+		</tr>
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("ServiceField","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-primary" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-default" })
+</p>
+
