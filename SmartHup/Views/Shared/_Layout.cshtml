@@ -506,8 +506,18 @@
    
 
     <script>
+
         $(document).ready(function () {
-            $('.sidebar-menu').tree()
+            $('.sidebar-menu').tree();
+            $("#FromTimer_Value").change(function () {
+                //if ($("#FromTimer_Value").is(":checked")) {
+                //    $("#TimerID").prop("disabled", false);
+                //}
+                //else if ($("#FromTimer_Value").is(":not(:checked)")) {
+                //    $("#TimerID").prop("disabled", true);
+                //}
+                alert("Chenged");
+            });
         })
         $(function () {
             $('dataTable').DataTable()

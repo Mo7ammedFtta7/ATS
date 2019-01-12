@@ -1,0 +1,142 @@
+﻿@model SmartHup.Models.Department
+@{
+    ViewBag.title = "Details";
+
+    Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null) { menu = new Dictionary<Tuple<string, string>, bool>(); }
+
+    string create_by = TempData["display_create_by"] != null ? TempData["display_create_by"] as string : "";
+    string modify_by = TempData["display_modify_by"] != null ? TempData["display_modify_by"] as string : "";
+    string delete_by = TempData["display_delete_by"] != null ? TempData["display_delete_by"] as string : "";
+    string status = TempData["display_status"] != null ? TempData["display_status"] as string : "";
+}
+<div>
+    <h4>Department Details - Departments Management</h4>
+    <hr />
+    <table class="table table-striped">
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.DepartmentName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.DepartmentName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.DepartmentArName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.DepartmentArName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Descrtiption)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Descrtiption)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modifiedBy)
+        </td>
+		<td>
+            @user_info.getusername(Model.modifiedBy)
+        </td>
+		</tr>
+
+       <!-- <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.deletedBy)
+        </td>
+		<td>
+            @user_info.getusername(Model.deletedBy)
+        </td>
+		</tr>-->
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.creationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.creationDate)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.modificationDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.modificationDate)
+        </td>
+		</tr>
+
+       <!-- <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.deletedDate)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.deletedDate)
+        </td>
+		</tr>-->
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.version)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.version)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.createdBy)
+        </td>
+		<td>
+            @user_info.getusername(Model.createdBy)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.Company.CompanyName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.EntityStatu.EntityStatusName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.EntityStatu.EntityStatusName)
+        </td>
+		</tr>
+
+        <tr>
+            <td>
+            @Html.DisplayNameFor(model => model.User.UserName)
+        </td>
+		<td>
+            @Html.DisplayFor(model => model.User.UserName)
+        </td>
+		</tr>
+
+    </table>
+</div>
+<p>
+	@if( menu.ContainsKey(Tuple.Create("Departments","Edit")) ) {
+    @Html.ActionLink("Edit", "Edit", new { id = Model.systemId },new{  @class = "btn btn-danger" })  
+	}
+    @Html.ActionLink("Back to List", "Index",null, new {@class= "btn btn-primary" })
+</p>
+

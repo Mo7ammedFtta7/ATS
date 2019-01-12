@@ -21,6 +21,12 @@ namespace SmartHup.Models
         public string oldData { get; set; }
         public System.DateTime dateCreated { get; set; }
         public string clientData { get; set; }
+        public Nullable<System.DateTime> creationDate { get; set; }
+        public Nullable<System.DateTime> modificationDate { get; set; }
+        public Nullable<long> createdBy { get; set; }
+        public Nullable<long> modifiedBy { get; set; }
+        public Nullable<int> version { get; set; }
+        public Nullable<int> entityStatus_systemId { get; set; }
     
         public virtual Action Action { get; set; }
         public virtual Module Module { get; set; }

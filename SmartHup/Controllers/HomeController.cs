@@ -8,18 +8,18 @@ using System.Web.Mvc;
 
 namespace SmartHup.Controllers
 {
-    [Authorized]
+   [Authorized]
 
     public class HomeController : Base
     {
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities db = new TicketsEntities();
 
         public ActionResult Index()
         {
-            ViewBag.customer = db.customer.Count();
-            ViewBag.User = db.User.Count();
-            ViewBag.Service = db.Service.Count();
-            ViewBag.Terminal = db.Terminal.Count();
+            //ViewBag.customer = db.customer.Count();
+            //ViewBag.User = db.User.Count();
+            //ViewBag.Service = db.Service.Count();
+            //ViewBag.Terminal = db.Terminal.Count();
 
 
             return View();

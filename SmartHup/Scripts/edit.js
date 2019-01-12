@@ -2,7 +2,7 @@
 //}
 
 window.onload = function () {
-    if ($("#isSavable").is(':checked')) {
+    if ($(".isSavable").is(':checked')) {
         //$("#isSavablee").val(true);
         $("#dbColumnName").prop("disabled", false);
     };

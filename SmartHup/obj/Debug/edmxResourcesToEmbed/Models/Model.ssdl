@@ -1,0 +1,2685 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Action">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="64" />
+    <Property Name="Ename" Type="nvarchar" MaxLength="64" />
+    <Property Name="label" Type="nvarchar" MaxLength="64" />
+    <Property Name="Elabel" Type="nvarchar" MaxLength="64" />
+    <Property Name="pageType" Type="nvarchar" MaxLength="64" />
+    <Property Name="moduleId" Type="bigint" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="deletedBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Announcement">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AnnouncementTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="AnnouncementArTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="UserGroup_ID" Type="bigint" />
+    <Property Name="Company_ID" Type="bigint" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="Attachements">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="Referance" Type="bigint" Nullable="false" />
+    <Property Name="FileContent" Type="image" Nullable="false" />
+    <Property Name="FileName" Type="nvarchar(max)" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AuditingLog">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="userId" Type="bigint" />
+    <Property Name="actionId" Type="bigint" Nullable="false" />
+    <Property Name="moduleId" Type="bigint" Nullable="false" />
+    <Property Name="oldData" Type="nvarchar(max)" />
+    <Property Name="dateCreated" Type="datetime" Nullable="false" />
+    <Property Name="clientData" Type="nvarchar(max)" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="CategoryName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="CategoryArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="CategoryType" Type="int" />
+    <Property Name="isChild" Type="bit" />
+    <Property Name="ParentCategory" Type="bigint" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+  </EntityType>
+  <EntityType Name="CategoryType">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="int" Nullable="false" />
+    <Property Name="CategoryType" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ChatQueue">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ChatQueueName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ChatQueueArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="IdleTime" Type="int" />
+    <Property Name="CloseTime" Type="int" />
+    <Property Name="UserGroup_ID" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="ChatQueueMessages">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="Title" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="Message" Type="nvarchar(max)" />
+    <Property Name="ChatQueue" Type="bigint" />
+  </EntityType>
+  <EntityType Name="ChatSessions">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="SubmitterUser" Type="bigint" Nullable="false" />
+    <Property Name="TicketId" Type="bigint" />
+    <Property Name="ChatQueue" Type="bigint" Nullable="false" />
+    <Property Name="AssignedUser" Type="bigint" />
+    <Property Name="start_time" Type="datetime" />
+    <Property Name="end_time" Type="datetime" />
+    <Property Name="modified_time" Type="datetime" />
+    <Property Name="acceptTime" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Company">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CompanyName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="CompanyArName" Type="nvarchar(max)" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Address" Type="nchar" MaxLength="10" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="30" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="SLAId" Type="bigint" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="deletedBy" Type="bigint" />
+    <Property Name="deletedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Company_Announcement">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Company_ID" Type="bigint" Nullable="false" />
+    <Property Name="Announcement_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CurrentMeasurementLists">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="SLAId" Type="bigint" />
+    <Property Name="MeasurementId" Type="bigint" />
+    <Property Name="List" Type="bigint" />
+    <Property Name="TicletId" Type="bigint" />
+    <Property Name="list_value" Type="float" />
+    <Property Name="run_date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="CurrentSlaResults">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="MeasurementId" Type="bigint" />
+    <Property Name="currenetResult" Type="float" />
+    <Property Name="SLAGrade" Type="float" />
+    <Property Name="internalGrade" Type="float" />
+    <Property Name="runDate" Type="datetime" />
+    <Property Name="finalResult" Type="bit" />
+  </EntityType>
+  <EntityType Name="Department">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DepartmentName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentArName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Descrtiption" Type="nvarchar(max)" />
+    <Property Name="CompanyId" Type="bigint" />
+    <Property Name="DepartmentHead" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="createdBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="DueDateRule">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DueDateRuleName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Category_ID" Type="bigint" />
+    <Property Name="Urgancy_ID" Type="bigint" />
+    <Property Name="Priority_ID" Type="bigint" />
+    <Property Name="SLA_ID" Type="bigint" />
+    <Property Name="DueDate" Type="int" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="SubCategory" Type="bigint" />
+  </EntityType>
+  <EntityType Name="EntityStatus">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EntityStatusName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="EscalationRule">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EscalationName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="EscalationArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Category_ID" Type="bigint" />
+    <Property Name="Sub_Category_ID" Type="bigint" />
+    <Property Name="SLA_ID" Type="bigint" />
+    <Property Name="Status_ID" Type="bigint" />
+    <Property Name="Priority_ID" Type="bigint" />
+    <Property Name="ChangePriority" Type="bigint" />
+    <Property Name="ChangeStatus" Type="bigint" />
+    <Property Name="ReAssignUser" Type="bigint" />
+    <Property Name="AssignedUser_ID" Type="bigint" />
+    <Property Name="SubmitterUSerID" Type="bigint" />
+    <Property Name="EscalationLevel" Type="int" />
+    <Property Name="AssignedGroup" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="GroupType">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="GroupTypeName" Type="nvarchar" MaxLength="30" />
+  </EntityType>
+  <EntityType Name="Impact">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="ImpactName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ImpactArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="DescriptionAr" Type="nvarchar(max)" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="isDefault" Type="bit" />
+  </EntityType>
+  <EntityType Name="KnowledgeBase">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="TopicName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="TopicArName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Category_ID" Type="bigint" />
+    <Property Name="Sub_Category_ID" Type="bigint" />
+    <Property Name="User_ID" Type="bigint" />
+    <Property Name="Quetion" Type="nvarchar(max)" />
+    <Property Name="Answer" Type="nvarchar(max)" />
+    <Property Name="Attachment" Type="image" />
+    <Property Name="Publish" Type="bit" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="version" Type="int" />
+  </EntityType>
+  <EntityType Name="Measurment">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeasurmentName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="MeasurmentArName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Unit" Type="nvarchar" MaxLength="64" />
+    <Property Name="Formula" Type="nvarchar" MaxLength="32" />
+    <Property Name="SLAId" Type="bigint" />
+    <Property Name="MeasurmentList_ID" Type="bigint" />
+    <Property Name="TestInterval" Type="int" />
+    <Property Name="CurrentValue" Type="nvarchar" MaxLength="32" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="MeasurmentList_ID2" Type="bigint" />
+    <Property Name="critical_grade" Type="int" />
+    <Property Name="warning_grade" Type="int" />
+    <Property Name="optimum_grade" Type="int" />
+    <Property Name="goal_critical" Type="int" />
+    <Property Name="goal_warning" Type="int" />
+    <Property Name="goal_optimum" Type="int" />
+    <Property Name="sla_critical" Type="int" />
+    <Property Name="sla_warning" Type="int" />
+    <Property Name="sla_optimum" Type="int" />
+    <Property Name="calculated" Type="bit" />
+  </EntityType>
+  <EntityType Name="MeasurmentList">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="MeasurmentListName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="MeasurmentListArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="Status" Type="int" />
+    <Property Name="dateField" Type="nvarchar" MaxLength="50" />
+    <Property Name="statusType" Type="bigint" />
+    <Property Name="fieldName" Type="nvarchar" MaxLength="50" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="Module">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="64" />
+    <Property Name="Ename" Type="nvarchar" MaxLength="64" />
+    <Property Name="parentId" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="OnlineUsers">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="userId" Type="bigint" Nullable="false" />
+    <Property Name="sessionId" Type="bigint" Nullable="false" />
+    <Property Name="ipAddress" Type="nchar" MaxLength="10" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Priority">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="PriorityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="PriorityArName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="PriorityLevel" Type="int" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="version" Type="int" />
+    <Property Name="isDefault" Type="bit" />
+  </EntityType>
+  <EntityType Name="PriorityMatrix">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Impact_ID" Type="bigint" Nullable="false" />
+    <Property Name="Urgancy_ID" Type="bigint" Nullable="false" />
+    <Property Name="Priority_ID" Type="bigint" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="SLAId" Type="bigint" />
+    <Property Name="Enabled" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PriorityRule">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PriorityRuleName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Section_ID" Type="bigint" />
+    <Property Name="UserGroup_ID" Type="bigint" />
+    <Property Name="Priority_ID" Type="bigint" />
+    <Property Name="SLA_ID" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="UsingPriorityMatrix" Type="bit" Nullable="false" />
+    <Property Name="PriorityMatrix" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar" MaxLength="64" />
+    <Property Name="RoleArName" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="UserTypeId" Type="bigint" Nullable="false" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="RoleActions">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleId" Type="bigint" Nullable="false" />
+    <Property Name="actionId" Type="bigint" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+  </EntityType>
+  <EntityType Name="RoutingRule">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="RoutingRuleName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="RoutingRuleArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SubmitterGroupID" Type="bigint" />
+    <Property Name="AssignedGroupID" Type="bigint" />
+    <Property Name="CategoryID" Type="bigint" />
+    <Property Name="SLAID" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="SubCategory" Type="bigint" />
+    <Property Name="AssignedUser" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Section">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SectionName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="SectionArName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="DepartmentId" Type="bigint" />
+    <Property Name="companyId" Type="bigint" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ShareTopic">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ShareTopicName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="ShareTopicArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Method" Type="nvarchar" MaxLength="32" />
+    <Property Name="Topic_ID" Type="bigint" />
+    <Property Name="UserGroup_ID" Type="bigint" />
+    <Property Name="Subject" Type="nvarchar" MaxLength="32" />
+    <Property Name="Message" Type="nvarchar" MaxLength="32" />
+    <Property Name="Attachment" Type="image" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="Status" Type="int" />
+  </EntityType>
+  <EntityType Name="SLA">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="SLA_Name" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="SLA_ArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="isDefault" Type="bit" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="Status">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="StatusArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="StatusType_ID" Type="bigint" Nullable="false" />
+    <Property Name="IsDefault" Type="bit" />
+    <Property Name="Tickets" Type="bit" />
+    <Property Name="Tasks" Type="bit" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+    <Property Name="version" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusTimer">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Time" Type="datetime" Nullable="false" />
+    <Property Name="Status_ID" Type="bigint" Nullable="false" />
+    <Property Name="Timer_ID" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="StatusType">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="StatusTypeName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="StatusTypeArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TaskName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="TaskArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Ticket_ID" Type="bigint" />
+    <Property Name="EstimatedStartDate" Type="datetime" />
+    <Property Name="EstimatedEndDate" Type="datetime" />
+    <Property Name="Total" Type="nvarchar" MaxLength="32" />
+    <Property Name="AssignedUser" Type="bigint" />
+    <Property Name="Status_ID" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="Dependent" Type="bigint" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="Category" Type="bigint" />
+  </EntityType>
+  <EntityType Name="TicketLog">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="TicketId" Type="bigint" Nullable="false" />
+    <Property Name="LogTime" Type="datetime" Nullable="false" />
+    <Property Name="logType" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TicketMsg">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="msgTime" Type="datetime" Nullable="false" />
+    <Property Name="fromUser" Type="nvarchar" MaxLength="64" Nullable="false" />
+    <Property Name="toUser" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="method" Type="nvarchar" MaxLength="64" />
+    <Property Name="subject" Type="nvarchar" MaxLength="64" />
+    <Property Name="Body" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="Tickets">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TicketTitle" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="Note" Type="nvarchar(max)" />
+    <Property Name="SubmitterUser" Type="bigint" />
+    <Property Name="CategoryID" Type="bigint" />
+    <Property Name="SubCategoryID" Type="bigint" />
+    <Property Name="StatusID" Type="bigint" />
+    <Property Name="Impact_ID" Type="bigint" />
+    <Property Name="Urgancy_ID" Type="bigint" />
+    <Property Name="Priority_ID" Type="bigint" />
+    <Property Name="AssignedUser" Type="bigint" />
+    <Property Name="AssignedGroup" Type="bigint" />
+    <Property Name="Attachment" Type="image" />
+    <Property Name="Solution" Type="nvarchar(max)" />
+    <Property Name="Resolution" Type="nvarchar(max)" />
+    <Property Name="StratDate" Type="datetime" />
+    <Property Name="CloseDate" Type="datetime" />
+    <Property Name="version" Type="int" />
+    <Property Name="KnowledgeBase" Type="bigint" />
+    <Property Name="DueDate" Type="datetime" />
+    <Property Name="Timer" Type="bigint" />
+    <Property Name="SLAId" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="Timer">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TimerName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="TimerArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="statusId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Type">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="TypeArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" />
+  </EntityType>
+  <EntityType Name="Urgency">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UrgancyName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="UrgancyArName" Type="nvarchar" MaxLength="32" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="createdBy" Type="bigint" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="version" Type="int" />
+  </EntityType>
+  <EntityType Name="UserGroup">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserGroupName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="UserGroupArName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Description" Type="nvarchar(max)" />
+    <Property Name="GroupTypeId" Type="bigint" Nullable="false" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" Nullable="false" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="version" Type="int" Nullable="false" />
+    <Property Name="entityStatus_systemId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IDRole_Id" Type="bigint" />
+    <Property Name="UserId" Type="bigint" Nullable="false" />
+    <Property Name="RoleId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="UserRouting">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" Nullable="false" />
+    <Property Name="userfrom" Type="bigint" />
+    <Property Name="userTo" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="LoginName" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="PasswordHash" Type="nvarchar(max)" />
+    <Property Name="Email" Type="nvarchar(max)" />
+    <Property Name="PhoneNumber" Type="nvarchar(max)" />
+    <Property Name="departmentId" Type="bigint" />
+    <Property Name="companyId" Type="bigint" />
+    <Property Name="SectionID" Type="bigint" />
+    <Property Name="GroupID" Type="bigint" />
+    <Property Name="RoleID" Type="bigint" />
+    <Property Name="createdBy" Type="bigint" Nullable="false" />
+    <Property Name="modifiedBy" Type="bigint" />
+    <Property Name="deletedBy" Type="bigint" />
+    <Property Name="creationDate" Type="datetime" />
+    <Property Name="modificationDate" Type="datetime" />
+    <Property Name="deletedDate" Type="datetime" />
+    <Property Name="entityStatus_systemId" Type="int" />
+    <Property Name="version" Type="int" />
+    <Property Name="EmailConfirmed" Type="bit" />
+    <Property Name="SecurityStamp" Type="nvarchar(max)" />
+    <Property Name="PhoneNumberConfirmed" Type="bit" />
+    <Property Name="AccessFailedCount" Type="int" />
+    <Property Name="LockoutEnabled" Type="bit" />
+    <Property Name="status" Type="int" Nullable="false" />
+    <Property Name="LockoutEndDateUtc" Type="datetime" />
+  </EntityType>
+  <EntityType Name="UserType">
+    <Key>
+      <PropertyRef Name="systemId" />
+    </Key>
+    <Property Name="systemId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="TypeArName" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK_Action_Module">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="Action" Type="Self.Action" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Action">
+        <PropertyRef Name="moduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Announcement_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Announcement" Type="Self.Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Announcement">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Announcement_UserGroup">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="Announcement" Type="Self.Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Announcement">
+        <PropertyRef Name="UserGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuditingLog_Action1">
+    <End Role="Action" Type="Self.Action" Multiplicity="1" />
+    <End Role="AuditingLog" Type="Self.AuditingLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Action">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="AuditingLog">
+        <PropertyRef Name="actionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuditingLog_Module">
+    <End Role="Module" Type="Self.Module" Multiplicity="1" />
+    <End Role="AuditingLog" Type="Self.AuditingLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="AuditingLog">
+        <PropertyRef Name="moduleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_AuditingLog_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="AuditingLog" Type="Self.AuditingLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="AuditingLog">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Category1" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Category1">
+        <PropertyRef Name="ParentCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Category_CategoryType">
+    <End Role="CategoryType" Type="Self.CategoryType" Multiplicity="0..1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoryType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Category">
+        <PropertyRef Name="CategoryType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChatQueue_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="ChatQueue" Type="Self.ChatQueue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ChatQueue">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChatQueue_UserGroup">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="ChatQueue" Type="Self.ChatQueue" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ChatQueue">
+        <PropertyRef Name="UserGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChatQueueMessages_ChatQueue">
+    <End Role="ChatQueue" Type="Self.ChatQueue" Multiplicity="0..1" />
+    <End Role="ChatQueueMessages" Type="Self.ChatQueueMessages" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatQueue">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ChatQueueMessages">
+        <PropertyRef Name="ChatQueue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChatSessions_ChatQueue">
+    <End Role="ChatQueue" Type="Self.ChatQueue" Multiplicity="1" />
+    <End Role="ChatSessions" Type="Self.ChatSessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatQueue">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ChatSessions">
+        <PropertyRef Name="ChatQueue" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChatSessions_Ticket">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+    <End Role="ChatSessions" Type="Self.ChatSessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ChatSessions">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChatSessions_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="ChatSessions" Type="Self.ChatSessions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ChatSessions">
+        <PropertyRef Name="SubmitterUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_Announcement_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Company_Announcement" Type="Self.Company_Announcement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Company_Announcement">
+        <PropertyRef Name="Company_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Company_SLA">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="0..1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Company">
+        <PropertyRef Name="SLAId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CurrentMeasurementLists_Measurment">
+    <End Role="Measurment" Type="Self.Measurment" Multiplicity="0..1" />
+    <End Role="CurrentMeasurementLists" Type="Self.CurrentMeasurementLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Measurment">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="CurrentMeasurementLists">
+        <PropertyRef Name="MeasurementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CurrentMeasurementLists_MeasurmentList">
+    <End Role="MeasurmentList" Type="Self.MeasurmentList" Multiplicity="0..1" />
+    <End Role="CurrentMeasurementLists" Type="Self.CurrentMeasurementLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MeasurmentList">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="CurrentMeasurementLists">
+        <PropertyRef Name="List" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CurrentMeasurementLists_SLA">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="0..1" />
+    <End Role="CurrentMeasurementLists" Type="Self.CurrentMeasurementLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="CurrentMeasurementLists">
+        <PropertyRef Name="SLAId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CurrentMeasurementLists_Tickets">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+    <End Role="CurrentMeasurementLists" Type="Self.CurrentMeasurementLists" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="CurrentMeasurementLists">
+        <PropertyRef Name="TicletId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="CompanyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Department_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="Department" Type="Self.Department" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Department">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DueDateRule_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="DueDateRule" Type="Self.DueDateRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="DueDateRule">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DueDateRule_Category1">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="DueDateRule" Type="Self.DueDateRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="DueDateRule">
+        <PropertyRef Name="SubCategory" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DueDateRule_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="DueDateRule" Type="Self.DueDateRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="DueDateRule">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DueDateRule_Priority">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="DueDateRule" Type="Self.DueDateRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="DueDateRule">
+        <PropertyRef Name="Priority_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DueDateRule_SLA">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="0..1" />
+    <End Role="DueDateRule" Type="Self.DueDateRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="DueDateRule">
+        <PropertyRef Name="SLA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DueDateRule_Urgancy">
+    <End Role="Urgency" Type="Self.Urgency" Multiplicity="0..1" />
+    <End Role="DueDateRule" Type="Self.DueDateRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urgency">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="DueDateRule">
+        <PropertyRef Name="Urgancy_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Category1">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="Sub_Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Priority">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="Priority_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Priority1">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="ChangePriority" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Status1">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="ChangeStatus" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_UserGroup">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="AssignedGroup" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="AssignedUser_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Users1">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="SubmitterUSerID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_EscalationRule_Users2">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="EscalationRule" Type="Self.EscalationRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="EscalationRule">
+        <PropertyRef Name="ReAssignUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Impact_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="Impact" Type="Self.Impact" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Impact">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KnowledgeBase_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="KnowledgeBase" Type="Self.KnowledgeBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="KnowledgeBase">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Measurment_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Measurment" Type="Self.Measurment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Measurment">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Measurment_MeasurmentList">
+    <End Role="MeasurmentList" Type="Self.MeasurmentList" Multiplicity="0..1" />
+    <End Role="Measurment" Type="Self.Measurment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MeasurmentList">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Measurment">
+        <PropertyRef Name="MeasurmentList_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Measurment_MeasurmentList1">
+    <End Role="MeasurmentList" Type="Self.MeasurmentList" Multiplicity="0..1" />
+    <End Role="Measurment" Type="Self.Measurment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MeasurmentList">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Measurment">
+        <PropertyRef Name="MeasurmentList_ID2" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Measurment_SLA">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="0..1" />
+    <End Role="Measurment" Type="Self.Measurment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Measurment">
+        <PropertyRef Name="SLAId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MeasurmentList_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="MeasurmentList" Type="Self.MeasurmentList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="MeasurmentList">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_MeasurmentList_StatusType">
+    <End Role="StatusType" Type="Self.StatusType" Multiplicity="0..1" />
+    <End Role="MeasurmentList" Type="Self.MeasurmentList" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="MeasurmentList">
+        <PropertyRef Name="statusType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Module_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Module" Type="Self.Module" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Module">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Module_Module">
+    <End Role="Module" Type="Self.Module" Multiplicity="0..1" />
+    <End Role="Module1" Type="Self.Module" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Module">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Module1">
+        <PropertyRef Name="parentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OnlineUsers_ChatSessions">
+    <End Role="ChatSessions" Type="Self.ChatSessions" Multiplicity="1" />
+    <End Role="OnlineUsers" Type="Self.OnlineUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChatSessions">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="OnlineUsers">
+        <PropertyRef Name="sessionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_OnlineUsers_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="OnlineUsers" Type="Self.OnlineUsers" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="OnlineUsers">
+        <PropertyRef Name="userId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Priority_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="Priority" Type="Self.Priority" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Priority">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityMatrix_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="PriorityMatrix" Type="Self.PriorityMatrix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityMatrix">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityMatrix_Impact">
+    <End Role="Impact" Type="Self.Impact" Multiplicity="1" />
+    <End Role="PriorityMatrix" Type="Self.PriorityMatrix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Impact">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityMatrix">
+        <PropertyRef Name="Impact_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityMatrix_Priority">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="1" />
+    <End Role="PriorityMatrix" Type="Self.PriorityMatrix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityMatrix">
+        <PropertyRef Name="Priority_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityMatrix_SLA">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="0..1" />
+    <End Role="PriorityMatrix" Type="Self.PriorityMatrix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityMatrix">
+        <PropertyRef Name="SLAId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityMatrix_Urgancy">
+    <End Role="Urgency" Type="Self.Urgency" Multiplicity="1" />
+    <End Role="PriorityMatrix" Type="Self.PriorityMatrix" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urgency">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityMatrix">
+        <PropertyRef Name="Urgancy_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityRule_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="PriorityRule" Type="Self.PriorityRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityRule">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityRule_Priority">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="PriorityRule" Type="Self.PriorityRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityRule">
+        <PropertyRef Name="Priority_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityRule_PriorityMatrix">
+    <End Role="PriorityMatrix" Type="Self.PriorityMatrix" Multiplicity="0..1" />
+    <End Role="PriorityRule" Type="Self.PriorityRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PriorityMatrix">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityRule">
+        <PropertyRef Name="PriorityMatrix" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityRule_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="PriorityRule" Type="Self.PriorityRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityRule">
+        <PropertyRef Name="Section_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityRule_SLA">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="1" />
+    <End Role="PriorityRule" Type="Self.PriorityRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityRule">
+        <PropertyRef Name="SLA_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityRule_UserGroup">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="PriorityRule" Type="Self.PriorityRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityRule">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PriorityRule_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="PriorityRule" Type="Self.PriorityRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="PriorityRule">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Role_UserType">
+    <End Role="UserType" Type="Self.UserType" Multiplicity="1" />
+    <End Role="Role" Type="Self.Role" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Role">
+        <PropertyRef Name="UserTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoleActions_Action">
+    <End Role="Action" Type="Self.Action" Multiplicity="1" />
+    <End Role="RoleActions" Type="Self.RoleActions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Action">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoleActions">
+        <PropertyRef Name="actionId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingRule_Category">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="RoutingRule" Type="Self.RoutingRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoutingRule">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingRule_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="RoutingRule" Type="Self.RoutingRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoutingRule">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingRule_SLA1">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="0..1" />
+    <End Role="RoutingRule" Type="Self.RoutingRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoutingRule">
+        <PropertyRef Name="SLAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingRule_UserGroup">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="RoutingRule" Type="Self.RoutingRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoutingRule">
+        <PropertyRef Name="AssignedGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingRule_UserGroup1">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="RoutingRule" Type="Self.RoutingRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoutingRule">
+        <PropertyRef Name="SubmitterGroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_RoutingRule_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="RoutingRule" Type="Self.RoutingRule" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="RoutingRule">
+        <PropertyRef Name="AssignedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Secction_Department">
+    <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Department">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="DepartmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="companyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Section_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="Section" Type="Self.Section" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Section">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ShareTopic_ShareTopic">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="ShareTopic" Type="Self.ShareTopic" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="ShareTopic">
+        <PropertyRef Name="UserGroup_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_SLA_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="SLA" Type="Self.SLA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="SLA">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Status_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="Status" Type="Self.Status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Status">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Status_StatusType">
+    <End Role="StatusType" Type="Self.StatusType" Multiplicity="1" />
+    <End Role="Status" Type="Self.Status" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="StatusType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Status">
+        <PropertyRef Name="StatusType_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusTimer_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="1" />
+    <End Role="StatusTimer" Type="Self.StatusTimer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="StatusTimer">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_StatusTimer_StatusTimer">
+    <End Role="Timer" Type="Self.Timer" Multiplicity="1" />
+    <End Role="StatusTimer" Type="Self.StatusTimer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Timer">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="StatusTimer">
+        <PropertyRef Name="Timer_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Category" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Status_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Task">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Task1" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Task1">
+        <PropertyRef Name="Dependent" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_Ticket">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="Ticket_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Task_UserGroup">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="AssignedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="CategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Category1">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="SubCategoryID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Impact">
+    <End Role="Impact" Type="Self.Impact" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Impact">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Impact_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Priority">
+    <End Role="Priority" Type="Self.Priority" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Priority">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Priority_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Status">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Ticket">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+    <End Role="Tickets1" Type="Self.Tickets" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets1">
+        <PropertyRef Name="systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Urgancy">
+    <End Role="Urgency" Type="Self.Urgency" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Urgency">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="Urgancy_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_User">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="AssignedUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ticket_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="SubmitterUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketLog_Tickets">
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="1" />
+    <End Role="TicketLog" Type="Self.TicketLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Tickets">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="TicketLog">
+        <PropertyRef Name="TicketId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TicketLog_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="TicketLog" Type="Self.TicketLog" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="TicketLog">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_KnowledgeBase">
+    <End Role="KnowledgeBase" Type="Self.KnowledgeBase" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KnowledgeBase">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="KnowledgeBase" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Tickets_SLA">
+    <End Role="SLA" Type="Self.SLA" Multiplicity="0..1" />
+    <End Role="Tickets" Type="Self.Tickets" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SLA">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Tickets">
+        <PropertyRef Name="SLAId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Timer_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Timer" Type="Self.Timer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Timer">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Timer_Timer">
+    <End Role="Status" Type="Self.Status" Multiplicity="0..1" />
+    <End Role="Timer" Type="Self.Timer" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Status">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Timer">
+        <PropertyRef Name="statusId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Topic_Category">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="KnowledgeBase" Type="Self.KnowledgeBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="KnowledgeBase">
+        <PropertyRef Name="Category_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Topic_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+    <End Role="KnowledgeBase" Type="Self.KnowledgeBase" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="KnowledgeBase">
+        <PropertyRef Name="User_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Urgency_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Urgency" Type="Self.Urgency" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Urgency">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserGroup_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="1" />
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserGroup">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserGroup_GroupType">
+    <End Role="GroupType" Type="Self.GroupType" Multiplicity="1" />
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GroupType">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserGroup">
+        <PropertyRef Name="GroupTypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="1" />
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UserRoles_Users">
+    <End Role="Users" Type="Self.Users" Multiplicity="1" />
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="UserRoles">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Company">
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Company">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="companyId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_EntityStatus">
+    <End Role="EntityStatus" Type="Self.EntityStatus" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="EntityStatus">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="entityStatus_systemId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="RoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_Section">
+    <End Role="Section" Type="Self.Section" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Section">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="SectionID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Users_UserGroup">
+    <End Role="UserGroup" Type="Self.UserGroup" Multiplicity="0..1" />
+    <End Role="Users" Type="Self.Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserGroup">
+        <PropertyRef Name="systemId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="GroupID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="Action" EntityType="Self.Action" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Announcement" EntityType="Self.Announcement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Attachements" EntityType="Self.Attachements" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="AuditingLog" EntityType="Self.AuditingLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoryType" EntityType="Self.CategoryType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatQueue" EntityType="Self.ChatQueue" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatQueueMessages" EntityType="Self.ChatQueueMessages" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ChatSessions" EntityType="Self.ChatSessions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Company_Announcement" EntityType="Self.Company_Announcement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CurrentMeasurementLists" EntityType="Self.CurrentMeasurementLists" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CurrentSlaResults" EntityType="Self.CurrentSlaResults" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DueDateRule" EntityType="Self.DueDateRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EntityStatus" EntityType="Self.EntityStatus" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="EscalationRule" EntityType="Self.EscalationRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GroupType" EntityType="Self.GroupType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Impact" EntityType="Self.Impact" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KnowledgeBase" EntityType="Self.KnowledgeBase" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Measurment" EntityType="Self.Measurment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="MeasurmentList" EntityType="Self.MeasurmentList" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Module" EntityType="Self.Module" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="OnlineUsers" EntityType="Self.OnlineUsers" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Priority" EntityType="Self.Priority" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PriorityMatrix" EntityType="Self.PriorityMatrix" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PriorityRule" EntityType="Self.PriorityRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoleActions" EntityType="Self.RoleActions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="RoutingRule" EntityType="Self.RoutingRule" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Section" EntityType="Self.Section" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ShareTopic" EntityType="Self.ShareTopic" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="SLA" EntityType="Self.SLA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Status" EntityType="Self.Status" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusTimer" EntityType="Self.StatusTimer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="StatusType" EntityType="Self.StatusType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketLog" EntityType="Self.TicketLog" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketMsg" EntityType="Self.TicketMsg" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Tickets" EntityType="Self.Tickets" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Timer" EntityType="Self.Timer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Type" EntityType="Self.Type" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Urgency" EntityType="Self.Urgency" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserGroup" EntityType="Self.UserGroup" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRouting" EntityType="Self.UserRouting" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserType" EntityType="Self.UserType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Action_Module" Association="Self.FK_Action_Module">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="Action" EntitySet="Action" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Announcement_EntityStatus" Association="Self.FK_Announcement_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Announcement" EntitySet="Announcement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Announcement_UserGroup" Association="Self.FK_Announcement_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="Announcement" EntitySet="Announcement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuditingLog_Action1" Association="Self.FK_AuditingLog_Action1">
+      <End Role="Action" EntitySet="Action" />
+      <End Role="AuditingLog" EntitySet="AuditingLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuditingLog_Module" Association="Self.FK_AuditingLog_Module">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="AuditingLog" EntitySet="AuditingLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_AuditingLog_Users" Association="Self.FK_AuditingLog_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="AuditingLog" EntitySet="AuditingLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_Category" Association="Self.FK_Category_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Category1" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Category_CategoryType" Association="Self.FK_Category_CategoryType">
+      <End Role="CategoryType" EntitySet="CategoryType" />
+      <End Role="Category" EntitySet="Category" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChatQueue_EntityStatus" Association="Self.FK_ChatQueue_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="ChatQueue" EntitySet="ChatQueue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChatQueue_UserGroup" Association="Self.FK_ChatQueue_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="ChatQueue" EntitySet="ChatQueue" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChatQueueMessages_ChatQueue" Association="Self.FK_ChatQueueMessages_ChatQueue">
+      <End Role="ChatQueue" EntitySet="ChatQueue" />
+      <End Role="ChatQueueMessages" EntitySet="ChatQueueMessages" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChatSessions_ChatQueue" Association="Self.FK_ChatSessions_ChatQueue">
+      <End Role="ChatQueue" EntitySet="ChatQueue" />
+      <End Role="ChatSessions" EntitySet="ChatSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChatSessions_Ticket" Association="Self.FK_ChatSessions_Ticket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="ChatSessions" EntitySet="ChatSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChatSessions_Users" Association="Self.FK_ChatSessions_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="ChatSessions" EntitySet="ChatSessions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_Announcement_Company" Association="Self.FK_Company_Announcement_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Company_Announcement" EntitySet="Company_Announcement" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_EntityStatus" Association="Self.FK_Company_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Company_SLA" Association="Self.FK_Company_SLA">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="Company" EntitySet="Company" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CurrentMeasurementLists_Measurment" Association="Self.FK_CurrentMeasurementLists_Measurment">
+      <End Role="Measurment" EntitySet="Measurment" />
+      <End Role="CurrentMeasurementLists" EntitySet="CurrentMeasurementLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CurrentMeasurementLists_MeasurmentList" Association="Self.FK_CurrentMeasurementLists_MeasurmentList">
+      <End Role="MeasurmentList" EntitySet="MeasurmentList" />
+      <End Role="CurrentMeasurementLists" EntitySet="CurrentMeasurementLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CurrentMeasurementLists_SLA" Association="Self.FK_CurrentMeasurementLists_SLA">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="CurrentMeasurementLists" EntitySet="CurrentMeasurementLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CurrentMeasurementLists_Tickets" Association="Self.FK_CurrentMeasurementLists_Tickets">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="CurrentMeasurementLists" EntitySet="CurrentMeasurementLists" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_Company" Association="Self.FK_Department_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Department_EntityStatus" Association="Self.FK_Department_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Department" EntitySet="Department" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DueDateRule_Category" Association="Self.FK_DueDateRule_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="DueDateRule" EntitySet="DueDateRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DueDateRule_Category1" Association="Self.FK_DueDateRule_Category1">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="DueDateRule" EntitySet="DueDateRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DueDateRule_EntityStatus" Association="Self.FK_DueDateRule_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="DueDateRule" EntitySet="DueDateRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DueDateRule_Priority" Association="Self.FK_DueDateRule_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="DueDateRule" EntitySet="DueDateRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DueDateRule_SLA" Association="Self.FK_DueDateRule_SLA">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="DueDateRule" EntitySet="DueDateRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DueDateRule_Urgancy" Association="Self.FK_DueDateRule_Urgancy">
+      <End Role="Urgency" EntitySet="Urgency" />
+      <End Role="DueDateRule" EntitySet="DueDateRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Category" Association="Self.FK_EscalationRule_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Category1" Association="Self.FK_EscalationRule_Category1">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Priority" Association="Self.FK_EscalationRule_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Priority1" Association="Self.FK_EscalationRule_Priority1">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Status" Association="Self.FK_EscalationRule_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Status1" Association="Self.FK_EscalationRule_Status1">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_UserGroup" Association="Self.FK_EscalationRule_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Users" Association="Self.FK_EscalationRule_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Users1" Association="Self.FK_EscalationRule_Users1">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_EscalationRule_Users2" Association="Self.FK_EscalationRule_Users2">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="EscalationRule" EntitySet="EscalationRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Impact_EntityStatus" Association="Self.FK_Impact_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Impact" EntitySet="Impact" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KnowledgeBase_EntityStatus" Association="Self.FK_KnowledgeBase_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="KnowledgeBase" EntitySet="KnowledgeBase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Measurment_EntityStatus" Association="Self.FK_Measurment_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Measurment" EntitySet="Measurment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Measurment_MeasurmentList" Association="Self.FK_Measurment_MeasurmentList">
+      <End Role="MeasurmentList" EntitySet="MeasurmentList" />
+      <End Role="Measurment" EntitySet="Measurment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Measurment_MeasurmentList1" Association="Self.FK_Measurment_MeasurmentList1">
+      <End Role="MeasurmentList" EntitySet="MeasurmentList" />
+      <End Role="Measurment" EntitySet="Measurment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Measurment_SLA" Association="Self.FK_Measurment_SLA">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="Measurment" EntitySet="Measurment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MeasurmentList_EntityStatus" Association="Self.FK_MeasurmentList_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="MeasurmentList" EntitySet="MeasurmentList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_MeasurmentList_StatusType" Association="Self.FK_MeasurmentList_StatusType">
+      <End Role="StatusType" EntitySet="StatusType" />
+      <End Role="MeasurmentList" EntitySet="MeasurmentList" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Module_EntityStatus" Association="Self.FK_Module_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Module" EntitySet="Module" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Module_Module" Association="Self.FK_Module_Module">
+      <End Role="Module" EntitySet="Module" />
+      <End Role="Module1" EntitySet="Module" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OnlineUsers_ChatSessions" Association="Self.FK_OnlineUsers_ChatSessions">
+      <End Role="ChatSessions" EntitySet="ChatSessions" />
+      <End Role="OnlineUsers" EntitySet="OnlineUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_OnlineUsers_Users" Association="Self.FK_OnlineUsers_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="OnlineUsers" EntitySet="OnlineUsers" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Priority_EntityStatus" Association="Self.FK_Priority_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Priority" EntitySet="Priority" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityMatrix_EntityStatus" Association="Self.FK_PriorityMatrix_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="PriorityMatrix" EntitySet="PriorityMatrix" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityMatrix_Impact" Association="Self.FK_PriorityMatrix_Impact">
+      <End Role="Impact" EntitySet="Impact" />
+      <End Role="PriorityMatrix" EntitySet="PriorityMatrix" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityMatrix_Priority" Association="Self.FK_PriorityMatrix_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="PriorityMatrix" EntitySet="PriorityMatrix" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityMatrix_SLA" Association="Self.FK_PriorityMatrix_SLA">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="PriorityMatrix" EntitySet="PriorityMatrix" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityMatrix_Urgancy" Association="Self.FK_PriorityMatrix_Urgancy">
+      <End Role="Urgency" EntitySet="Urgency" />
+      <End Role="PriorityMatrix" EntitySet="PriorityMatrix" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityRule_EntityStatus" Association="Self.FK_PriorityRule_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="PriorityRule" EntitySet="PriorityRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityRule_Priority" Association="Self.FK_PriorityRule_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="PriorityRule" EntitySet="PriorityRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityRule_PriorityMatrix" Association="Self.FK_PriorityRule_PriorityMatrix">
+      <End Role="PriorityMatrix" EntitySet="PriorityMatrix" />
+      <End Role="PriorityRule" EntitySet="PriorityRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityRule_Section" Association="Self.FK_PriorityRule_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="PriorityRule" EntitySet="PriorityRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityRule_SLA" Association="Self.FK_PriorityRule_SLA">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="PriorityRule" EntitySet="PriorityRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityRule_UserGroup" Association="Self.FK_PriorityRule_UserGroup">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PriorityRule" EntitySet="PriorityRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PriorityRule_Users" Association="Self.FK_PriorityRule_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="PriorityRule" EntitySet="PriorityRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_EntityStatus" Association="Self.FK_Role_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Role_UserType" Association="Self.FK_Role_UserType">
+      <End Role="UserType" EntitySet="UserType" />
+      <End Role="Role" EntitySet="Role" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoleActions_Action" Association="Self.FK_RoleActions_Action">
+      <End Role="Action" EntitySet="Action" />
+      <End Role="RoleActions" EntitySet="RoleActions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingRule_Category" Association="Self.FK_RoutingRule_Category">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="RoutingRule" EntitySet="RoutingRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingRule_EntityStatus" Association="Self.FK_RoutingRule_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="RoutingRule" EntitySet="RoutingRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingRule_SLA1" Association="Self.FK_RoutingRule_SLA1">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="RoutingRule" EntitySet="RoutingRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingRule_UserGroup" Association="Self.FK_RoutingRule_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="RoutingRule" EntitySet="RoutingRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingRule_UserGroup1" Association="Self.FK_RoutingRule_UserGroup1">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="RoutingRule" EntitySet="RoutingRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_RoutingRule_Users" Association="Self.FK_RoutingRule_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="RoutingRule" EntitySet="RoutingRule" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Secction_Department" Association="Self.FK_Secction_Department">
+      <End Role="Department" EntitySet="Department" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_Company" Association="Self.FK_Section_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Section_EntityStatus" Association="Self.FK_Section_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Section" EntitySet="Section" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ShareTopic_ShareTopic" Association="Self.FK_ShareTopic_ShareTopic">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="ShareTopic" EntitySet="ShareTopic" />
+    </AssociationSet>
+    <AssociationSet Name="FK_SLA_EntityStatus" Association="Self.FK_SLA_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="SLA" EntitySet="SLA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Status_EntityStatus" Association="Self.FK_Status_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Status" EntitySet="Status" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Status_StatusType" Association="Self.FK_Status_StatusType">
+      <End Role="StatusType" EntitySet="StatusType" />
+      <End Role="Status" EntitySet="Status" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusTimer_Status" Association="Self.FK_StatusTimer_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="StatusTimer" EntitySet="StatusTimer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_StatusTimer_StatusTimer" Association="Self.FK_StatusTimer_StatusTimer">
+      <End Role="Timer" EntitySet="Timer" />
+      <End Role="StatusTimer" EntitySet="StatusTimer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Category" Association="Self.FK_Task_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_EntityStatus" Association="Self.FK_Task_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Status" Association="Self.FK_Task_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Task" Association="Self.FK_Task_Task">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Task1" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_Ticket" Association="Self.FK_Task_Ticket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Task_UserGroup" Association="Self.FK_Task_UserGroup">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Category" Association="Self.FK_Ticket_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Category1" Association="Self.FK_Ticket_Category1">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Impact" Association="Self.FK_Ticket_Impact">
+      <End Role="Impact" EntitySet="Impact" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Priority" Association="Self.FK_Ticket_Priority">
+      <End Role="Priority" EntitySet="Priority" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Status" Association="Self.FK_Ticket_Status">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Ticket" Association="Self.FK_Ticket_Ticket">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="Tickets1" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Urgancy" Association="Self.FK_Ticket_Urgancy">
+      <End Role="Urgency" EntitySet="Urgency" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_User" Association="Self.FK_Ticket_User">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ticket_Users" Association="Self.FK_Ticket_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketLog_Tickets" Association="Self.FK_TicketLog_Tickets">
+      <End Role="Tickets" EntitySet="Tickets" />
+      <End Role="TicketLog" EntitySet="TicketLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TicketLog_Users" Association="Self.FK_TicketLog_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="TicketLog" EntitySet="TicketLog" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_EntityStatus" Association="Self.FK_Tickets_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_KnowledgeBase" Association="Self.FK_Tickets_KnowledgeBase">
+      <End Role="KnowledgeBase" EntitySet="KnowledgeBase" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tickets_SLA" Association="Self.FK_Tickets_SLA">
+      <End Role="SLA" EntitySet="SLA" />
+      <End Role="Tickets" EntitySet="Tickets" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Timer_EntityStatus" Association="Self.FK_Timer_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Timer" EntitySet="Timer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Timer_Timer" Association="Self.FK_Timer_Timer">
+      <End Role="Status" EntitySet="Status" />
+      <End Role="Timer" EntitySet="Timer" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Topic_Category" Association="Self.FK_Topic_Category">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="KnowledgeBase" EntitySet="KnowledgeBase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Topic_Users" Association="Self.FK_Topic_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="KnowledgeBase" EntitySet="KnowledgeBase" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Urgency_EntityStatus" Association="Self.FK_Urgency_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Urgency" EntitySet="Urgency" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserGroup_EntityStatus" Association="Self.FK_UserGroup_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="UserGroup" EntitySet="UserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserGroup_GroupType" Association="Self.FK_UserGroup_GroupType">
+      <End Role="GroupType" EntitySet="GroupType" />
+      <End Role="UserGroup" EntitySet="UserGroup" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Role" Association="Self.FK_UserRoles_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UserRoles_Users" Association="Self.FK_UserRoles_Users">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="UserRoles" EntitySet="UserRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Company" Association="Self.FK_Users_Company">
+      <End Role="Company" EntitySet="Company" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_EntityStatus" Association="Self.FK_Users_EntityStatus">
+      <End Role="EntityStatus" EntitySet="EntityStatus" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Role" Association="Self.FK_Users_Role">
+      <End Role="Role" EntitySet="Role" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Section" Association="Self.FK_Users_Section">
+      <End Role="Section" EntitySet="Section" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_UserGroup" Association="Self.FK_Users_UserGroup">
+      <End Role="UserGroup" EntitySet="UserGroup" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

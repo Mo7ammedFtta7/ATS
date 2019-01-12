@@ -13,10 +13,10 @@ namespace SmartHup.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class SMARTEntities : DbContext
+    public partial class TicketsEntities : DbContext
     {
-        public SMARTEntities()
-            : base("name=SMARTEntities")
+        public TicketsEntities()
+            : base("name=TicketsEntities")
         {
         }
     
@@ -25,86 +25,55 @@ namespace SmartHup.Models
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
-        public virtual DbSet<ACCOUNT> ACCOUNT { get; set; }
-        public virtual DbSet<Action> Action { get; set; }
-        public virtual DbSet<ADMINUSER> ADMINUSER { get; set; }
-        public virtual DbSet<ALERT> ALERT { get; set; }
-        public virtual DbSet<ALERTLEVEL> ALERTLEVEL { get; set; }
-        public virtual DbSet<AuditingLog> AuditingLog { get; set; }
-        public virtual DbSet<Bank> Bank { get; set; }
-        public virtual DbSet<Banks> Banks { get; set; }
-        public virtual DbSet<branches> branches { get; set; }
-        public virtual DbSet<Channel> Channel { get; set; }
-        public virtual DbSet<ChannelType> ChannelType { get; set; }
-        public virtual DbSet<City> City { get; set; }
-        public virtual DbSet<Contracts> Contracts { get; set; }
-        public virtual DbSet<ContractTypes> ContractTypes { get; set; }
-        public virtual DbSet<Currency> Currency { get; set; }
-        public virtual DbSet<customer> customer { get; set; }
-        public virtual DbSet<EntityStatus> EntityStatus { get; set; }
-        public virtual DbSet<Favourite> Favourite { get; set; }
-        public virtual DbSet<LT_Channel_Service> LT_Channel_Service { get; set; }
-        public virtual DbSet<LT_PaymentMethod_Channel> LT_PaymentMethod_Channel { get; set; }
-        public virtual DbSet<LT_PaymentMethod_Service> LT_PaymentMethod_Service { get; set; }
-        public virtual DbSet<Module> Module { get; set; }
-        public virtual DbSet<MONITORINGJOB> MONITORINGJOB { get; set; }
-        public virtual DbSet<MONITORINGLOG> MONITORINGLOG { get; set; }
-        public virtual DbSet<MONITORINGLOG_ARC> MONITORINGLOG_ARC { get; set; }
-        public virtual DbSet<MultiValueList> MultiValueList { get; set; }
-        public virtual DbSet<NotificationCategory> NotificationCategory { get; set; }
-        public virtual DbSet<NotificationGroup> NotificationGroup { get; set; }
-        public virtual DbSet<PaymentField> PaymentField { get; set; }
-        public virtual DbSet<PaymentHandler> PaymentHandler { get; set; }
-        public virtual DbSet<PaymentMethod> PaymentMethod { get; set; }
-        public virtual DbSet<PaymentMethodType> PaymentMethodType { get; set; }
-        public virtual DbSet<PaymentProvider> PaymentProvider { get; set; }
-        public virtual DbSet<QRTZ_BLOB_TRIGGERS> QRTZ_BLOB_TRIGGERS { get; set; }
-        public virtual DbSet<QRTZ_CALENDARS> QRTZ_CALENDARS { get; set; }
-        public virtual DbSet<QRTZ_CRON_TRIGGERS> QRTZ_CRON_TRIGGERS { get; set; }
-        public virtual DbSet<QRTZ_FIRED_TRIGGERS> QRTZ_FIRED_TRIGGERS { get; set; }
-        public virtual DbSet<QRTZ_JOB_DETAILS> QRTZ_JOB_DETAILS { get; set; }
-        public virtual DbSet<QRTZ_LOCKS> QRTZ_LOCKS { get; set; }
-        public virtual DbSet<QRTZ_PAUSED_TRIGGER_GRPS> QRTZ_PAUSED_TRIGGER_GRPS { get; set; }
-        public virtual DbSet<QRTZ_SCHEDULER_STATE> QRTZ_SCHEDULER_STATE { get; set; }
-        public virtual DbSet<QRTZ_SIMPLE_TRIGGERS> QRTZ_SIMPLE_TRIGGERS { get; set; }
-        public virtual DbSet<QRTZ_SIMPROP_TRIGGERS> QRTZ_SIMPROP_TRIGGERS { get; set; }
-        public virtual DbSet<QRTZ_TRIGGERS> QRTZ_TRIGGERS { get; set; }
-        public virtual DbSet<RangType> RangType { get; set; }
-        public virtual DbSet<REASON> REASON { get; set; }
-        public virtual DbSet<RemoteSettings> RemoteSettings { get; set; }
-        public virtual DbSet<Role> Role { get; set; }
-        public virtual DbSet<RoleActions> RoleActions { get; set; }
-        public virtual DbSet<Service> Service { get; set; }
-        public virtual DbSet<ServiceField> ServiceField { get; set; }
-        public virtual DbSet<ServiceHandler> ServiceHandler { get; set; }
-        public virtual DbSet<ServiceProvider> ServiceProvider { get; set; }
-        public virtual DbSet<ServiceProviderType> ServiceProviderType { get; set; }
-        public virtual DbSet<ServiceScenario> ServiceScenario { get; set; }
-        public virtual DbSet<ServiceType> ServiceType { get; set; }
-        public virtual DbSet<State> State { get; set; }
-        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
-        public virtual DbSet<SystemResponse> SystemResponse { get; set; }
-        public virtual DbSet<Termianl_Log> Termianl_Log { get; set; }
-        public virtual DbSet<Terminal> Terminal { get; set; }
-        public virtual DbSet<TerminalActivities> TerminalActivities { get; set; }
-        public virtual DbSet<TerminalComponent> TerminalComponent { get; set; }
-        public virtual DbSet<TerminalFamily> TerminalFamily { get; set; }
-        public virtual DbSet<TerminalState> TerminalState { get; set; }
-        public virtual DbSet<TerminalStatus> TerminalStatus { get; set; }
-        public virtual DbSet<TerminalStatusDictionary> TerminalStatusDictionary { get; set; }
-        public virtual DbSet<Transaction> Transaction { get; set; }
-        public virtual DbSet<Transaction_ARC> Transaction_ARC { get; set; }
-        public virtual DbSet<TransactionLog> TransactionLog { get; set; }
-        public virtual DbSet<Transactions> Transactions { get; set; }
-        public virtual DbSet<Transactions1> Transactions1 { get; set; }
-        public virtual DbSet<User> User { get; set; }
-        public virtual DbSet<UserClaims> UserClaims { get; set; }
-        public virtual DbSet<UserLogins> UserLogins { get; set; }
-        public virtual DbSet<UserRoles> UserRoles { get; set; }
-        public virtual DbSet<Vendor> Vendor { get; set; }
-        public virtual DbSet<BillInfo> BillInfo { get; set; }
-        public virtual DbSet<PaymentFields> PaymentFields { get; set; }
-        public virtual DbSet<Query> Query { get; set; }
+        public virtual DbSet<Action> Actions { get; set; }
+        public virtual DbSet<Announcement> Announcements { get; set; }
+        public virtual DbSet<Attachement> Attachements { get; set; }
+        public virtual DbSet<AuditingLog> AuditingLogs { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<CategoryType> CategoryTypes { get; set; }
+        public virtual DbSet<ChatSession> ChatSessions { get; set; }
+        public virtual DbSet<ChatSetting> ChatSettings { get; set; }
+        public virtual DbSet<Company> Companies { get; set; }
+        public virtual DbSet<Company_Announcement> Company_Announcement { get; set; }
+        public virtual DbSet<CurrentMeasurementList> CurrentMeasurementLists { get; set; }
+        public virtual DbSet<CurrentSlaResult> CurrentSlaResults { get; set; }
+        public virtual DbSet<Department> Departments { get; set; }
+        public virtual DbSet<DueDateRule> DueDateRules { get; set; }
+        public virtual DbSet<EntityStatu> EntityStatus { get; set; }
+        public virtual DbSet<EscalationRule> EscalationRules { get; set; }
+        public virtual DbSet<GroupType> GroupTypes { get; set; }
+        public virtual DbSet<Impact> Impacts { get; set; }
+        public virtual DbSet<KnowledgeBase> KnowledgeBases { get; set; }
+        public virtual DbSet<Measurment> Measurments { get; set; }
+        public virtual DbSet<MeasurmentList> MeasurmentLists { get; set; }
+        public virtual DbSet<Module> Modules { get; set; }
+        public virtual DbSet<OnlineUser> OnlineUsers { get; set; }
+        public virtual DbSet<OperatingTime> OperatingTimes { get; set; }
+        public virtual DbSet<Priority> Priorities { get; set; }
+        public virtual DbSet<PriorityMatrix> PriorityMatrices { get; set; }
+        public virtual DbSet<PriorityRule> PriorityRules { get; set; }
+        public virtual DbSet<Reminder> Reminders { get; set; }
+        public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<RoleAction> RoleActions { get; set; }
+        public virtual DbSet<RoutingRule> RoutingRules { get; set; }
+        public virtual DbSet<Section> Sections { get; set; }
+        public virtual DbSet<ShareTopic> ShareTopics { get; set; }
+        public virtual DbSet<SLA> SLAs { get; set; }
+        public virtual DbSet<Status> Status { get; set; }
+        public virtual DbSet<StatusTimer> StatusTimers { get; set; }
+        public virtual DbSet<StatusType> StatusTypes { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<Task> Tasks { get; set; }
+        public virtual DbSet<TicketLog> TicketLogs { get; set; }
+        public virtual DbSet<TicketMsg> TicketMsgs { get; set; }
+        public virtual DbSet<Ticket> Tickets { get; set; }
+        public virtual DbSet<Timer> Timers { get; set; }
+        public virtual DbSet<Type> Types { get; set; }
+        public virtual DbSet<Urgency> Urgencies { get; set; }
+        public virtual DbSet<UserGroup> UserGroups { get; set; }
+        public virtual DbSet<UserRole> UserRoles { get; set; }
+        public virtual DbSet<UserRouting> UserRoutings { get; set; }
+        public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<UserType> UserTypes { get; set; }
     }
 }

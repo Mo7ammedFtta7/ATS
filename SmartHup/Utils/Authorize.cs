@@ -9,7 +9,7 @@ namespace SmartHup
 {
     public class Authorized : FilterAttribute, IAuthorizationFilter
     {
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities db = new TicketsEntities();
 
         private readonly string[] allowedroles;
         public Authorized(params string[] roles)
@@ -40,7 +40,7 @@ namespace SmartHup
                 if  (throwe)
                     {
                 //if (filterContext.HttpContext.Session["admin"] == null)
-                user_info.user = db.User.Find(Convert.ToInt64(Request.Cookies["userdata"]["count"].ToString()));
+                user_info.user = db.Users.Find(Convert.ToInt64(Request.Cookies["userdata"]["count"].ToString()));
                 if (user_info.user.systemId==null)
                 {
                     filterContext.Result = new RedirectResult("/account/login");

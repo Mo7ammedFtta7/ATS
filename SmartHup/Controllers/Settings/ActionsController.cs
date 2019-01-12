@@ -15,12 +15,12 @@ namespace SmartHup.Controllers.Settings
 
     public class ActionsController : Base
     {
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities db = new TicketsEntities();
 
         // GET: Actions
         public async Task<ActionResult> Index()
         {
-            var action = db.Action.Include(a => a.EntityStatus).Include(a => a.Module);
+            var action = db.Actions.Include(a => a.Module);
             return View(await action.ToListAsync());
         }
 
@@ -31,7 +31,7 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Models.Action action = await db.Action.FindAsync(id);
+            Models.Action action = await db.Actions.FindAsync(id);
             if (action == null)
             {
                 return HttpNotFound();
@@ -43,7 +43,7 @@ namespace SmartHup.Controllers.Settings
         public ActionResult Create()
         {
             ViewBag.entityStatus_systemId = new SelectList(db.EntityStatus, "systemId", "EntityStatusName");
-            ViewBag.moduleId = new SelectList(db.Module, "systemId", "name");
+            ViewBag.moduleId = new SelectList(db.Modules, "systemId", "name");
             return View();
         }
 
@@ -66,12 +66,12 @@ namespace SmartHup.Controllers.Settings
                     action.modifiedBy = 1;
                     action.creationDate = DateTime.Now;
                     action.entityStatus_systemId = 1;
-                    action.status = 1;
+                    //action.status = 1;
                     action.version = 0;
                 action.moduleId = moduleId;
-                if (db.Action.Where(a=>a.name==name&&a.moduleId==moduleId).Count()==0)
+                if (db.Actions.Where(a=>a.name==name&&a.moduleId==moduleId).Count()==0)
                 {
-                    db.Action.Add(action);
+                    db.Actions.Add(action);
 
                 }
 
@@ -88,13 +88,13 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Models.Action action = await db.Action.FindAsync(id);
+            Models.Action action = await db.Actions.FindAsync(id);
             if (action == null)
             {
                 return HttpNotFound();
             }
             ViewBag.entityStatus_systemId = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", action.entityStatus_systemId);
-            ViewBag.moduleId = new SelectList(db.Module, "systemId", "name", action.moduleId);
+            ViewBag.moduleId = new SelectList(db.Modules, "systemId", "name", action.moduleId);
             return View(action);
         }
 
@@ -113,7 +113,7 @@ namespace SmartHup.Controllers.Settings
                 return RedirectToAction("Index");
             }
             ViewBag.entityStatus_systemId = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", action.entityStatus_systemId);
-            ViewBag.moduleId = new SelectList(db.Module, "systemId", "name", action.moduleId);
+            ViewBag.moduleId = new SelectList(db.Modules, "systemId", "name", action.moduleId);
             return View(action);
         }
 
@@ -124,7 +124,7 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Models.Action action = await db.Action.FindAsync(id);
+            Models.Action action = await db.Actions.FindAsync(id);
             if (action == null)
             {
                 return HttpNotFound();
@@ -137,7 +137,7 @@ namespace SmartHup.Controllers.Settings
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(long id)
         {
-            Models.Action action = await db.Action.FindAsync(id);
+            Models.Action action = await db.Actions.FindAsync(id);
 			action = (Models.Action)deleteEntity( action);
             
             await db.SaveChangesAsync();

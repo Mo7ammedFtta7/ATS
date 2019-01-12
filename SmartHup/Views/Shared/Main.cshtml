@@ -665,8 +665,17 @@
         @RenderSection("Scripts");
     }
     <script>
-    $(document).ready(function () {
-        $('.datatable').DataTable();
+        $(document).ready(function () {
+            $("#FromTimer_Value").change(function () {
+                if ($("#FromTimer_Value").is(":checked")) {
+                    $("#TimerID").prop("disabled", false);
+                }
+                else if ($("#FromTimer_Value").is(":not(:checked)")) {
+                    $("#TimerID").prop("disabled", true);
+                }
+            });
+            
+            $('.datatable').DataTable();
         // Initialize numeric spinner input boxes
         //$(".numeric-spinner").spinedit();
         // Initialize modal dialog
@@ -752,7 +761,25 @@
                 }
             });
         }
-      
+        $("#Category_ID").change(function () {
+
+            var Category_ID = $(this).val();
+            //  debugger
+            $.ajax({
+
+                type: "Post",
+                url: "/EscalationRules/getSubCategoryList?systemId=" + Category_ID,
+                contentType: "html",
+                success: function (response) {
+                    //   debugger
+                    $("#Sub_Category_ID").empty();
+                    $("#Sub_Category_ID").append(response);
+
+                }
+
+            })
+
+        });
 
     </script>
 </body>

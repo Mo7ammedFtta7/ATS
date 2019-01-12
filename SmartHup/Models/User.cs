@@ -17,54 +17,102 @@ namespace SmartHup.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public User()
         {
-            this.ALERT = new HashSet<ALERT>();
-            this.AuditingLog = new HashSet<AuditingLog>();
-            this.Contracts = new HashSet<Contracts>();
-            this.MONITORINGLOG = new HashSet<MONITORINGLOG>();
-            this.UserClaims = new HashSet<UserClaims>();
-            this.UserLogins = new HashSet<UserLogins>();
-            this.UserRoles = new HashSet<UserRoles>();
+            this.AuditingLogs = new HashSet<AuditingLog>();
+            this.ChatSessions = new HashSet<ChatSession>();
+            this.Departments = new HashSet<Department>();
+            this.EscalationRules = new HashSet<EscalationRule>();
+            this.EscalationRules1 = new HashSet<EscalationRule>();
+            this.EscalationRules2 = new HashSet<EscalationRule>();
+            this.KnowledgeBases = new HashSet<KnowledgeBase>();
+            this.OnlineUsers = new HashSet<OnlineUser>();
+            this.PriorityRules = new HashSet<PriorityRule>();
+            this.PriorityRules1 = new HashSet<PriorityRule>();
+            this.Reminders = new HashSet<Reminder>();
+            this.RoutingRules = new HashSet<RoutingRule>();
+            this.Tasks = new HashSet<Task>();
+            this.TicketLogs = new HashSet<TicketLog>();
+            this.TicketMsgs = new HashSet<TicketMsg>();
+            this.TicketMsgs1 = new HashSet<TicketMsg>();
+            this.Tickets = new HashSet<Ticket>();
+            this.Tickets1 = new HashSet<Ticket>();
+            this.UserRoles = new HashSet<UserRole>();
+            this.UserRoutings = new HashSet<UserRouting>();
+            this.UserRoutings1 = new HashSet<UserRouting>();
         }
     
         public long systemId { get; set; }
-        public long serviceProviderId { get; set; }
-        public long RoleId { get; set; }
+        public string UserName { get; set; }
+        public string LoginName { get; set; }
+        public string PasswordHash { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public Nullable<long> departmentId { get; set; }
+        public Nullable<long> companyId { get; set; }
+        public Nullable<long> SectionID { get; set; }
+        public Nullable<long> GroupID { get; set; }
+        public Nullable<long> RoleID { get; set; }
         public long createdBy { get; set; }
         public Nullable<long> modifiedBy { get; set; }
         public Nullable<long> deletedBy { get; set; }
-        public System.DateTime creationDate { get; set; }
+        public Nullable<System.DateTime> creationDate { get; set; }
         public Nullable<System.DateTime> modificationDate { get; set; }
         public Nullable<System.DateTime> deletedDate { get; set; }
-        public Nullable<int> status { get; set; }
-        public int version { get; set; }
-        public string Email { get; set; }
-        public bool EmailConfirmed { get; set; }
-        public string PasswordHash { get; set; }
+        public Nullable<int> entityStatus_systemId { get; set; }
+        public Nullable<int> version { get; set; }
+        public Nullable<bool> EmailConfirmed { get; set; }
         public string SecurityStamp { get; set; }
-        public string PhoneNumber { get; set; }
-        public bool PhoneNumberConfirmed { get; set; }
-        public bool TwoFactorEnabled { get; set; }
+        public Nullable<bool> PhoneNumberConfirmed { get; set; }
+        public Nullable<int> AccessFailedCount { get; set; }
+        public Nullable<bool> LockoutEnabled { get; set; }
+        public int status { get; set; }
         public Nullable<System.DateTime> LockoutEndDateUtc { get; set; }
-        public bool LockoutEnabled { get; set; }
-        public int AccessFailedCount { get; set; }
-        public string UserName { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ALERT> ALERT { get; set; }
+        public virtual ICollection<AuditingLog> AuditingLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuditingLog> AuditingLog { get; set; }
+        public virtual ICollection<ChatSession> ChatSessions { get; set; }
+        public virtual Company Company { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Contracts> Contracts { get; set; }
-        public virtual EntityStatus EntityStatus { get; set; }
+        public virtual ICollection<Department> Departments { get; set; }
+        public virtual EntityStatu EntityStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MONITORINGLOG> MONITORINGLOG { get; set; }
+        public virtual ICollection<EscalationRule> EscalationRules { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EscalationRule> EscalationRules1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<EscalationRule> EscalationRules2 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<KnowledgeBase> KnowledgeBases { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<OnlineUser> OnlineUsers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PriorityRule> PriorityRules { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PriorityRule> PriorityRules1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Reminder> Reminders { get; set; }
         public virtual Role Role { get; set; }
-        public virtual ServiceProvider ServiceProvider { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserClaims> UserClaims { get; set; }
+        public virtual ICollection<RoutingRule> RoutingRules { get; set; }
+        public virtual Section Section { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserLogins> UserLogins { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRoles> UserRoles { get; set; }
+        public virtual ICollection<TicketLog> TicketLogs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TicketMsg> TicketMsgs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<TicketMsg> TicketMsgs1 { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ticket> Tickets { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Ticket> Tickets1 { get; set; }
+        public virtual UserGroup UserGroup { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserRole> UserRoles { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserRouting> UserRoutings { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserRouting> UserRoutings1 { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace SmartHup.Controllers
 {
     public class AccountController : Controller
     {
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities db = new TicketsEntities();
 
         // GET: Login
         public ActionResult login()
@@ -68,7 +68,7 @@ namespace SmartHup.Controllers
             if (ModelState.IsValid)
             {
                 //string hpass = Crypto.HashPassword(login.password);
-                var result = db.User.Where(c => c.UserName == login.username ).FirstOrDefault();
+                var result = db.Users.Where(c => c.UserName == login.username ).FirstOrDefault();
                 if (result==null)
                 {
                     ViewBag.message = "Login failed";

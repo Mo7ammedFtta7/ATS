@@ -1,0 +1,89 @@
+﻿@model IEnumerable<SmartHup.Models.EscalationRule>
+@{Dictionary<Tuple<string, string>, bool> menu = ViewBag.menu;
+    if (menu == null)
+    { menu = new Dictionary<Tuple<string, string>, bool>(); }
+}
+
+@{
+
+}
+
+<h3>Escalation Rules Management</h3>
+@if (menu.ContainsKey(Tuple.Create("EscalationRules", "Create")))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+    </p>
+}
+<div class="box ">
+    <div class="box-header">
+    </div>
+    <div class="box-body">
+        <table class="table table-striped table-bordered table-hover order-column datatable">
+            <thead>
+                <tr>
+                    <th>
+                        Escalation Name
+                    </th>
+
+                    <th>
+                        Agreement
+                    </th>
+                    <th> Actions</th>
+                </tr>
+            <thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.EscalationName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SLA.SLA_Name)
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+                                    Actions
+                                    <i class="fa fa-angle-down"></i>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    @if (menu.ContainsKey(Tuple.Create("EscalationRules", "Edit")))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Edit", "EscalationRules", new { id = item.systemId })"><i class="fa fa-edit"><span class="DelTex">Edit</span></i></a>
+                                        </li>
+                                    }
+                                    @if (menu.ContainsKey(Tuple.Create("EscalationRules", "Details")))
+                                    {
+                                        <li>
+
+                                            <a href="@Url.Action("Details", "EscalationRules", new { id = item.systemId })"><i class="fa fa-eye"><span class="DelTex">Details</span></i></a>
+                                        </li>
+                                    }
+                                    @if (menu.ContainsKey(Tuple.Create("EscalationRules", "Delete")))
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("Delete", "EscalationRules", new { id = item.systemId })">
+                                                <i class="fa fa-remove"><span class="DelTex">Delete</span></i>
+                                            </a>
+                                        </li>
+                                    }
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+
+            </tfoot>
+        </table>
+    </div>
+</div>
+<script>
+    $(function () {
+        $('#example1').DataTable()
+    })
+</script>

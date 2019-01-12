@@ -9,7 +9,6 @@
     @if (menu.ContainsKey(Tuple.Create("Roles", "Create")))
     {
         <p>
-
             <a href="@Url.Action("Create")" class="btn btn-success">Create New</a>
         </p>
     }
@@ -22,14 +21,12 @@
                 <thead>
                     <tr>
                         <th>
-                            @Html.DisplayNameFor(model => model.Name)
+                            @Html.DisplayNameFor(model => model.RoleName)
                         </th>
                         <th>
-                            @Html.DisplayNameFor(model => model.EName)
+                            @Html.DisplayNameFor(model => model.RoleName)
                         </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.serviceProviderTypeId)
-                        </th>
+                        
 
                         <th>Actions</th>
                     </tr>
@@ -41,14 +38,12 @@
                         <tr>
 
                             <td>
-                                @Html.DisplayFor(modelItem => item.Name)
+                                @Html.DisplayFor(modelItem => item.RoleName)
                             </td>
                             <td>
-                                @Html.DisplayFor(modelItem => item.EName)
+                                @Html.DisplayFor(modelItem => item.RoleName)
                             </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.ServiceProviderType.Name)
-                            </td>
+                          
                             <td>
                                 <div class="btn-group">
                                     <button class="btn btn-xs green dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
@@ -65,12 +60,11 @@
                                             </li>
                                         }
 
-                                        @if (menu.ContainsKey(Tuple.Create("Roles", "AssignPages")))
-                                        {
+                                      
                                             <li>
                                                 <a href="@Url.Action("AssignPages", "Roles", new { id = item.systemId  })"><i class="fa fa-tasks"><span class="DelTex">Assign</span></i></a>
                                                 </li>
-                                                }
+                                               
 
                                                 @if (menu.ContainsKey(Tuple.Create("Roles", "Details")))
                                                 {

@@ -17,8 +17,8 @@ namespace SmartHup.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Action()
         {
-            this.AuditingLog = new HashSet<AuditingLog>();
-            this.RoleActions = new HashSet<RoleActions>();
+            this.AuditingLogs = new HashSet<AuditingLog>();
+            this.RoleActions = new HashSet<RoleAction>();
         }
     
         public long systemId { get; set; }
@@ -28,21 +28,19 @@ namespace SmartHup.Models
         public string Elabel { get; set; }
         public string pageType { get; set; }
         public long moduleId { get; set; }
-        public System.DateTime creationDate { get; set; }
+        public Nullable<System.DateTime> creationDate { get; set; }
         public Nullable<System.DateTime> modificationDate { get; set; }
-        public Nullable<System.DateTime> deletedDate { get; set; }
-        public int status { get; set; }
-        public int version { get; set; }
-        public Nullable<int> entityStatus_systemId { get; set; }
-        public long createdBy { get; set; }
+        public Nullable<long> createdBy { get; set; }
         public Nullable<long> modifiedBy { get; set; }
+        public Nullable<int> version { get; set; }
+        public Nullable<System.DateTime> deletedDate { get; set; }
+        public Nullable<int> entityStatus_systemId { get; set; }
         public Nullable<long> deletedBy { get; set; }
     
-        public virtual EntityStatus EntityStatus { get; set; }
         public virtual Module Module { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuditingLog> AuditingLog { get; set; }
+        public virtual ICollection<AuditingLog> AuditingLogs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoleActions> RoleActions { get; set; }
+        public virtual ICollection<RoleAction> RoleActions { get; set; }
     }
 }

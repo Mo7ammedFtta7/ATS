@@ -16,12 +16,12 @@ namespace SmartHup.Controllers.Settings
     public class ModulesController : Base
     {
 
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities db = new TicketsEntities();
 
         // GET: Modules
         public async Task<ActionResult> Index()
         {
-            var module = db.Module.Include(m => m.EntityStatus).Include(m => m.Module2);
+            var module = db.Modules.Include(m => m.entityStatus_systemId).Include(m => m.Module2);
             return View(await module.ToListAsync());
         }
 
@@ -32,7 +32,7 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Module module = await db.Module.FindAsync(id);
+            Module module = await db.Modules.FindAsync(id);
             if (module == null)
             {
                 return HttpNotFound();
@@ -44,7 +44,7 @@ namespace SmartHup.Controllers.Settings
         public ActionResult Create()
         {
             ViewBag.entityStatus_systemId = new SelectList(db.EntityStatus, "systemId", "EntityStatusName");
-            ViewBag.parentId = new SelectList(db.Module, "systemId", "name");
+            ViewBag.parentId = new SelectList(db.Modules, "systemId", "name");
             return View();
         }
 
@@ -58,13 +58,13 @@ namespace SmartHup.Controllers.Settings
             if (ModelState.IsValid)
             {
 				  module = (Module)createEntity( module);
-                db.Module.Add(module);
+                db.Modules.Add(module);
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
             ViewBag.entityStatus_systemId = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", module.entityStatus_systemId);
-            ViewBag.parentId = new SelectList(db.Module, "systemId", "name", module.parentId);
+            ViewBag.parentId = new SelectList(db.Modules, "systemId", "name", module.parentId);
             return View(module);
         }
 
@@ -75,13 +75,13 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Module module = await db.Module.FindAsync(id);
+            Module module = await db.Modules.FindAsync(id);
             if (module == null)
             {
                 return HttpNotFound();
             }
             ViewBag.entityStatus_systemId = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", module.entityStatus_systemId);
-            ViewBag.parentId = new SelectList(db.Module, "systemId", "name", module.parentId);
+            ViewBag.parentId = new SelectList(db.Modules, "systemId", "name", module.parentId);
             return View(module);
         }
 
@@ -100,7 +100,7 @@ namespace SmartHup.Controllers.Settings
                 return RedirectToAction("Index");
             }
             ViewBag.entityStatus_systemId = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", module.entityStatus_systemId);
-            ViewBag.parentId = new SelectList(db.Module, "systemId", "name", module.parentId);
+            ViewBag.parentId = new SelectList(db.Modules, "systemId", "name", module.parentId);
             return View(module);
         }
 
@@ -111,7 +111,7 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Module module = await db.Module.FindAsync(id);
+            Module module = await db.Modules.FindAsync(id);
             if (module == null)
             {
                 return HttpNotFound();
@@ -124,7 +124,7 @@ namespace SmartHup.Controllers.Settings
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(long id)
         {
-            Module module = await db.Module.FindAsync(id);
+            Module module = await db.Modules.FindAsync(id);
 			module = (Module)deleteEntity( module);
             
             await db.SaveChangesAsync();

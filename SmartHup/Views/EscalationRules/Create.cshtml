@@ -1,0 +1,242 @@
+﻿@model SmartHup.Models.EscalationRule
+@{
+    ViewBag.Title = "EscalationRule";
+}
+
+@using (Html.BeginForm(new { @class = "form-horizontal" })) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Add Escalation Rule - Escalation Rules Managment</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="col-md-5">
+                @Html.LabelFor(model => model.EscalationName, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.EscalationName, new { htmlAttributes = new { @class = "form-control", @Required = "" } })
+                    @Html.ValidationMessageFor(model => model.EscalationName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-5">
+                @Html.LabelFor(model => model.EscalationArName, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.EscalationArName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EscalationArName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <h3>Escalation Conditions </h3>
+
+        <div class="row">
+        <div class="col-md-3">
+             @Html.LabelFor(model => model.Category_ID, "Category", htmlAttributes: new { @class = "control-label " })
+             @if (ViewBag.CotegoryList != null)
+             {
+              <div class="">
+               @Html.DropDownListFor(model => model.Category_ID, ViewBag.CotegoryList as SelectList, "--Select Category--", new { @class = "form-control" })
+               @Html.ValidationMessageFor(model => model.Category_ID, "", new { @class = "text-danger" })
+             </div>
+             }
+    </div>
+              <div class="col-md-3">
+                <div class="">
+                    @Html.LabelFor(model => model.Sub_Category_ID, "SubCategory", htmlAttributes: new { @class = "control-label " })
+                    <div class="">
+                        @Html.DropDownListFor(model => model.Sub_Category_ID, new SelectList(""), "--Select SubCategory--", new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Sub_Category_ID, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.SLA_ID, "SLA Name", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("SLA_ID", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SLA_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Status_ID, "Status Name", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("Status_ID", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Status_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.Priority_ID, "Priority Name", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("Priority_ID", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Priority_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AssignedUser_ID, "Assigned User", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("AssignedUser_ID", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AssignedUser_ID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.SubmitterUSerID, "Submitter USer", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("SubmitterUSerID", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.SubmitterUSerID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-3">
+                @Html.LabelFor(model => model.AssignedGroup, "Assigned Group", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("AssignedGroup", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.AssignedGroup, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <h3>When are the service records escalated? </h3>
+        <div class="row">
+            <div class="col-md-3">
+                Escalate After
+                @Html.RadioButtonFor(model => model.Escalate, "Escalate After")
+                </div>
+                <div class="col-md-3">
+                    Escalate Before
+                    @Html.RadioButtonFor(model => model.Escalate, "Escalate Before")
+                </div>
+
+            <div class="col-md-3">
+                From Timer
+                @Html.RadioButtonFor(model => model.FromTimer, "From Timer",new { @class = "text-danger ", @id = "FromTimer_Value" })
+                </div>
+                <div class="col-md-3">
+                    From Due Date
+                    @Html.RadioButtonFor(model => model.FromTimer, "From Due Date")
+                </div>
+
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Hours, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.Hours, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Hours, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.Minutes, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.Minutes, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Minutes, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-4">
+                @Html.LabelFor(model => model.TimerID, "Timer Name", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("TimerID", null, "--Selecte--", htmlAttributes: new { @class = "form-control", disabled = "disabled" , @Required = "" })
+                    @Html.ValidationMessageFor(model => model.TimerID, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+            <h3> What happens when the service records escalate?</h3>
+        <div class="row">
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.ChangePriority, "Change Priority", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("ChangePriority", null,"--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ChangePriority, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.ChangeStatus, "Change Status", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("ChangeStatus", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ChangeStatus, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.ReAssignUser, "ReAssign User", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("ReAssignUser", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ReAssignUser, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.EscalationLevel, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.EscalationLevel, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.EscalationLevel, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-2">
+                @Html.LabelFor(model => model.entityStatus_systemId, "entityStatus", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.DropDownList("entityStatus_systemId", null, "--Selecte--", htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.entityStatus_systemId, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="hide">
+                @Html.LabelFor(model => model.creationDate, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.creationDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.creationDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="hide">
+                @Html.LabelFor(model => model.modificationDate, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.modificationDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.modificationDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="hide">
+                @Html.LabelFor(model => model.createdBy, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.createdBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.createdBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="hide">
+                @Html.LabelFor(model => model.modifiedBy, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.modifiedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.modifiedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="hide">
+                @Html.LabelFor(model => model.version, "0", htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.version, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.version, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="hide">
+                @Html.LabelFor(model => model.deletedDate, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.deletedDate, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.deletedDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="hide">
+                @Html.LabelFor(model => model.deletedBy, htmlAttributes: new { @class = "control-label " })
+                <div class="">
+                    @Html.EditorFor(model => model.deletedBy, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.deletedBy, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row" style="padding: 20px;">
+            <div class="col-md-6">
+                <div class="box-footer">
+                    <input type="submit" value="Create" class="btn btn-danger" />
+                    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-primary" })
+                </div>
+            </div>
+        </div>
+       </div>
+       
+}
+

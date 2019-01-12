@@ -17,37 +17,28 @@ namespace SmartHup.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Role()
         {
-            this.ALERT = new HashSet<ALERT>();
-            this.MONITORINGLOG = new HashSet<MONITORINGLOG>();
-            this.RoleActions = new HashSet<RoleActions>();
-            this.User = new HashSet<User>();
-            this.UserRoles = new HashSet<UserRoles>();
+            this.UserRoles = new HashSet<UserRole>();
+            this.Users = new HashSet<User>();
         }
     
         public long systemId { get; set; }
-        public string Name { get; set; }
-        public string EName { get; set; }
-        public long serviceProviderTypeId { get; set; }
+        public string RoleName { get; set; }
+        public string RoleArName { get; set; }
+        public long UserTypeId { get; set; }
         public long createdBy { get; set; }
         public Nullable<long> modifiedBy { get; set; }
         public Nullable<long> deletedBy { get; set; }
         public System.DateTime creationDate { get; set; }
         public Nullable<System.DateTime> modificationDate { get; set; }
         public Nullable<System.DateTime> deletedDate { get; set; }
-        public Nullable<int> status { get; set; }
+        public Nullable<int> entityStatus_systemId { get; set; }
         public int version { get; set; }
     
+        public virtual EntityStatu EntityStatu { get; set; }
+        public virtual UserType UserType { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<ALERT> ALERT { get; set; }
-        public virtual EntityStatus EntityStatus { get; set; }
+        public virtual ICollection<UserRole> UserRoles { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MONITORINGLOG> MONITORINGLOG { get; set; }
-        public virtual ServiceProviderType ServiceProviderType { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RoleActions> RoleActions { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<User> User { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<UserRoles> UserRoles { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

@@ -1,6 +1,4 @@
 ﻿using SmartHup.Models;
-
-
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -18,7 +16,7 @@ namespace SmartHup.Controllers.Settings
     public class UsersController : Base
     {
 
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities db = new TicketsEntities();
         //private ApplicationSignInManager _signInManager;
         //private IDUserManager _userManager;
         //public ApplicationSignInManager SignInManager
@@ -69,34 +67,35 @@ namespace SmartHup.Controllers.Settings
         public ActionResult Index()
         {
             var userid = user_info.user.systemId;
-            var user = db.User.FirstOrDefault(u => u.systemId == userid);
-            var typeId = db.ServiceProviderType.FirstOrDefault(spt => spt.systemId.Equals(Utils.CSP)).systemId;
-            if (user.ServiceProvider.serviceProviderTypeId == typeId)
-            {
-                return View(db.User.Where(o => o.ServiceProvider.serviceProviderTypeId == typeId
-                && o.serviceProviderId == user.serviceProviderId).ToList());
-            }
-            else
-                return View(db.User.ToList());
+            var user = db.Users.FirstOrDefault(u => u.systemId == userid);
+            //var typeId = db.GroupType.FirstOrDefault(spt => spt.systemId.Equals(Utils.CSP)).systemId;
+          //  if (user.UserGroup.GroupTypeId == typeId)
+          //  {
+            //    return View(db.Users.Where(o => o.UserGroup.serviceProviderTypeId == typeId && o.serviceProviderId == user.serviceProviderId).ToList());
+            //}
+           // else
+                return View(db.Users.ToList());
         }
 
         public ActionResult AddUser()
         {
             var user = getUser();
             var typeId = GetUserType(user);
-            if (user.ServiceProvider.serviceProviderTypeId == typeId)
-            {
+            //if (user.UserGroup.serviceProviderTypeId == typeId)
+            //{
 
-                ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.status == 1 && sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName");
-                ViewBag.RoleId = new SelectList(db.Role.Where(r => r.status == 1 && r.serviceProviderTypeId == typeId), "systemId", "Name");
-            }
-            else
-            {
-                ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.status == 1), "systemId", "serviceProviderName");
-                ViewBag.RoleId = new SelectList(db.Role.Where(r => r.status == 1/* && r.serviceProviderTypeId == typeId*/), "systemId", "Name");
-            }
-            //var typeId = db.ServiceProviderType.FirstOrDefault(spt => spt.systemId.Equals(Utils.Utils.Utils.CSP)).systemId;
+            //    ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.status == 1 && sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName");
+            //    ViewBag.RoleID = new SelectList(db.Role.Where(r => r.status == 1 && r.serviceProviderTypeId == typeId), "systemId", "Name");
+            //}
+            //else
+            //{
+            //    ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.status == 1), "systemId", "serviceProviderName");
+            //    ViewBag.RoleID = new SelectList(db.Role.Where(r => r.status == 1/* && r.serviceProviderTypeId == typeId*/), "systemId", "Name");
+            //}
+            //var typeId = db.GroupType.FirstOrDefault(spt => spt.systemId.Equals(Utils.Utils.Utils.CSP)).systemId;
             //TwoFactorEnabled, PhoneNumberConfirmed, SecurityStamp, EmailConfirmed, LockoutEndDateUtc, LockoutEnabled, AccessFailedCount
+             ViewBag.RoleID = new SelectList(db.Roles.ToList(), "systemId", "Name");
+
             ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", user.status);
 
             return View();
@@ -107,37 +106,37 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+            User user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            if (user.LockoutEndDateUtc < DateTime.UtcNow)
-                TempData["condition"] = "1";
-            else
-                TempData["condition"] = "0";
+            //if (user.LockoutEndDateUtc < DateTime.UtcNow)
+            //    TempData["condition"] = "1";
+            //else
+            //    TempData["condition"] = "0";
             var data = new RegisterViewModel
             {
                 Email = user.Email,
-                RoleId = user.RoleId,
-                serviceProviderId = user.serviceProviderId,
+             //   RoleID = user.RoleID ,
+             //   serviceProviderId = user.serviceProviderId,
                 systemId = user.systemId,
                 PhoneNumber = user.PhoneNumber,
                 Username = user.UserName
 
             };
             var typeId = GetUserType(user);
-            if (user.ServiceProvider.serviceProviderTypeId == typeId)
-            {
+            //if (user.UserGroup.serviceProviderTypeId == typeId)
+            //{
 
-                ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.status == 1 && sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName", user.serviceProviderId);
-                ViewBag.RoleId = new SelectList(db.Role.Where(r => r.status == 1 && r.serviceProviderTypeId == typeId), "systemId", "Name", user.RoleId);
-            }
-            else
-            {
-                ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.status == 1), "systemId", "serviceProviderName", user.serviceProviderId);
-                ViewBag.RoleId = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name", user.RoleId);
-            }
+            //    ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.status == 1 && sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName", user.serviceProviderId);
+            //    ViewBag.RoleID = new SelectList(db.Role.Where(r => r.status == 1 && r.serviceProviderTypeId == typeId), "systemId", "Name", user.RoleID);
+            //}
+            //else
+            //{
+            //    ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.status == 1), "systemId", "serviceProviderName", user.serviceProviderId);
+            //    ViewBag.RoleID = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name", user.RoleID);
+            //}
             ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", user.status);
 
 
@@ -147,7 +146,7 @@ namespace SmartHup.Controllers.Settings
         public ActionResult UserProfile(long Id)
         {
 
-            User user = db.User.Find(Id);
+            User user = db.Users.Find(Id);
             if (user == null)
             {
                 return HttpNotFound();
@@ -163,15 +162,15 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            User user = db.User.Find(id);
+             User user = db.Users.Find(id);
             if (user == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.RoleId = new SelectList(db.Role.Where(r => r.systemId == user.RoleId), "systemId", "Name", user.RoleId);
-            ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName", user.serviceProviderId);
+            ViewBag.RoleID = new SelectList(db.Roles.Where(r => r.systemId == user.RoleID), "systemId", "Name", user.RoleID);
+            //ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName", user.serviceProviderId);
             //var data = new RegisterViewModel{
-            //    Email = user.Email, RoleId = user.RoleId, serviceProviderId = user.serviceProviderId,
+            //    Email = user.Email, RoleID = user.RoleID, serviceProviderId = user.serviceProviderId,
             //    systemId = user.systemId, PhoneNumber = user.PhoneNumber, Username = user.UserName
             //};
             log(user);
@@ -188,9 +187,9 @@ namespace SmartHup.Controllers.Settings
         public async Task<ActionResult> LockUser(long id)
         {
             var lockoutEndDate = new DateTimeOffset(new DateTime(9998, 01, 01));
-            User user = db.User.Find(id);
+             User user = db.Users.Find(id);
             user.LockoutEnabled = true;
-            user.LockoutEndDateUtc = Convert.ToDateTime ( lockoutEndDate.ToString()) ;
+            //user.LockoutEndDateUtc = Convert.ToDateTime ( lockoutEndDate.ToString()) ;
             db.Entry(user).State = EntityState.Modified;
 
             //db.Entry(user).CurrentValues.SetValues(user);
@@ -205,9 +204,9 @@ namespace SmartHup.Controllers.Settings
 
         public async Task<ActionResult> UnLockUser(long id)
         {
-            User user = db.User.Find(id);
+             User user = db.Users.Find(id);
             user.LockoutEnabled = false;
-            user.LockoutEndDateUtc = Convert.ToDateTime(DateTimeOffset.UtcNow.ToString());
+            //user.LockoutEndDateUtc = Convert.ToDateTime(DateTimeOffset.UtcNow.ToString());
             db.Entry(user).State = EntityState.Modified;
 
             //db.Entry(user).CurrentValues.SetValues(user);
@@ -230,16 +229,16 @@ namespace SmartHup.Controllers.Settings
             if (ModelState.IsValid)
             {
 
-                User user = new User
+                 User user = new User
                 {
                     UserName = model.Username,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
-                    RoleId = model.RoleId,
-                    serviceProviderId = model.serviceProviderId,
+                    //RoleID = model.RoleID,
+                    //serviceProviderId = model.serviceProviderId,
                     PasswordHash  = Crypto.HashPassword(model.Password),
 
-                    status = model.status,
+                    //status = model.status,
                     createdBy = user_info.user.systemId,
                     creationDate = DateTime.Now,
                     version = 0
@@ -248,7 +247,7 @@ namespace SmartHup.Controllers.Settings
                 try
                 {
                     //result = await UserManager.CreateAsync(user, model.Password);
-                    db.User.Add(user);
+                    db.Users.Add(user);
                     db.SaveChanges();
                    log(new { systemId = model.Username, page = "Add User", status = "true" });
                     return RedirectToAction("Index", "Users");
@@ -274,8 +273,8 @@ namespace SmartHup.Controllers.Settings
                 //}
                 //     AddErrors(result);
             }
-            ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.status == 1), "systemId", "serviceProviderName");
-            ViewBag.RoleId = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name");
+            //ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.status == 1), "systemId", "serviceProviderName");
+            //ViewBag.RoleID = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name");
             ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName");
             // If we got this far, something failed, redisplay form
             return View(model);
@@ -289,14 +288,14 @@ namespace SmartHup.Controllers.Settings
                 await UnLockUser(model.systemId);
             else
                 await LockUser(model.systemId);
-            User user = db.User.Find(model.systemId);
+             User user = db.Users.Find(model.systemId);
 
             user.UserName = model.Username;
             user.Email = model.Email;
             user.PhoneNumber = model.PhoneNumber;
-            user.RoleId = model.RoleId;
-            user.serviceProviderId = model.serviceProviderId;
-            user.status = model.status;
+            //user.RoleID = model.RoleID;
+            //user.serviceProviderId = model.serviceProviderId;
+            //user.status = model.status;
             user.modifiedBy = user_info.user.systemId;
             user.modificationDate = DateTime.Now;
             try
@@ -313,8 +312,9 @@ namespace SmartHup.Controllers.Settings
                   log(new { data = user, page = "Update User", status = "failed" });
 
                 ViewBag.msg = e.ToString();
-                ViewBag.RoleId = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name", user.RoleId);
-                ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.status == 1), "systemId", "serviceProviderName", user.serviceProviderId);
+                //ViewBag.RoleID = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name", user.RoleID);
+                //ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.status == 1), "systemId", "serviceProviderName", user.serviceProviderId);
+
                 ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName");
                 return View();
             }
@@ -325,8 +325,8 @@ namespace SmartHup.Controllers.Settings
             //    return RedirectToAction("Index", "Users");
             //}
              //AddErrors(result);
-            ViewBag.RoleId = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name", user.RoleId);
-            ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.status == 1), "systemId", "serviceProviderName", user.serviceProviderId);
+            //ViewBag.RoleID = new SelectList(db.Role.Where(r => r.status == 1), "systemId", "Name", user.RoleID);
+            //ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.status == 1), "systemId", "serviceProviderName", user.serviceProviderId);
             ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName");
             return View();
         }
@@ -337,14 +337,14 @@ namespace SmartHup.Controllers.Settings
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteUser(long Id)
         {
-            var user = db.User.Find(Id);
+            var user = db.Users.Find(Id);
 
             if (Id == user_info.user.systemId)
             {
                 ModelState.AddModelError("", "Cannot delete your current active user that you logged with");
                 log(new { user = Id, page = "Delete User", status = "false", msg = "Cannot delete your current active user that you logged with" });
-                ViewBag.RoleId = new SelectList(db.Role.Where(r => r.systemId == user.RoleId), "systemId", "Name", user.RoleId);
-                ViewBag.serviceProviderId = new SelectList(db.ServiceProvider.Where(sp => sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName", user.serviceProviderId);
+                ViewBag.RoleID = new SelectList(db.Roles.Where(r => r.systemId == user.RoleID), "systemId", "Name", user.RoleID);
+                //ViewBag.serviceProviderId = new SelectList(db.UserGroup.Where(sp => sp.systemId == user.serviceProviderId), "systemId", "serviceProviderName", user.serviceProviderId);
                 return View(user);
             }
 
@@ -354,7 +354,7 @@ namespace SmartHup.Controllers.Settings
             user.status = Utils.STATUS_DELETED;
             //user = (SmartHup.Models.User)deleteEntity(User);
                 user.LockoutEnabled = true;
-                //db.User.Remove(user);
+                //db.Users.Remove(user);
                 db.Entry(user).State = EntityState.Modified;
                 //db.Entry(user).CurrentValues.SetValues(user);
                 db.SaveChanges();

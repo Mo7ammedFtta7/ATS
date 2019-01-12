@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SmartHup.Models.User>
+﻿@model IEnumerable<SmartHup.Models.Users>
 @using SmartHup.Resources
 
 @{
@@ -7,7 +7,7 @@
 }
 
 <h2 class="page-title">User Management</h2>
-@if (menu.ContainsKey(Tuple.Create("Users", "AddUser")))
+@if (menu.ContainsKey(Tuple.Create("Users", "adduser")))
 {
     <p>
         @Html.ActionLink("Create New", "AddUser", null, new { @class = "btn btn-success" })
@@ -40,9 +40,7 @@
                     <th>
                    Role
                     </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.serviceProviderId)
-                    </th>
+                   
                     <th>status</th>
                     <th>Actions</th>
                 </tr>
@@ -74,12 +72,10 @@
 
 
                         <td>
-                            @Html.DisplayFor(modelItem => item.Role.Name)
+                            @Html.DisplayFor(modelItem => item.Role.RoleName  )
 
                         </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.ServiceProvider.serviceProviderName)
-                        </td>
+                 
                         <td>
                           
                                 @Html.DisplayFor(modelItem => item.EntityStatus.EntityStatusName)

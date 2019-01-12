@@ -15,7 +15,7 @@ namespace SmartHup.Controllers.Settings
     {
         #region User Configurations
 
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities db = new TicketsEntities();
 
         //private IDUserManager _userManager;
 
@@ -49,11 +49,13 @@ namespace SmartHup.Controllers.Settings
         {
             var user = getUser();
             var typeId = GetUserType(user);
-            if (user.ServiceProvider.serviceProviderTypeId == typeId)
-                return View(db.Role.Include(r => r.ServiceProviderType).Where(r => r.serviceProviderTypeId == typeId));
-            else
-                return View(db.Role.Include(r => r.ServiceProviderType));
+            //if (user.ServiceProvider.serviceProviderTypeId == typeId)
+            //    return View(db.Role.Include(r => r.ServiceProviderType).Where(r => r.serviceProviderTypeId == typeId));
+            //else
+            //    return View(db.Role.Include(r => r.ServiceProviderType));
+            return View(db.Roles.ToList());
         }
+    
 
         // GET: Roles/Details/5
         public ActionResult Details(long? id)
@@ -62,13 +64,14 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Role.Find(id);
-            if (role == null)
-            {
-                return HttpNotFound();
-            }
-            displayEntityInfo(role.createdBy, role.modifiedBy, role.deletedBy);
-            return View(role);
+            Role role = db.Roles.Find(id);
+              if (role == null)
+                     {
+                           return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                //httpnotfound();
+                      }
+        //displayEntityInfo(role.createdBy, role.modifiedBy, role.deletedBy);
+        return View(role);
         }
 
         // GET: Roles/Create
@@ -76,14 +79,14 @@ namespace SmartHup.Controllers.Settings
         {
             var user = getUser();
             var typeId = GetUserType(user);
-            if (user.ServiceProvider.serviceProviderTypeId == typeId)
-            {
-                ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType.Where(spt => spt.systemId.Equals(Utils.CSP)), "systemId", "Name");
-            }
-            else
-            {
-                ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name");
-            }
+            //if (user.ServiceProvider.serviceProviderTypeId == typeId)
+            //{
+            //    ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType.Where(spt => spt.systemId.Equals(Utils.CSP)), "systemId", "Name");
+            //}
+            //else
+            //{
+            //    ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name");
+            //}
             return View();
         }
 
@@ -94,31 +97,29 @@ namespace SmartHup.Controllers.Settings
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "systemId,serviceProviderTypeId,createdBy,modifiedBy,creationDate,modificationDate,status,version,Name,EName")] Role role)
         {
-            bool IsRoleNameExist = db.Role.Any
-        (x => x.Name == role.Name );
-            if (IsRoleNameExist == true)
-            {
-                ModelState.AddModelError("Name", "Role Name Or EName already exists");
-                // ModelState.AddModelError("EName", "Role Ename already exists");
-            }
-            bool IsRoleNameExistE = db.Role.Any
-    (x =>  x.EName == role.EName);
-            if (IsRoleNameExistE == true)
-            {
-               ModelState.AddModelError("EName", "Role Ename already exists");
-            }
+            //bool IsRoleNameExist = db.Role.Any(x => x.Name == role.Name );
+            //if (IsRoleNameExist == true)
+            //{
+            //    ModelState.AddModelError("Name", "Role Name Or EName already exists");
+            //    // ModelState.AddModelError("EName", "Role Ename already exists");
+            //}
+            //bool IsRoleNameExistE = db.Role.Any(x =>  x.EName == role.EName);
+            //if (IsRoleNameExistE == true)
+            //{
+            //   ModelState.AddModelError("EName", "Role Ename already exists");
+            //}
             if (ModelState.IsValid)
             {
-                role.status = 1;
+                //role.status = 1;
                 role.createdBy = user_info.user.systemId;
                 role.creationDate = DateTime.Now;
-                db.Role.Add(role);
+                db.Roles.Add(role);
                 db.SaveChanges();
                 log(role);
                 return RedirectToAction("Index");
             }
 
-            ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name", role.serviceProviderTypeId);
+            //ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name", role.serviceProviderTypeId);
             return View(role);
         }
 
@@ -129,24 +130,24 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Role.Find(id);
+            Role role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();
             }
             var user = getUser();
             var typeId = GetUserType(user);
-            if (user.ServiceProvider.serviceProviderTypeId == typeId)
-            {
-                ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType.Where(spt => spt.systemId.Equals(Utils.CSP)), "systemId", "Name", role.serviceProviderTypeId);
-                //ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", role.status);
-                //return View(user.Role);
-            }
-            else
-            {
-                ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name", role.serviceProviderTypeId);
-            }
-            ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", role.status);
+            //if (user.ServiceProvider.serviceProviderTypeId == typeId)
+            //{
+            //    ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType.Where(spt => spt.systemId.Equals(Utils.CSP)), "systemId", "Name", role.serviceProviderTypeId);
+            //    //ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", role.status);
+            //    //return View(user.Role);
+            //}
+            //else
+            //{
+            //    ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name", role.serviceProviderTypeId);
+            //}
+            //ViewBag.status = new SelectList(db.EntityStatus, "systemId", "EntityStatusName", role.status);
             return View(role);
 
         }
@@ -164,14 +165,14 @@ namespace SmartHup.Controllers.Settings
                 role.modifiedBy = user_info.user.systemId;
                 role.modificationDate = DateTime.Now;
                 Console.Write(role);
-                var old = db.Role.Find(role.systemId);
+                var old = db.Roles.Find(role.systemId);
                 //Role newrole = old; 
                 //db.Entry(newrole).State = EntityState.Modified;
                 db.Entry(old).CurrentValues.SetValues(role);
                 db.SaveChanges();
                 return RedirectToAction("Index", "Roles");
             }
-            ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name", role.serviceProviderTypeId);
+            //ViewBag.serviceProviderTypeId = new SelectList(db.ServiceProviderType, "systemId", "Name", role.serviceProviderTypeId);
             log(role);
             return View(role);
         }
@@ -183,7 +184,7 @@ namespace SmartHup.Controllers.Settings
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Role role = db.Role.Find(id);
+            Role role = db.Roles.Find(id);
             if (role == null)
             {
                 return HttpNotFound();
@@ -196,14 +197,14 @@ namespace SmartHup.Controllers.Settings
         [ValidateAntiForgeryToken]
         public ActionResult Delete(long id)
         {
-            Role role = db.Role.Find(id);
+            Role role = db.Roles.Find(id);
             // db.Roles.Remove(role);
-            if (role.User.Count == 0)
+            if (role.Users.Count == 0)
             {
                 role.deletedBy = user_info.user.systemId;
                 role.deletedDate = DateTime.Now;
                 role.version = role.version + 1;
-                role.status = Utils.STATUS_DELETED;
+                //role.status = Utils.STATUS_DELETED;
 
                 log(role);
                 db.SaveChanges();
@@ -218,7 +219,7 @@ namespace SmartHup.Controllers.Settings
 
         public ActionResult AssignPages(long id)
         {
-            var data = db.Module.Include(m => m.Action).Where(m => m.parentId != null).ToList();
+            var data = db.Modules.Include(m => m.Actions).Where(m => m.parentId != null).ToList();
             ViewBag.roleId = id;
             ViewBag.authAction = db.RoleActions.Where(ra => ra.RoleId == id).Select(ra => ra.actionId).ToList();
             //ViewBag.roleId = new SelectList( db.Roles.Where( r=>r.status == "1") , "systemId", "Name");
@@ -238,13 +239,13 @@ namespace SmartHup.Controllers.Settings
                     if (temp == null)
                     {
                         db.RoleActions.Add(
-                            new RoleActions
+                            new RoleAction
                             {
                                 RoleId = roleId,
                                 actionId = page.id,
                                 creationDate = DateTime.Now,
                                 createdBy = user_info.user.systemId,
-                                status = 1
+                                //status = 1
 
                             }
                             );

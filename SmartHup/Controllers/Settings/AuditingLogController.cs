@@ -16,19 +16,19 @@ namespace SmartHup.Controllers
 
     public class AuditingLogController : Base
     {
-        private SMARTEntities db = new SMARTEntities();
+        private TicketsEntities  db = new TicketsEntities ();
         // GET: AuditingLogs
         public ActionResult Index()
         {
             List<AuditingLog> auditingLogs = new List<AuditingLog>();
             var userid = user_info.user.systemId;
-            var user = db.User.FirstOrDefault(u => u.systemId == userid);
-            var typeId = db.ServiceProviderType.FirstOrDefault(spt => spt.systemId.Equals(Utils.CSP)).systemId;
-            if (user.ServiceProvider.serviceProviderTypeId == typeId)
-                auditingLogs = db.AuditingLog.Include(a => a.Action).Include(a => a.Module).Include(a => a.User)
-                    .Where(o => o.userId == userid).ToList();
-            else
-                auditingLogs = db.AuditingLog.Include(a => a.Action).Include(a => a.Module).Include(a => a.User).ToList();
+            var user = db.Users.FirstOrDefault(u => u.systemId == userid);
+           // var typeId = db.ServiceProviderType.FirstOrDefault(spt => spt.systemId.Equals(Utils.CSP)).systemId;
+            //if (user.ServiceProvider.serviceProviderTypeId == typeId)
+            //    auditingLogs = db.AuditingLog.Include(a => a.Action).Include(a => a.Module).Include(a => a.User)
+            //        .Where(o => o.userId == userid).ToList();
+            //else
+            //    auditingLogs = db.AuditingLog.Include(a => a.Action).Include(a => a.Module).Include(a => a.User).ToList();
 
             return View(auditingLogs.ToList());
         }

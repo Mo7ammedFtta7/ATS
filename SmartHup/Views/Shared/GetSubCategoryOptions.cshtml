@@ -1,0 +1,11 @@
+﻿
+<option value="">--Select SubCategory--</option>
+@if (ViewBag.GetSubCategoryOptions != null)
+{
+    foreach (var item in ViewBag.GetSubCategoryOptions)
+    {
+        <option value="@item.Value">@item.Text</option>
+    }
+
+}
+

@@ -24,24 +24,24 @@ namespace SmartHup
             var Request = HttpContext.Current.Request;
             return user_info.user.UserName;
         }
-        public static string getusername(long id)
+        public static string getusername(long? id)
         {
-            SMARTEntities db = new SMARTEntities();
+            TicketsEntities db = new TicketsEntities();
 
             if (id!=null)
             {
-                try
-                {
-                    return db.User.Find(id).UserName;
+                //try
+                //{
+                    return db.Users.Find(id).UserName;
 
-                }
-                catch (Exception)
-                {
-                    return "-";
-                }
+            //    }
+            //    catch (Exception)
+            //    {
+            //        return "-";
+            //    }
 
             }
-            return "-";
+            return "--------";
            
         }
         public static Int64 userid()

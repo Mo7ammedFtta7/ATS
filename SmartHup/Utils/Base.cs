@@ -2,6 +2,7 @@
 using SmartHup.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Globalization;
 using System.Linq;
 using System.Reflection;
@@ -20,13 +21,13 @@ namespace SmartHup
         {
 
         
-            var userId = user_info.user.systemId /*User.Identity.GetUserId<long>()*/;
+          var userId = user_info.user.systemId /*User.Identity.GetUserId<long>()*/;
 
-            if (startCheckPermission(userId, filterContext))
-                filterContext.Result = new RedirectResult(Utils.LINK_AccessDenied);
+           if (startCheckPermission(userId, filterContext))
+               filterContext.Result = new RedirectResult(Utils.LINK_AccessDenied);
 
 
-            base.OnActionExecuting(filterContext);
+          base.OnActionExecuting(filterContext);
         }
 
         protected override void Initialize(RequestContext requestContext)
@@ -49,39 +50,39 @@ namespace SmartHup
 
         private void exeptionHandler(string controller, string action, Exception exc)
         {
-            SMARTEntities db = new SMARTEntities(); 
-            AuditingLog exception = new AuditingLog();
-            var module = db.Module.FirstOrDefault(m => m.name.Equals(controller));
-            var _action = db.Action.FirstOrDefault(a => a.name.Equals(action) && a.moduleId == module.systemId);
-            long userId = user_info.user.systemId /*User.Identity.GetUserId<long>()*/;
-            string type = exc.GetType().ToString() ?? "";
-            string msg = exc.Message ?? "";
-            string inner = exc.InnerException == null ? "" : exc.InnerException.ToString();
-            var data = toStringJson(new
-            {
-                Type = type,
-                message = msg,
-                InnerException = inner
-            });
-            exception = new AuditingLog()
-            {
-                actionId = _action.systemId,
-                moduleId = module.systemId,
-                clientData = getClientData(),
-                userId = userId,
-                oldData = data,
-                dateCreated = DateTime.Now
+            //TicketsEntities db = new TicketsEntities(); 
+            //AuditingLog exception = new AuditingLog();
+            //var module = db.Module.FirstOrDefault(m => m.name.Equals(controller));
+            //var _action = db.Action.FirstOrDefault(a => a.name.Equals(action) && a.moduleId == module.systemId);
+            //long userId = user_info.user.systemId /*User.Identity.GetUserId<long>()*/;
+            //string type = exc.GetType().ToString() ?? "";
+            //string msg = exc.Message ?? "";
+            //string inner = exc.InnerException == null ? "" : exc.InnerException.ToString();
+            //var data = toStringJson(new
+            //{
+            //    Type = type,
+            //    message = msg,
+            //    InnerException = inner
+            //});
+            //exception = new AuditingLog()
+            //{
+            //    actionId = _action.systemId,
+            //    moduleId = module.systemId,
+            //    clientData = getClientData(),
+            //    userId = userId,
+            //    oldData = data,
+            //    dateCreated = DateTime.Now
 
-            };
-            try
-            {
-                db.AuditingLog.Add(exception);
-                db.SaveChanges();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            //};
+            //try
+            //{
+            //    db.AuditingLog.Add(exception);
+            //    db.SaveChanges();
+            //}
+            //catch (Exception)
+            //{
+            //    throw;
+            //}
 
         }
 
@@ -99,29 +100,29 @@ namespace SmartHup
 
             var link = Request.Url.AbsolutePath.ToString().Split('/');
 
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
+           TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
             string controller = link[1];//this.ControllerContext.RouteData.Values["controller"].ToString();
             string action = "";
             if (link.Length != 2)
                 action = link[2]; //this.ControllerContext.RouteData.Values["action"].ToString();
 
 
-            Models.Module moduleData = db.Module.FirstOrDefault(m => m.name.Equals(controller));
+            Models.Module moduleData = db.Modules.FirstOrDefault(m => m.name.Equals(controller));
             if (moduleData == null)
             {
                 addModule(controller);
-                moduleId = db.Module.FirstOrDefault(m => m.name.Equals(controller)).systemId;
+                moduleId = db.Modules.FirstOrDefault(m => m.name.Equals(controller)).systemId;
             }
             else
             {
                 moduleId = moduleData.systemId;
             }
 
-            Models.Action actionData = db.Action.FirstOrDefault(a => a.moduleId == moduleId && a.name.Equals(action));
+            Models.Action actionData = db.Actions.FirstOrDefault(a => a.moduleId == moduleId && a.name.Equals(action));
             if (actionData == null)
             {
                 addAction(action, moduleId);
-                actionId = db.Action.FirstOrDefault(a => a.moduleId == moduleId && a.name.Equals(action)).systemId;
+                actionId = db.Actions.FirstOrDefault(a => a.moduleId == moduleId && a.name.Equals(action)).systemId;
             }
             else
             {
@@ -139,7 +140,7 @@ namespace SmartHup
                 oldData = temp_oldData,
                 dateCreated = DateTime.Now
             };
-            db.AuditingLog.Add(log);
+            db.AuditingLogs.Add(log);
             db.SaveChanges();
         }
 
@@ -150,12 +151,12 @@ namespace SmartHup
                 createdBy = user_info.user.systemId /*User.Identity.GetUserId<long>()*/,
                 creationDate = DateTime.Now,
                 name = action,
-                status = 1,
+                //status = 1,
                 pageType = Utils.PAGE_ViewPage,
                 moduleId = moduleId,
             };
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
-            db.Action.Add(model);
+           TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
+            db.Actions.Add(model);
             db.SaveChanges();
         }
 
@@ -168,8 +169,8 @@ namespace SmartHup
                 name = controller,
                 status = 1,
             };
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
-            db.Module.Add(model);
+           TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
+            db.Modules.Add(model);
             db.SaveChanges();
         }
 
@@ -223,12 +224,12 @@ namespace SmartHup
 
             //written by A.Murtada
             // List of Authorized Pages
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
-            var user = db.User.FirstOrDefault(o => o.systemId.Equals(userId));
+           TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
+            var user = db.Users.FirstOrDefault(o => o.systemId.Equals(userId));
             if (user != null)
             {
-                renderLinkAuthorization(user.RoleId);
-                pagesID = db.RoleActions.Where(o => o.RoleId == user.RoleId).Select(A => A.actionId).ToList();
+                renderLinkAuthorization(user.RoleID);
+                pagesID = db.RoleActions.Where(o => o.RoleId == user.RoleID).Select(A => A.actionId).ToList();
             }
             else
             {
@@ -237,17 +238,17 @@ namespace SmartHup
             }
 
             // get the page
-            Models.Action page = db.Action.Where(o => o.Module.name.Equals(controller)
+            Models.Action page = db.Actions.Where(o => o.Module.name.Equals(controller)
                                                       && o.name.Equals(action)).FirstOrDefault();
 
             //if the page doesn't Exist in Pages
             if (page == null)
             {
-                var module = db.Module.Where(o => o.name.Equals(controller)).FirstOrDefault();
+                var module = db.Modules.Where(o => o.name.Equals(controller)).FirstOrDefault();
                 if (module == null) addModule(controller);
-                module = db.Module.Where(o => o.name.Equals(controller)).FirstOrDefault();
+                module = db.Modules.Where(o => o.name.Equals(controller)).FirstOrDefault();
                 addAction(action, module.systemId);
-                page = db.Action.Where(o => o.Module.name.Equals(controller)
+                page = db.Actions.Where(o => o.Module.name.Equals(controller)
                                                      && o.name.Equals(action)).FirstOrDefault();
             }
 
@@ -260,8 +261,8 @@ namespace SmartHup
 
         private void renderLinkAuthorization(long? roleId)
         {
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
-            List<RoleActions> data = new List<RoleActions>();
+           TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
+            List<RoleAction> data = new List<RoleAction>();
             Dictionary<Tuple<string, string>, bool> menu = new Dictionary<Tuple<string, string>, bool>();
             Dictionary<string, List<Tuple<string, string, string>>> links = new Dictionary<string, List<Tuple<string, string, string>>>();
 
@@ -284,7 +285,7 @@ namespace SmartHup
             foreach (var a in linkData)
             {
                 var linkKey = Tuple.Create(a.Action.Module.name, a.Action.name, a.Action.label);
-                string moduleName = db.Module.FirstOrDefault(m => m.systemId == a.Action.Module.parentId).name;
+                string moduleName = db.Modules.FirstOrDefault(m => m.systemId == a.Action.Module.parentId).name;
                 if (links.ContainsKey(moduleName))
                     links[moduleName].Add(linkKey);
                 else
@@ -300,7 +301,7 @@ namespace SmartHup
             entity.createdBy = user_info.user.systemId /*User.Identity.GetUserId<long>()*/;
             entity.creationDate = DateTime.Now;
             entity.version = 0;
-            entity.status = Utils.STATUS_ACTIVE;
+            entity.entityStatus_systemId = Utils.STATUS_ACTIVE;
 
             return entity;
         }
@@ -317,14 +318,14 @@ namespace SmartHup
             entity.deletedBy = user_info.user.systemId /*User.Identity.GetUserId<long>()*/;
             entity.deletedDate = DateTime.Now;
             entity.version = entity.version + 1;
-            entity.status = Utils.STATUS_DELETED;
+            entity.entityStatus_systemId = Utils.STATUS_DELETED;
 
 
             return entity;
         }
         public int GetStatusByName(string status)
         {
-            SMARTEntities db = new SMARTEntities();
+            TicketsEntities db = new TicketsEntities();
 
 
             return db.EntityStatus.Where(e=>e.EntityStatusName.Contains( status)).FirstOrDefault().systemId;
@@ -343,19 +344,19 @@ namespace SmartHup
 
         public void displayEntityInfo(long? createdBy, long? modifiedBy, long? deletedBy, int? status = null)
         {
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
+           TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
             if (createdBy != null)
-                TempData["display_createdBy"] = db.User.FirstOrDefault(u => u.systemId == createdBy).UserName;
+                TempData["display_createdBy"] = db.Users.FirstOrDefault(u => u.systemId == createdBy).UserName;
             else
                 TempData["display_createdBy"] = "";
 
             if (modifiedBy != null)
-                TempData["display_modifiedBy"] = db.User.FirstOrDefault(u => u.systemId == modifiedBy).UserName;
+                TempData["display_modifiedBy"] = db.Users.FirstOrDefault(u => u.systemId == modifiedBy).UserName;
             else
                 TempData["display_modifiedBy"] = "";
 
             if (deletedBy != null)
-                TempData["display_deletedBy"] = db.User.FirstOrDefault(u => u.systemId == deletedBy).UserName;
+                TempData["display_deletedBy"] = db.Users.FirstOrDefault(u => u.systemId == deletedBy).UserName;
             else
                 TempData["display_deletedBy"] = "";
 
@@ -366,17 +367,28 @@ namespace SmartHup
         }
         public long GetUserType(User user)
         {
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
-            var typeId = db.ServiceProviderType.FirstOrDefault(spt => spt.systemId.Equals(Utils.CSP)).systemId;
-            return typeId;
+            //   TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
+            //  var typeId = db.ServiceProviderType.FirstOrDefault(spt => spt.systemId.Equals(Utils.CSP)).systemId;
+            // return typeId;
+            return 1;
         }
         public User getUser()
         {
-           SMARTEntities db = new SMARTEntities(); /*var db = new UsersModel();*/
+           TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
             var userid = user_info.user.systemId /*User.Identity.GetUserId<long>()*/;
-            var user = db.User.FirstOrDefault(u => u.systemId == userid);
+            var user = db.Users.FirstOrDefault(u => u.systemId == userid);
             return user;
         }
+        public string userById(long userid)
+        {
+            TicketsEntities db = new TicketsEntities(); /*var db = new UsersModel();*/
+            var user = db.Users.FirstOrDefault(u => u.systemId == userid);
+            return user.UserName.ToString();
+        }
+       
+        
+
+
     }
 
 }

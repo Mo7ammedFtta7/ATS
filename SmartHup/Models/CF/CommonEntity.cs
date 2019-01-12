@@ -3,6 +3,7 @@ using SmartHup.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
@@ -35,7 +36,7 @@ namespace SmartHup.Models.New
         [Display(ResourceType = typeof(Labels), Name = "version")]
         public int version { get; set; }
 
-        public virtual EntityStatus entityStatus { get; set; }
+        public virtual EntityState entityStatus { get; set; }
     }
 
 }

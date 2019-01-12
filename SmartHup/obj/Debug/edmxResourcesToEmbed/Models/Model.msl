@@ -1,0 +1,829 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="TicketsEntities1">
+    <EntitySetMapping Name="Actions">
+      <EntityTypeMapping TypeName="Model.Action">
+        <MappingFragment StoreEntitySet="Action">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="label" ColumnName="label" />
+          <ScalarProperty Name="Elabel" ColumnName="Elabel" />
+          <ScalarProperty Name="pageType" ColumnName="pageType" />
+          <ScalarProperty Name="moduleId" ColumnName="moduleId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Announcements">
+      <EntityTypeMapping TypeName="Model.Announcement">
+        <MappingFragment StoreEntitySet="Announcement">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="AnnouncementTitle" ColumnName="AnnouncementTitle" />
+          <ScalarProperty Name="AnnouncementArTitle" ColumnName="AnnouncementArTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Attachements">
+      <EntityTypeMapping TypeName="Model.Attachement">
+        <MappingFragment StoreEntitySet="Attachements">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="Referance" ColumnName="Referance" />
+          <ScalarProperty Name="FileContent" ColumnName="FileContent" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AuditingLogs">
+      <EntityTypeMapping TypeName="Model.AuditingLog">
+        <MappingFragment StoreEntitySet="AuditingLog">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="actionId" ColumnName="actionId" />
+          <ScalarProperty Name="moduleId" ColumnName="moduleId" />
+          <ScalarProperty Name="oldData" ColumnName="oldData" />
+          <ScalarProperty Name="dateCreated" ColumnName="dateCreated" />
+          <ScalarProperty Name="clientData" ColumnName="clientData" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Categories">
+      <EntityTypeMapping TypeName="Model.Category">
+        <MappingFragment StoreEntitySet="Category">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryArName" ColumnName="CategoryArName" />
+          <ScalarProperty Name="CategoryType" ColumnName="CategoryType" />
+          <ScalarProperty Name="isChild" ColumnName="isChild" />
+          <ScalarProperty Name="ParentCategory" ColumnName="ParentCategory" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoryTypes">
+      <EntityTypeMapping TypeName="Model.CategoryType">
+        <MappingFragment StoreEntitySet="CategoryType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="CategoryType1" ColumnName="CategoryType" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatQueues">
+      <EntityTypeMapping TypeName="Model.ChatQueue">
+        <MappingFragment StoreEntitySet="ChatQueue">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="ChatQueueName" ColumnName="ChatQueueName" />
+          <ScalarProperty Name="ChatQueueArName" ColumnName="ChatQueueArName" />
+          <ScalarProperty Name="IdleTime" ColumnName="IdleTime" />
+          <ScalarProperty Name="CloseTime" ColumnName="CloseTime" />
+          <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatQueueMessages">
+      <EntityTypeMapping TypeName="Model.ChatQueueMessage">
+        <MappingFragment StoreEntitySet="ChatQueueMessages">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="ChatQueue" ColumnName="ChatQueue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ChatSessions">
+      <EntityTypeMapping TypeName="Model.ChatSession">
+        <MappingFragment StoreEntitySet="ChatSessions">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="SubmitterUser" ColumnName="SubmitterUser" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="ChatQueue" ColumnName="ChatQueue" />
+          <ScalarProperty Name="AssignedUser" ColumnName="AssignedUser" />
+          <ScalarProperty Name="start_time" ColumnName="start_time" />
+          <ScalarProperty Name="end_time" ColumnName="end_time" />
+          <ScalarProperty Name="modified_time" ColumnName="modified_time" />
+          <ScalarProperty Name="acceptTime" ColumnName="acceptTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="Model.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="CompanyArName" ColumnName="CompanyArName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="SLAId" ColumnName="SLAId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Company_Announcement">
+      <EntityTypeMapping TypeName="Model.Company_Announcement">
+        <MappingFragment StoreEntitySet="Company_Announcement">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="Company_ID" ColumnName="Company_ID" />
+          <ScalarProperty Name="Announcement_ID" ColumnName="Announcement_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentMeasurementLists">
+      <EntityTypeMapping TypeName="Model.CurrentMeasurementList">
+        <MappingFragment StoreEntitySet="CurrentMeasurementLists">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="SLAId" ColumnName="SLAId" />
+          <ScalarProperty Name="MeasurementId" ColumnName="MeasurementId" />
+          <ScalarProperty Name="List" ColumnName="List" />
+          <ScalarProperty Name="TicletId" ColumnName="TicletId" />
+          <ScalarProperty Name="list_value" ColumnName="list_value" />
+          <ScalarProperty Name="run_date" ColumnName="run_date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CurrentSlaResults">
+      <EntityTypeMapping TypeName="Model.CurrentSlaResult">
+        <MappingFragment StoreEntitySet="CurrentSlaResults">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="MeasurementId" ColumnName="MeasurementId" />
+          <ScalarProperty Name="currenetResult" ColumnName="currenetResult" />
+          <ScalarProperty Name="SLAGrade" ColumnName="SLAGrade" />
+          <ScalarProperty Name="internalGrade" ColumnName="internalGrade" />
+          <ScalarProperty Name="runDate" ColumnName="runDate" />
+          <ScalarProperty Name="finalResult" ColumnName="finalResult" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Departments">
+      <EntityTypeMapping TypeName="Model.Department">
+        <MappingFragment StoreEntitySet="Department">
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="DepartmentName" ColumnName="DepartmentName" />
+          <ScalarProperty Name="DepartmentArName" ColumnName="DepartmentArName" />
+          <ScalarProperty Name="Descrtiption" ColumnName="Descrtiption" />
+          <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+          <ScalarProperty Name="DepartmentHead" ColumnName="DepartmentHead" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DueDateRules">
+      <EntityTypeMapping TypeName="Model.DueDateRule">
+        <MappingFragment StoreEntitySet="DueDateRule">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="DueDateRuleName" ColumnName="DueDateRuleName" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Urgancy_ID" ColumnName="Urgancy_ID" />
+          <ScalarProperty Name="Priority_ID" ColumnName="Priority_ID" />
+          <ScalarProperty Name="SLA_ID" ColumnName="SLA_ID" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EntityStatus">
+      <EntityTypeMapping TypeName="Model.EntityStatu">
+        <MappingFragment StoreEntitySet="EntityStatus">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="EntityStatusName" ColumnName="EntityStatusName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EscalationRules">
+      <EntityTypeMapping TypeName="Model.EscalationRule">
+        <MappingFragment StoreEntitySet="EscalationRule">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="EscalationName" ColumnName="EscalationName" />
+          <ScalarProperty Name="EscalationArName" ColumnName="EscalationArName" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Sub_Category_ID" ColumnName="Sub_Category_ID" />
+          <ScalarProperty Name="SLA_ID" ColumnName="SLA_ID" />
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="Priority_ID" ColumnName="Priority_ID" />
+          <ScalarProperty Name="ChangePriority" ColumnName="ChangePriority" />
+          <ScalarProperty Name="ChangeStatus" ColumnName="ChangeStatus" />
+          <ScalarProperty Name="ReAssignUser" ColumnName="ReAssignUser" />
+          <ScalarProperty Name="AssignedUser_ID" ColumnName="AssignedUser_ID" />
+          <ScalarProperty Name="SubmitterUSerID" ColumnName="SubmitterUSerID" />
+          <ScalarProperty Name="EscalationLevel" ColumnName="EscalationLevel" />
+          <ScalarProperty Name="AssignedGroup" ColumnName="AssignedGroup" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GroupTypes">
+      <EntityTypeMapping TypeName="Model.GroupType">
+        <MappingFragment StoreEntitySet="GroupType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="GroupTypeName" ColumnName="GroupTypeName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Impacts">
+      <EntityTypeMapping TypeName="Model.Impact">
+        <MappingFragment StoreEntitySet="Impact">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="ImpactName" ColumnName="ImpactName" />
+          <ScalarProperty Name="ImpactArName" ColumnName="ImpactArName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="DescriptionAr" ColumnName="DescriptionAr" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="KnowledgeBases">
+      <EntityTypeMapping TypeName="Model.KnowledgeBase">
+        <MappingFragment StoreEntitySet="KnowledgeBase">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TopicName" ColumnName="TopicName" />
+          <ScalarProperty Name="TopicArName" ColumnName="TopicArName" />
+          <ScalarProperty Name="Category_ID" ColumnName="Category_ID" />
+          <ScalarProperty Name="Sub_Category_ID" ColumnName="Sub_Category_ID" />
+          <ScalarProperty Name="User_ID" ColumnName="User_ID" />
+          <ScalarProperty Name="Quetion" ColumnName="Quetion" />
+          <ScalarProperty Name="Answer" ColumnName="Answer" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="Publish" ColumnName="Publish" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Measurments">
+      <EntityTypeMapping TypeName="Model.Measurment">
+        <MappingFragment StoreEntitySet="Measurment">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="MeasurmentName" ColumnName="MeasurmentName" />
+          <ScalarProperty Name="MeasurmentArName" ColumnName="MeasurmentArName" />
+          <ScalarProperty Name="Unit" ColumnName="Unit" />
+          <ScalarProperty Name="Formula" ColumnName="Formula" />
+          <ScalarProperty Name="SLAId" ColumnName="SLAId" />
+          <ScalarProperty Name="MeasurmentList_ID" ColumnName="MeasurmentList_ID" />
+          <ScalarProperty Name="TestInterval" ColumnName="TestInterval" />
+          <ScalarProperty Name="CurrentValue" ColumnName="CurrentValue" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="MeasurmentList_ID2" ColumnName="MeasurmentList_ID2" />
+          <ScalarProperty Name="critical_grade" ColumnName="critical_grade" />
+          <ScalarProperty Name="warning_grade" ColumnName="warning_grade" />
+          <ScalarProperty Name="optimum_grade" ColumnName="optimum_grade" />
+          <ScalarProperty Name="goal_critical" ColumnName="goal_critical" />
+          <ScalarProperty Name="goal_warning" ColumnName="goal_warning" />
+          <ScalarProperty Name="goal_optimum" ColumnName="goal_optimum" />
+          <ScalarProperty Name="sla_critical" ColumnName="sla_critical" />
+          <ScalarProperty Name="sla_warning" ColumnName="sla_warning" />
+          <ScalarProperty Name="sla_optimum" ColumnName="sla_optimum" />
+          <ScalarProperty Name="calculated" ColumnName="calculated" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MeasurmentLists">
+      <EntityTypeMapping TypeName="Model.MeasurmentList">
+        <MappingFragment StoreEntitySet="MeasurmentList">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="MeasurmentListName" ColumnName="MeasurmentListName" />
+          <ScalarProperty Name="MeasurmentListArName" ColumnName="MeasurmentListArName" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+          <ScalarProperty Name="dateField" ColumnName="dateField" />
+          <ScalarProperty Name="statusType" ColumnName="statusType" />
+          <ScalarProperty Name="fieldName" ColumnName="fieldName" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Modules">
+      <EntityTypeMapping TypeName="Model.Module">
+        <MappingFragment StoreEntitySet="Module">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="Ename" ColumnName="Ename" />
+          <ScalarProperty Name="parentId" ColumnName="parentId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="OnlineUsers">
+      <EntityTypeMapping TypeName="Model.OnlineUser">
+        <MappingFragment StoreEntitySet="OnlineUsers">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="userId" ColumnName="userId" />
+          <ScalarProperty Name="sessionId" ColumnName="sessionId" />
+          <ScalarProperty Name="ipAddress" ColumnName="ipAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Priorities">
+      <EntityTypeMapping TypeName="Model.Priority">
+        <MappingFragment StoreEntitySet="Priority">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="PriorityName" ColumnName="PriorityName" />
+          <ScalarProperty Name="PriorityArName" ColumnName="PriorityArName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="PriorityLevel" ColumnName="PriorityLevel" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriorityMatrices">
+      <EntityTypeMapping TypeName="Model.PriorityMatrix">
+        <MappingFragment StoreEntitySet="PriorityMatrix">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="Impact_ID" ColumnName="Impact_ID" />
+          <ScalarProperty Name="Urgancy_ID" ColumnName="Urgancy_ID" />
+          <ScalarProperty Name="Priority_ID" ColumnName="Priority_ID" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="SLAId" ColumnName="SLAId" />
+          <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PriorityRules">
+      <EntityTypeMapping TypeName="Model.PriorityRule">
+        <MappingFragment StoreEntitySet="PriorityRule">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="PriorityRuleName" ColumnName="PriorityRuleName" />
+          <ScalarProperty Name="Section_ID" ColumnName="Section_ID" />
+          <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+          <ScalarProperty Name="Priority_ID" ColumnName="Priority_ID" />
+          <ScalarProperty Name="SLA_ID" ColumnName="SLA_ID" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="UsingPriorityMatrix" ColumnName="UsingPriorityMatrix" />
+          <ScalarProperty Name="PriorityMatrix" ColumnName="PriorityMatrix" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="Model.Role">
+        <MappingFragment StoreEntitySet="Role">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="RoleArName" ColumnName="RoleArName" />
+          <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoleActions">
+      <EntityTypeMapping TypeName="Model.RoleAction">
+        <MappingFragment StoreEntitySet="RoleActions">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="actionId" ColumnName="actionId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="RoutingRules">
+      <EntityTypeMapping TypeName="Model.RoutingRule">
+        <MappingFragment StoreEntitySet="RoutingRule">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="RoutingRuleName" ColumnName="RoutingRuleName" />
+          <ScalarProperty Name="RoutingRuleArName" ColumnName="RoutingRuleArName" />
+          <ScalarProperty Name="SubmitterGroupID" ColumnName="SubmitterGroupID" />
+          <ScalarProperty Name="AssignedGroupID" ColumnName="AssignedGroupID" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="SLAID" ColumnName="SLAID" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="SubCategory" ColumnName="SubCategory" />
+          <ScalarProperty Name="AssignedUser" ColumnName="AssignedUser" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sections">
+      <EntityTypeMapping TypeName="Model.Section">
+        <MappingFragment StoreEntitySet="Section">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="SectionName" ColumnName="SectionName" />
+          <ScalarProperty Name="SectionArName" ColumnName="SectionArName" />
+          <ScalarProperty Name="DepartmentId" ColumnName="DepartmentId" />
+          <ScalarProperty Name="companyId" ColumnName="companyId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ShareTopics">
+      <EntityTypeMapping TypeName="Model.ShareTopic">
+        <MappingFragment StoreEntitySet="ShareTopic">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="ShareTopicName" ColumnName="ShareTopicName" />
+          <ScalarProperty Name="ShareTopicArName" ColumnName="ShareTopicArName" />
+          <ScalarProperty Name="Method" ColumnName="Method" />
+          <ScalarProperty Name="Topic_ID" ColumnName="Topic_ID" />
+          <ScalarProperty Name="UserGroup_ID" ColumnName="UserGroup_ID" />
+          <ScalarProperty Name="Subject" ColumnName="Subject" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SLAs">
+      <EntityTypeMapping TypeName="Model.SLA">
+        <MappingFragment StoreEntitySet="SLA">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="SLA_Name" ColumnName="SLA_Name" />
+          <ScalarProperty Name="SLA_ArName" ColumnName="SLA_ArName" />
+          <ScalarProperty Name="isDefault" ColumnName="isDefault" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Status">
+      <EntityTypeMapping TypeName="Model.Status">
+        <MappingFragment StoreEntitySet="Status">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="StatusName" ColumnName="StatusName" />
+          <ScalarProperty Name="StatusArName" ColumnName="StatusArName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="StatusType_ID" ColumnName="StatusType_ID" />
+          <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+          <ScalarProperty Name="Tickets" ColumnName="Tickets" />
+          <ScalarProperty Name="Tasks" ColumnName="Tasks" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusTimers">
+      <EntityTypeMapping TypeName="Model.StatusTimer">
+        <MappingFragment StoreEntitySet="StatusTimer">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="Time" ColumnName="Time" />
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="Timer_ID" ColumnName="Timer_ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="StatusTypes">
+      <EntityTypeMapping TypeName="Model.StatusType">
+        <MappingFragment StoreEntitySet="StatusType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="StatusTypeName" ColumnName="StatusTypeName" />
+          <ScalarProperty Name="StatusTypeArName" ColumnName="StatusTypeArName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tasks">
+      <EntityTypeMapping TypeName="Model.Task">
+        <MappingFragment StoreEntitySet="Task">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+          <ScalarProperty Name="TaskArName" ColumnName="TaskArName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Ticket_ID" ColumnName="Ticket_ID" />
+          <ScalarProperty Name="EstimatedStartDate" ColumnName="EstimatedStartDate" />
+          <ScalarProperty Name="EstimatedEndDate" ColumnName="EstimatedEndDate" />
+          <ScalarProperty Name="Total" ColumnName="Total" />
+          <ScalarProperty Name="AssignedUser" ColumnName="AssignedUser" />
+          <ScalarProperty Name="Status_ID" ColumnName="Status_ID" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="Dependent" ColumnName="Dependent" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Category" ColumnName="Category" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketLogs">
+      <EntityTypeMapping TypeName="Model.TicketLog">
+        <MappingFragment StoreEntitySet="TicketLog">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TicketId" ColumnName="TicketId" />
+          <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+          <ScalarProperty Name="logType" ColumnName="logType" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TicketMsgs">
+      <EntityTypeMapping TypeName="Model.TicketMsg">
+        <MappingFragment StoreEntitySet="TicketMsg">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="msgTime" ColumnName="msgTime" />
+          <ScalarProperty Name="fromUser" ColumnName="fromUser" />
+          <ScalarProperty Name="toUser" ColumnName="toUser" />
+          <ScalarProperty Name="method" ColumnName="method" />
+          <ScalarProperty Name="subject" ColumnName="subject" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tickets">
+      <EntityTypeMapping TypeName="Model.Ticket">
+        <MappingFragment StoreEntitySet="Tickets">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TicketTitle" ColumnName="TicketTitle" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="SubmitterUser" ColumnName="SubmitterUser" />
+          <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+          <ScalarProperty Name="SubCategoryID" ColumnName="SubCategoryID" />
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="Impact_ID" ColumnName="Impact_ID" />
+          <ScalarProperty Name="Urgancy_ID" ColumnName="Urgancy_ID" />
+          <ScalarProperty Name="Priority_ID" ColumnName="Priority_ID" />
+          <ScalarProperty Name="AssignedUser" ColumnName="AssignedUser" />
+          <ScalarProperty Name="AssignedGroup" ColumnName="AssignedGroup" />
+          <ScalarProperty Name="Attachment" ColumnName="Attachment" />
+          <ScalarProperty Name="Solution" ColumnName="Solution" />
+          <ScalarProperty Name="Resolution" ColumnName="Resolution" />
+          <ScalarProperty Name="StratDate" ColumnName="StratDate" />
+          <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="KnowledgeBase" ColumnName="KnowledgeBase" />
+          <ScalarProperty Name="DueDate" ColumnName="DueDate" />
+          <ScalarProperty Name="Timer" ColumnName="Timer" />
+          <ScalarProperty Name="SLAId" ColumnName="SLAId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timers">
+      <EntityTypeMapping TypeName="Model.Timer">
+        <MappingFragment StoreEntitySet="Timer">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TimerName" ColumnName="TimerName" />
+          <ScalarProperty Name="TimerArName" ColumnName="TimerArName" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="statusId" ColumnName="statusId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Types">
+      <EntityTypeMapping TypeName="Model.Type">
+        <MappingFragment StoreEntitySet="Type">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypeArName" ColumnName="TypeArName" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Urgencies">
+      <EntityTypeMapping TypeName="Model.Urgency">
+        <MappingFragment StoreEntitySet="Urgency">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="UrgancyName" ColumnName="UrgancyName" />
+          <ScalarProperty Name="UrgancyArName" ColumnName="UrgancyArName" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="version" ColumnName="version" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserGroups">
+      <EntityTypeMapping TypeName="Model.UserGroup">
+        <MappingFragment StoreEntitySet="UserGroup">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="UserGroupName" ColumnName="UserGroupName" />
+          <ScalarProperty Name="UserGroupArName" ColumnName="UserGroupArName" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="GroupTypeId" ColumnName="GroupTypeId" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="Model.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="IDRole_Id" ColumnName="IDRole_Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoutings">
+      <EntityTypeMapping TypeName="Model.UserRouting">
+        <MappingFragment StoreEntitySet="UserRouting">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="userfrom" ColumnName="userfrom" />
+          <ScalarProperty Name="userTo" ColumnName="userTo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="Model.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="LoginName" ColumnName="LoginName" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="departmentId" ColumnName="departmentId" />
+          <ScalarProperty Name="companyId" ColumnName="companyId" />
+          <ScalarProperty Name="SectionID" ColumnName="SectionID" />
+          <ScalarProperty Name="GroupID" ColumnName="GroupID" />
+          <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+          <ScalarProperty Name="createdBy" ColumnName="createdBy" />
+          <ScalarProperty Name="modifiedBy" ColumnName="modifiedBy" />
+          <ScalarProperty Name="deletedBy" ColumnName="deletedBy" />
+          <ScalarProperty Name="creationDate" ColumnName="creationDate" />
+          <ScalarProperty Name="modificationDate" ColumnName="modificationDate" />
+          <ScalarProperty Name="deletedDate" ColumnName="deletedDate" />
+          <ScalarProperty Name="entityStatus_systemId" ColumnName="entityStatus_systemId" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserTypes">
+      <EntityTypeMapping TypeName="Model.UserType">
+        <MappingFragment StoreEntitySet="UserType">
+          <ScalarProperty Name="systemId" ColumnName="systemId" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="TypeArName" ColumnName="TypeArName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

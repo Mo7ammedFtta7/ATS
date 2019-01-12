@@ -17,11 +17,9 @@ namespace SmartHup.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Module()
         {
-            this.Action = new HashSet<Action>();
-            this.AuditingLog = new HashSet<AuditingLog>();
+            this.Actions = new HashSet<Action>();
+            this.AuditingLogs = new HashSet<AuditingLog>();
             this.Module1 = new HashSet<Module>();
-            this.MONITORINGJOB = new HashSet<MONITORINGJOB>();
-            this.MONITORINGLOG = new HashSet<MONITORINGLOG>();
         }
     
         public long systemId { get; set; }
@@ -39,16 +37,12 @@ namespace SmartHup.Models
         public Nullable<long> deletedBy { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Action> Action { get; set; }
+        public virtual ICollection<Action> Actions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AuditingLog> AuditingLog { get; set; }
-        public virtual EntityStatus EntityStatus { get; set; }
+        public virtual ICollection<AuditingLog> AuditingLogs { get; set; }
+        public virtual EntityStatu EntityStatu { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Module> Module1 { get; set; }
         public virtual Module Module2 { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MONITORINGJOB> MONITORINGJOB { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<MONITORINGLOG> MONITORINGLOG { get; set; }
     }
 }
